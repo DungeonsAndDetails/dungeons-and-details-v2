@@ -4,8 +4,9 @@ import './App.css';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 import CreateStudent from './pages/createCharacterPage/CreateCharacter';
-import EditStudent from './components/edit-student.component';
-import StudentList from './components/student-list.component';
+import EditStudent from './pages/editCharacter/EditCharacter';
+import StudentList from './pages/characterList/characterList';
+import Home from './pages/home/Home';
 
 const App = () => {
 	return (
@@ -24,7 +25,7 @@ const App = () => {
 				</div>
 				<hr />
 				<Routes>
-					<Route path="/" element={<CreateStudent />} />
+					<Route path="/" element={<Home />} />
 					<Route path="/create-student" element={<CreateStudent />} />
 					<Route path="/edit-student/:id" element={<EditStudent />} />
 					<Route path="/student-list" element={<StudentList />} />

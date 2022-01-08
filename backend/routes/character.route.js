@@ -20,4 +20,16 @@ router.route('/create').put((req, res) => {
 		});
 });
 
+router.route('/all').get((req, res) => {
+	characterCollection
+		.find()
+		.toArray()
+		.then((result) => {
+			res.send(result.ops);
+		})
+		.catch((error) => {
+			res.send(error);
+		});
+});
+
 module.exports = router;

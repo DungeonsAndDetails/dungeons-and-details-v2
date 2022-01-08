@@ -1,10 +1,10 @@
 import React from 'react';
 import { Field, Formik, Form } from 'formik';
 import axios from 'axios';
+import Input from '../../components/Input';
 
 const createCharacter = () => {
 	const submit = async (e) => {
-		console.log(e);
 		const response = await axios.put('http://localhost:4000/characters/create', e);
 		console.log('response', response.data);
 	};
@@ -19,38 +19,31 @@ const createCharacter = () => {
 			<Form>
 				<div className="columns-2">
 					<div>
-						<label htmlFor="name">Name</label>
-						<Field type="text" name="name" />
+						<Field type="text" name="name" as={Input} label="Name" />
 					</div>
 					<div>
-						<label htmlFor="name">Level</label>
-						<Field type="number" name="level" />
+						<Field type="number" name="level" as={Input} label="Level" />
 					</div>
 				</div>
 				<div className="columns-2">
 					<div>
-						<label htmlFor="name">Class</label>
-						<Field type="text" name="class" />
+						<Field type="text" name="class" as={Input} label="Class" />
 					</div>
 					<div>
-						<label htmlFor="name">Subclass</label>
-						<Field type="text" name="subclass" />
+						<Field type="text" name="subclass" as={Input} label="Subclass" />
 					</div>
 				</div>
 				<div className="columns-2">
 					<div>
-						<label htmlFor="name">Race</label>
-						<Field type="text" name="race" />
+						<Field type="text" name="race" as={Input} label="Race" />
 					</div>
 					<div>
-						<label htmlFor="name">Subrace</label>
-						<Field type="text" name="subrace" />
+						<Field type="text" name="subrace" as={Input} label="Subrace" />
 					</div>
 				</div>
-				<div className="columns-2">
+				<div className="columns-1">
 					<div>
-						<label htmlFor="name">Alignment</label>
-						<Field type="text" name="alignment" />
+						<Field type="text" name="alignment" as={Input} label="Alignment" />
 					</div>
 				</div>
 				<div>
