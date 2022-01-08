@@ -8,13 +8,14 @@ Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 |/| Custom |\|
-Building off of - https://www.positronx.io/react-mern-stack-crud-app-tutorial/
+Building off of - https://www.positronx.io/react-mern-stack-crud-app-tutorial/ (Outdated)
 
 ### Setup
 
-backend - contains backend files.
+Backend - Handles all contact with the Database.
 Ensure to run `npm install` inside both primary dir /dungeons-and-details and backend dir /dungeons-and-details/backend
 `npm install && cd backend && npm install`
+ensure you have nodemon installed on your dev `npm install -g nodemon`
 run `nodemon server.js` inside backend to start up the DB watcher for auto refresh.
 
 ### Frontend
@@ -26,6 +27,7 @@ Tailwind - Library for styling.
 react-router-dom - Library for managing paging.
 Axios - Used for simplifying creating http/https CRUD calls.
 Formik - Used for all Forms and validation. https://formik.org/docs/overview
+If Prettier throws an error from ESLINT. Run `npm install --save-dev eslint-config-prettier`
 
 ### Backend
 
@@ -34,6 +36,12 @@ MongoDB - It’s a NoSQL document-oriented database for creating a robust web ap
 CORS - It’s a node.js package helps in enabling Access-Control-Allow-Origin CORS header.
 bodyParser - This package extracts the entire body portion of an incoming request stream and exposes it on req.body.
 nodemon - Dependency to automate the server restarting process.
+
+### Tools
+
+VSCode: https://code.visualstudio.com/
+Github Desktop: https://desktop.github.com/
+MongoDB Compass: https://www.mongodb.com/products/compass
 
 ### Docs
 
