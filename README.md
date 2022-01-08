@@ -28,6 +28,8 @@ react-router-dom - Library for managing paging.
 Axios - Used for simplifying creating http/https CRUD calls.
 Formik - Used for all Forms and validation. https://formik.org/docs/overview
 If Prettier throws an error from ESLINT. Run `npm install --save-dev eslint-config-prettier`
+If ESLint Babel error [ERROR in Failed to load parser 'babel-eslint' declared in '.eslintrc.json': Cannot find module 'babel-eslint']
+`npm install eslint babel-eslint -g`
 
 ### Backend
 
