@@ -2,69 +2,60 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
-
-In the project directory, you can run:
-
 ### `npm start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+|/| Custom |\|
+Building off of - https://www.positronx.io/react-mern-stack-crud-app-tutorial/
 
-### `npm test`
+### Setup
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+backend - contains backend files.
+Ensure to run `npm install` inside both primary dir /dungeons-and-details and backend dir /dungeons-and-details/backend
+`npm install && cd backend && npm install`
+run `nodemon server.js` inside backend to start up the DB watcher for auto refresh.
 
-### `npm run build`
+### Frontend
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+React - Framework of our frontend.
+Bootstrap - Library for bootstrap CSS. --- Outdated
+Reactstrap - Library for utilizing bootstrap react components. --- Outdated
+Tailwind - Library for styling.
+react-router-dom - Library for managing paging.
+Axios - Used for simplifying creating http/https CRUD calls.
+Formik - Used for all Forms and validation. https://formik.org/docs/overview
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Backend
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Express - It’s a robust Node.js web application framework that helps in creating powerful REST APIs.
+MongoDB - It’s a NoSQL document-oriented database for creating a robust web application.
+CORS - It’s a node.js package helps in enabling Access-Control-Allow-Origin CORS header.
+bodyParser - This package extracts the entire body portion of an incoming request stream and exposes it on req.body.
+nodemon - Dependency to automate the server restarting process.
 
-### `npm run eject`
+### Docs
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+This App uses React Functional Components - A Functional component is a function that takes props and returns JSX. They do not have state or lifecycle methods. Functional components are easier to read, debug, and test. They offer performance benefits, decreased coupling, and greater reusability.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Component Lifecycle Methods - Mounting / Updating / Unmounting / Error Handling.
+https://reactjs.org/docs/react-component.html
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+This App will be using hooks to interact with the component lifecycle method instead of the component life cycle methods.
+https://reactjs.org/docs/hooks-reference.html
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+This App will be using useState to interact with the state of components.
+https://reactjs.org/docs/hooks-reference.html#usestate
 
-## Learn More
+This App will use useContext & useReducer to handle global state.
+https://reactjs.org/docs/hooks-reference.html#usecontext
+https://reactjs.org/docs/hooks-reference.html#usereducer
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Database
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Collections:
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Characters
+Classes
+Attributes
