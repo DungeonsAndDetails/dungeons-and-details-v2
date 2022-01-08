@@ -13,13 +13,13 @@ const characterSchema = new Schema(
 		class: {
 			type: String,
 		},
-		subClass: {
+		subclass: {
 			type: String,
 		},
 		race: {
 			type: String,
 		},
-		subRace: {
+		subrace: {
 			type: String,
 		},
 		Alignment: {
