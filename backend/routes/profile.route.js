@@ -30,4 +30,23 @@ router.route('/all').get((req, res) => {
 		});
 });
 
+router.post('/update', (req, res) => {
+	console.log('updating profile');
+	const { body } = req;
+	const newValues = {
+		$set: {
+			...body,
+		},
+	};
+	const id = new mongoose.Types.ObjectId(body._id);
+	profileCollection
+		.updateOne({ _id: id }, newValues)
+		.then((result) => {
+			res.send(result);
+		})
+		.catch((error) => {
+			res.send(error);
+		});
+});
+
 module.exports = router;
