@@ -1,14 +1,14 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import StudentTableRow from './StudentTableRow';
+import StudentTableRow from '../../components/StudentTableRow';
 
-const StudentList = () => {
-	const [students, setStudents] = useState([]);
+const CharacterList = () => {
+	const [characters, setCharacters] = useState([]);
 
 	const getStudents = async () => {
-		const { data } = await axios.get('http://localhost:4000/students/');
-		console.log(data);
-		setStudents(data);
+		const { data } = await axios.get('http://localhost:4000/characters/all');
+		console.log('data', data);
+		setCharacters(data);
 	};
 
 	useEffect(() => {
@@ -16,7 +16,7 @@ const StudentList = () => {
 	}, []);
 
 	const DataTable = () => {
-		return students.map((res, i) => {
+		return characters.map((res, i) => {
 			return <StudentTableRow obj={res} key={i} />;
 		});
 	};
@@ -36,4 +36,4 @@ const StudentList = () => {
 	);
 };
 
-export default StudentList;
+export default CharacterList;
