@@ -11,6 +11,7 @@ module.exports = {
 			'2xl': '1536px',
 		},
 		colors: ({ colors }) => ({
+			inputbackgroundcolor: '#286980',
 			inherit: colors.inherit,
 			current: colors.current,
 			transparent: colors.transparent,
