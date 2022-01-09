@@ -30,7 +30,7 @@ router.route('/all').get((req, res) => {
 		});
 });
 
-router.get('/login', (req, res) => {
+router.post('/login', (req, res) => {
 	profileCollection
 		.findOne({ username: req.body.username, password: req.body.password })
 		.then((result) => {
