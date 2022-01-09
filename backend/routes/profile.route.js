@@ -38,7 +38,7 @@ router.get('/login', (req, res) => {
 				console.log('FOUND ONE');
 				res.send(result);
 			} else {
-				console.log('DID NOT FIND ONE');
+				throw new Error('Does not Exist');
 			}
 		})
 		.catch((error) => {
