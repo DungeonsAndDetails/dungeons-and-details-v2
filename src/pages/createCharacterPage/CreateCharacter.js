@@ -3,6 +3,7 @@ import { Field, Formik, Form } from 'formik';
 import axios from 'axios';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
+import TextInputField from '../../components/TextInputField';
 
 const createCharacter = () => {
 	const submit = async (e) => {
@@ -20,28 +21,28 @@ const createCharacter = () => {
 			<Form>
 				<div className="grid grid-cols-3 gap-5">
 					<div>
-						<Field type="text" name="name" as={Input} label="Name" />
+						<TextInputField type="text" name="name" label="Name" />
 					</div>
 					<div>
-						<Field type="number" name="level" as={Input} label="Level" />
-					</div>
-
-					<div>
-						<Field type="text" name="class" as={Input} label="Class" />
-					</div>
-					<div>
-						<Field type="text" name="subclass" as={Input} label="Subclass" />
+						<TextInputField type="number" name="level" label="Level" />
 					</div>
 
 					<div>
-						<Field type="text" name="race" as={Input} label="Race" />
+						<TextInputField type="text" name="class" label="Class" />
 					</div>
 					<div>
-						<Field type="text" name="subrace" as={Input} label="Subrace" />
+						<TextInputField type="text" name="subclass" label="Subclass" />
+					</div>
+
+					<div>
+						<TextInputField type="text" name="race" label="Race" />
+					</div>
+					<div>
+						<TextInputField type="text" name="subrace" label="Subrace" />
 					</div>
 
 					<div className="col-start-1">
-						<Field type="text" name="alignment" as={Input} label="Alignment" />
+						<TextInputField type="text" name="alignment" label="Alignment" />
 					</div>
 				</div>
 				<div className="flex justify-center">

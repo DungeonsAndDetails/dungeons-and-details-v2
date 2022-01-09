@@ -4,7 +4,7 @@ const Input = (props) => {
 	const [focus, setFocus] = useState(false);
 	console.log(props);
 	return (
-		<div key={props.name} className="pb-5 ">
+		<div key={props.name} className="pb-5">
 			<div>
 				<label
 					htmlFor={props.name}

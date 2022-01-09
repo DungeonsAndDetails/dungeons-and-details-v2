@@ -1,5 +1,6 @@
 import { Field, Form, Formik } from 'formik';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
@@ -55,6 +56,9 @@ const Home = () => {
 								type="button"
 							/>
 						</div>
+					</div>
+					<div>
+						<Link to="/sign-up">Create new account</Link>
 					</div>
 				</Form>
 			</Formik>

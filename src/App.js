@@ -7,6 +7,7 @@ import CreateStudent from './pages/createCharacterPage/CreateCharacter';
 import EditStudent from './pages/editCharacter/EditCharacter';
 import StudentList from './pages/characterList/characterList';
 import Home from './pages/home/Home';
+import SignUp from './pages/signUp/SignUp';
 
 const App = () => {
 	return (
@@ -26,6 +27,7 @@ const App = () => {
 				<hr />
 				<Routes>
 					<Route path="/" element={<Home />} />
+					<Route path="/sign-up" element={<SignUp />} />
 					<Route path="/create-student" element={<CreateStudent />} />
 					<Route path="/edit-student/:id" element={<EditStudent />} />
 					<Route path="/student-list" element={<StudentList />} />
@@ -34,5 +36,4 @@ const App = () => {
 		</div>
 	);
 };
-
 export default App;
