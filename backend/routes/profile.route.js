@@ -30,6 +30,23 @@ router.route('/all').get((req, res) => {
 		});
 });
 
+router.get('/login', (req, res) => {
+	profileCollection
+		.findOne({ username: req.body.username, password: req.body.password })
+		.then((result) => {
+			if (result) {
+				console.log('FOUND ONE');
+				res.send(result);
+			} else {
+				console.log('DID NOT FIND ONE');
+			}
+		})
+		.catch((error) => {
+			console.log('error', error);
+			res.send(error);
+		});
+});
+
 router.post('/update', (req, res) => {
 	console.log('updating profile');
 	const { body } = req;
