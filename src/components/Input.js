@@ -1,13 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Input = (props) => {
+	const [focus, setFocus] = useState(false);
+
+	console.log(props);
 	return (
-		<div>
+		<div className="pb-5" key={props.name}>
 			<div>
-				<label>{props.label}</label>
+				<label className={`font-semibold ${focus ? 'text-white' : 'text-gray-400'}`}>
+					{props.label}
+				</label>
 			</div>
 			<div>
-				<input {...props} />
+				<input
+					{...props}
+					className="underline w-full"
+					onFocus={() => setFocus(true)}
+					onBlur={() => setFocus(false)}
+				/>
 			</div>
 		</div>
 	);

@@ -45,6 +45,10 @@ VSCode: https://code.visualstudio.com/
 Github Desktop: https://desktop.github.com/
 MongoDB Compass: https://www.mongodb.com/products/compass
 
+### VSCode Plugins
+
+Tailwind CSS IntelliSense
+
 ### Docs
 
 This App uses React Functional Components - A Functional component is a function that takes props and returns JSX. They do not have state or lifecycle methods. Functional components are easier to read, debug, and test. They offer performance benefits, decreased coupling, and greater reusability.

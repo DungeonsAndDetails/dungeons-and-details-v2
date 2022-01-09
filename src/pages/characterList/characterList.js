@@ -3,12 +3,12 @@ import React, { useEffect, useState } from 'react';
 import StudentTableRow from '../../components/StudentTableRow';
 
 const CharacterList = () => {
-	const [students, setStudents] = useState([]);
+	const [characters, setCharacters] = useState([]);
 
 	const getStudents = async () => {
 		const { data } = await axios.get('http://localhost:4000/characters/all');
-		console.log(data);
-		setStudents(data);
+		console.log('data', data);
+		setCharacters(data);
 	};
 
 	useEffect(() => {
@@ -16,7 +16,7 @@ const CharacterList = () => {
 	}, []);
 
 	const DataTable = () => {
-		return students.map((res, i) => {
+		return characters.map((res, i) => {
 			return <StudentTableRow obj={res} key={i} />;
 		});
 	};

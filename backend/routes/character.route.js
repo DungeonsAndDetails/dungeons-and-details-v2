@@ -25,7 +25,8 @@ router.route('/all').get((req, res) => {
 		.find()
 		.toArray()
 		.then((result) => {
-			res.send(result.ops);
+			console.log(result);
+			res.send(result);
 		})
 		.catch((error) => {
 			res.send(error);
