@@ -2,21 +2,23 @@ import React, { useState } from 'react';
 
 const Input = (props) => {
 	const [focus, setFocus] = useState(false);
-
-	console.log(props);
+	console.log(focus);
 	return (
-		<div className="pb-5" key={props.name}>
+		<div key={props.name} className="pb-5 ">
 			<div>
-				<label className={`font-semibold ${focus ? 'text-white' : 'text-gray-400'}`}>
+				<label
+					htmlFor={props.name}
+					className={`font-semibold uppercase italic ${focus ? 'text-white' : 'text-gray-400'}`}
+				>
 					{props.label}
 				</label>
 			</div>
 			<div>
 				<input
 					{...props}
-					className="underline w-full"
 					onFocus={() => setFocus(true)}
 					onBlur={() => setFocus(false)}
+					className="focus:font-semibold  w-full bg-inputbackgroundcolor"
 				/>
 			</div>
 		</div>
