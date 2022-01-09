@@ -30,7 +30,7 @@ router.route('/all').get((req, res) => {
 		});
 });
 
-router.get('/login', (req, res) => {
+router.post('/login', (req, res) => {
 	profileCollection
 		.findOne({ username: req.body.username, password: req.body.password })
 		.then((result) => {
@@ -38,7 +38,7 @@ router.get('/login', (req, res) => {
 				console.log('FOUND ONE');
 				res.send(result);
 			} else {
-				console.log('DID NOT FIND ONE');
+				throw new Error('Does not Exist');
 			}
 		})
 		.catch((error) => {
