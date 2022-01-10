@@ -1,17 +1,27 @@
+import axios from 'axios';
 import { Field, Form, Formik } from 'formik';
 import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 import TextInputField from '../../components/TextInputField';
 
 const Home = () => {
+	const navigate = useNavigate();
 	const validationSchema = Yup.object().shape({
 		username: Yup.string().email('Invalid email format').required('Required'),
 		password: Yup.string().required('Required').min(6, '6 Characters minimum'),
 	});
 	const submit = async (values) => {
-		console.log(values);
+		const request = {
+			username: values.username,
+			password: values.password,
+		};
+		const response = await axios.post('http://localhost:4000/profiles/login', request);
+		if (response.status === 200) {
+			navigate('/profile');
+		}
 	};
 	return (
 		<div className="w-full max-w-xs flex justify-center m-auto p-5 rounded-md mt-36 bg-indigo-100">
@@ -55,6 +65,9 @@ const Home = () => {
 								type="button"
 							/>
 						</div>
+					</div>
+					<div>
+						<Link to="/sign-up">Create new account</Link>
 					</div>
 				</Form>
 			</Formik>
