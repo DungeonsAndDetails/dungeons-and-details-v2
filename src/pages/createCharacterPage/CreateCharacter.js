@@ -1,7 +1,6 @@
 import React from 'react';
-import { Field, Formik, Form } from 'formik';
+import { Formik, Form } from 'formik';
 import axios from 'axios';
-import Input from '../../components/Input';
 import Button from '../../components/Button';
 import TextInputField from '../../components/TextInputField';
 

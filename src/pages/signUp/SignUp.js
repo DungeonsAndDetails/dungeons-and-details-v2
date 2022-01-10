@@ -3,14 +3,17 @@ import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import Button from '../../components/Button';
 import TextInputField from '../../components/TextInputField';
+import axios from 'axios';
 
 const SignUp = (props) => {
 	const validationSchema = Yup.object().shape({
 		username: Yup.string().email('Invalid email format').required('Required'),
 		password: Yup.string().required('Required').min(6, '6 Characters minimum'),
-		confirmPassword: Yup.string().required('Required').min(6, '6 Characters Minimum'),
+		confirmPassword: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match'),
 	});
 	const submit = async (values) => {
+		const response = await axios.put('http://localhost:4000/profiles/create', values);
+		console.log(response);
 		console.log(values);
 	};
 	return (
