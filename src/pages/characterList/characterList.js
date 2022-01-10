@@ -7,7 +7,6 @@ const CharacterList = () => {
 
 	const getStudents = async () => {
 		const { data } = await axios.get('http://localhost:4000/characters/all');
-		console.log('data', data);
 		setCharacters(data);
 	};
 
