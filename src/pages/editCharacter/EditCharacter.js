@@ -9,7 +9,6 @@ const EditStudent = () => {
 	const [student, setStudent] = useState(null);
 
 	useEffect(() => {
-		console.log(params);
 		axios
 			.get('http://localhost:4000/students/edit-student/' + params.id)
 			.then((res) => {

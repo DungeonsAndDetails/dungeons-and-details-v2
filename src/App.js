@@ -9,6 +9,7 @@ import StudentList from './pages/characterList/characterList';
 import Home from './pages/home/Home';
 import SignUp from './pages/signUp/SignUp';
 import Profile from './pages/profile/profile';
+import { LoginContextStateProvider } from './context/loginContext';
 
 const App = () => {
 	return (
@@ -26,14 +27,16 @@ const App = () => {
 					</div>
 				</div>
 				<hr />
-				<Routes>
-					<Route path="/" element={<Home />} />
-					<Route path="/sign-up" element={<SignUp />} />
-					<Route path="/create-student" element={<CreateStudent />} />
-					<Route path="/edit-student/:id" element={<EditStudent />} />
-					<Route path="/student-list" element={<StudentList />} />
-					<Route path="/profile" element={<Profile />} />
-				</Routes>
+				<LoginContextStateProvider>
+					<Routes>
+						<Route path="/" element={<Home />} />
+						<Route path="/sign-up" element={<SignUp />} />
+						<Route path="/create-student" element={<CreateStudent />} />
+						<Route path="/edit-student/:id" element={<EditStudent />} />
+						<Route path="/student-list" element={<StudentList />} />
+						<Route path="/profile" element={<Profile />} />
+					</Routes>
+				</LoginContextStateProvider>
 			</BrowserRouter>
 		</div>
 	);
