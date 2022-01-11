@@ -11,6 +11,7 @@ import SignUp from './pages/signUp/SignUp';
 import Profile from './pages/profile/profile';
 import CharacterSheet from './pages/characterSheet/CharacterSheet';
 import { LoginContextStateProvider } from './context/loginContext';
+import Spells from './pages/characterSheet/Spells';
 
 const App = () => {
 	return (
@@ -28,15 +29,6 @@ const App = () => {
 					</div>
 				</div>
 				<hr />
-				<Routes>
-					<Route path="/" element={<Home />} />
-					<Route path="/sign-up" element={<SignUp />} />
-					<Route path="/create-student" element={<CreateStudent />} />
-					<Route path="/edit-student/:id" element={<EditStudent />} />
-					<Route path="/student-list" element={<StudentList />} />
-					<Route path="/profile" element={<Profile />} />
-					<Route path="/CharacterSheet" element={<CharacterSheet />} />
-				</Routes>
 				<LoginContextStateProvider>
 					<Routes>
 						<Route path="/" element={<Home />} />
@@ -45,6 +37,8 @@ const App = () => {
 						<Route path="/edit-student/:id" element={<EditStudent />} />
 						<Route path="/student-list" element={<StudentList />} />
 						<Route path="/profile" element={<Profile />} />
+						<Route path="/CharacterSheet" element={<CharacterSheet />} />
+						<Route path="/spells" element={<Spells />} />
 					</Routes>
 				</LoginContextStateProvider>
 			</BrowserRouter>
