@@ -1,17 +1,27 @@
 import { Form, Formik } from 'formik';
-import React from 'react';
-import { Link } from 'react-router-dom';
-import * as Yup from 'yup';
+import React, { useContext } from 'react';
 import Button from '../../components/Button';
 import TextInputField from '../../components/TextInputField';
+import { loginContext } from '../../context/loginContext';
 
 // change/show email, change password, change/show username,
 // CREATE placeholder to display current email
 
 const Profile = () => {
+	const loginState = useContext(loginContext);
+
+	console.log('loginState', loginState.state);
+	const submit = () => {};
 	return (
 		<div className="w-full max-w-md flex justify-center m-auto p-5 rounded-md mt-36 bg-black">
-			<Formik>
+			<Formik
+				initialValues={{
+					changeUsername: loginState.state.username,
+					changeEmail: '',
+					changePassword: '',
+				}}
+				onSubmit={submit}
+			>
 				<Form>
 					<div className="flex  justify-between">
 						<label className=" text-white text-center my-auto">Username</label>

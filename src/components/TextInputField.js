@@ -1,9 +1,8 @@
 import { Field } from 'formik';
-import React, { useState } from 'react';
+import React from 'react';
 import Input from './Input';
 
 const TextInputField = (props) => {
-	console.log('helll', props);
 	return (
 		<Field name={props.name}>
 			{({ field, meta }) => <Input {...props} {...field} meta={meta} />}
