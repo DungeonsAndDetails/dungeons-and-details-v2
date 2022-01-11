@@ -9,6 +9,7 @@ import StudentList from './pages/characterList/characterList';
 import Home from './pages/home/Home';
 import SignUp from './pages/signUp/SignUp';
 import Profile from './pages/profile/profile';
+import CharacterSheet from './pages/characterSheet/CharacterSheet';
 
 const App = () => {
 	return (
@@ -33,6 +34,7 @@ const App = () => {
 					<Route path="/edit-student/:id" element={<EditStudent />} />
 					<Route path="/student-list" element={<StudentList />} />
 					<Route path="/profile" element={<Profile />} />
+					<Route path="/CharacterSheet" element={<CharacterSheet />} />
 				</Routes>
 			</BrowserRouter>
 		</div>

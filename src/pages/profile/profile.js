@@ -34,7 +34,7 @@ const Profile = () => {
 					<div className="flex justify-between">
 						<label className="text-white text-center my-auto">Password</label>
 						<TextInputField
-							name="changePassowrd"
+							name="changePassword"
 							type="password"
 							placeholder=""
 							className="text-black placeholder:text-black bg-indigo-100 shadow rounded-md border-white shadow-white"

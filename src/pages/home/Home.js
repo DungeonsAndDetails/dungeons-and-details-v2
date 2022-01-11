@@ -1,10 +1,9 @@
 import axios from 'axios';
-import { Field, Form, Formik } from 'formik';
+import { Form, Formik } from 'formik';
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import Button from '../../components/Button';
-import Input from '../../components/Input';
 import TextInputField from '../../components/TextInputField';
 
 const Home = () => {
