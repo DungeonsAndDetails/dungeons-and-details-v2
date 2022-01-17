@@ -10,24 +10,29 @@ const initialState = {
 		wisdom: 10,
 		charisma: 10,
 	},
+	name: '',
 };
 const characterContext = createContext(initialState);
 const { Provider } = characterContext;
 
 export const characterContextActions = {
 	UPDATE_ATTRIBUTES: 'UPDATE_ATTRIBUTES',
+	UPDATE_NAME: 'UPDATE_NAME',
 };
 
 const CharacterContextStateProvider = ({ children }) => {
 	const [state, dispatch] = useReducer((state, action) => {
 		switch (action.type) {
+			case characterContextActions.UPDATE_NAME:
+				return {
+					...state,
+					name: action.value,
+				};
 			case characterContextActions.UPDATE_ATTRIBUTES:
-				console.log('action.value', action.value);
-				const newState = {
+				return {
 					...state,
 					attributes: action.value,
 				};
-				return newState;
 			default:
 				throw new Error();
 		}
