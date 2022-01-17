@@ -17,7 +17,7 @@ const App = () => {
 	return (
 		<div className="container mx-auto">
 			<BrowserRouter>
-				<div className="columns-3">
+				<div className="columns-3 font-semibold text-lg text-white">
 					<div>
 						<Link to="/">Home</Link>
 					</div>
