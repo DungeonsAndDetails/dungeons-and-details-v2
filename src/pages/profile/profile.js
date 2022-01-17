@@ -53,9 +53,10 @@ const Profile = () => {
 					<div>
 						<Button
 							className="bg-blue-600 hover:bg-blue-700 text-white font-bold w-full py-2 px-4 rounded-sm"
-							label="Change"
 							type="submit"
-						/>
+						>
+							Change
+						</Button>
 					</div>
 				</Form>
 			</Formik>

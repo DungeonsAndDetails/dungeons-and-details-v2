@@ -54,9 +54,10 @@ const SignUp = (props) => {
 					<div className="flex justify-center">
 						<Button
 							className="bg-blue-400 hover:bg-blue-700 text-white font-bold w-full py-2 px-4 rounded-sm"
-							label="Sign Up"
 							type="submit"
-						/>
+						>
+							Sign up
+						</Button>
 					</div>
 				</Form>
 			</Formik>

@@ -82,16 +82,18 @@ const Home = () => {
 							<div>
 								<Button
 									className="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-sm"
-									label="Sign In"
 									type="submit"
-								/>
+								>
+									Sign Up
+								</Button>
 							</div>
 							<div className="flex justify-center">
 								<Button
 									className=" bg-indigo-100 font-semibold text-blue-400 hover:text-blue-800"
-									label="Forgot Password"
 									type="button"
-								/>
+								>
+									Forgot Password
+								</Button>
 							</div>
 						</div>
 						<div>

@@ -48,8 +48,9 @@ const createCharacter = () => {
 					<Button
 						className="p-4 bg-red-500 rounded py-3 font-bold text-white focus:shadow-outline"
 						type="submit"
-						label="Submit"
-					/>
+					>
+						Submit
+					</Button>
 				</div>
 			</Form>
 		</Formik>
