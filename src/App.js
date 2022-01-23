@@ -13,12 +13,13 @@ import CharacterSheet from './pages/characterSheet/CharacterSheet';
 import { LoginContextStateProvider } from './context/loginContext';
 import Spells from './pages/characterSheet/Spells';
 import { CharacterContextStateProvider } from './context/characterContext';
+import Test from './pages/Test';
 
 const App = () => {
 	return (
 		<div className="container mx-auto">
 			<BrowserRouter>
-				<div className="columns-4 font-semibold text-lg text-white">
+				<div className="columns-5 font-semibold text-lg text-white">
 					<div>
 						<Link to="/">Home</Link>
 					</div>
@@ -30,6 +31,9 @@ const App = () => {
 					</div>
 					<div>
 						<Link to="/student-list">Student List</Link>
+					</div>
+					<div>
+						<Link to="/test">Test</Link>
 					</div>
 				</div>
 				<hr />
@@ -44,6 +48,7 @@ const App = () => {
 							<Route path="/profile" element={<Profile />} />
 							<Route path="/character-sheet" element={<CharacterSheet />} />
 							<Route path="/spells" element={<Spells />} />
+							<Route path="/test" element={<Test />} />
 						</Routes>
 					</LoginContextStateProvider>
 				</CharacterContextStateProvider>
