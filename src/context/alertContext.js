@@ -9,28 +9,7 @@ const alertTypes = {
 };
 
 const initialState = {
-	alerts: [
-		{
-			type: alertTypes.ERROR,
-			text: 'ERROR ERROR',
-			id: uuidv4(),
-		},
-		{
-			type: alertTypes.WARNING,
-			text: 'WARNING WARNING',
-			id: uuidv4(),
-		},
-		{
-			type: alertTypes.SUCCESS,
-			text: 'SUCCESS SUCCESS',
-			id: uuidv4(),
-		},
-		{
-			type: alertTypes.ALERT,
-			text: 'ALERT ALERT',
-			id: uuidv4(),
-		},
-	],
+	alerts: [],
 };
 const alertContext = createContext(initialState);
 const { Provider } = alertContext;
