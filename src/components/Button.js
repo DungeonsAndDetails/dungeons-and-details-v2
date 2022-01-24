@@ -1,9 +1,9 @@
 import React from 'react';
-
-const Button = ({ label, onClick, className, type }) => {
+//DELETE border-2 border-black DELETE, using it for temp project
+const Button = ({ onClick, className, type, children }) => {
 	return (
-		<button className={`${className} bg-blue-400`} onClick={onClick} type={type}>
-			{label}
+		<button className={`${className} border-2 border-black `} onClick={onClick} type={type}>
+			{children}
 		</button>
 	);
 };

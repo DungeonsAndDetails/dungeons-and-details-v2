@@ -39,6 +39,11 @@ module.exports = {
 			fuchsia: colors.fuchsia,
 			pink: colors.pink,
 			rose: colors.rose,
+			copper: '#B87333',
+			iron: '#a19d94',
+			silver: '#C0C0C0',
+			gold: '#FFD700',
+			platinum: '#e5e4e2',
 		}),
 		columns: {
 			auto: 'auto',
