@@ -1,5 +1,6 @@
 import axios from 'axios';
-import React, { createContext, useEffect, useReducer } from 'react';
+import React, { createContext, useContext, useEffect, useReducer } from 'react';
+import { alertContext, alertContextActions, alertTypes } from './alertContext';
 
 // Inital Values of the Store
 
@@ -14,6 +15,7 @@ export const skillListContextActions = {
 };
 
 const SkillListContextStateProvider = ({ children }) => {
+	const alerts = useContext(alertContext);
 	const getSkills = async () => {
 		const response = await axios.get('http://localhost:4000/skills/all');
 		if (response.status === 200) {
@@ -30,6 +32,13 @@ const SkillListContextStateProvider = ({ children }) => {
 		const response = await axios.put('http://localhost:4000/skills/create', values);
 		if (response.status === 200) {
 			getSkills();
+			alerts.dispatch({
+				type: alertContextActions.NEW_ALERT,
+				value: {
+					type: alertTypes.SUCCESS,
+					text: 'SKILL CREATED',
+				},
+			});
 		} else {
 			console.log('throw error');
 		}

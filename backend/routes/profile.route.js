@@ -35,7 +35,6 @@ router.post('/login', (req, res) => {
 		.findOne({ username: req.body.username, password: req.body.password })
 		.then((result) => {
 			if (result) {
-				console.log('FOUND ONE');
 				res.send(result);
 			} else {
 				throw new Error('Does not Exist');
