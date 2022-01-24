@@ -377,7 +377,7 @@ const CharacterSheet = () => {
 							/>
 						</div>
 					</div>
-					<div className="border-black border-2 flex flex-col items-center ">
+					<div className="border-black border-2 flex flex-col items-center bg-opacity-10 bg-black ">
 						<label className="font-semibold underline">Hit Points</label>
 						<div className="flex flex-col items-center ">
 							<label>Max HP</label>
