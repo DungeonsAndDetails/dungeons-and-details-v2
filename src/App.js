@@ -2,10 +2,6 @@ import React from 'react';
 import './App.css';
 
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-
-import CreateStudent from './pages/createCharacterPage/CreateCharacter';
-import EditStudent from './pages/editCharacter/EditCharacter';
-import StudentList from './pages/characterList/characterList';
 import Home from './pages/home/Home';
 import SignUp from './pages/signUp/SignUp';
 import Profile from './pages/profile/profile';

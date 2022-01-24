@@ -23,7 +23,7 @@ const EditSkillsField = ({
 	return (
 		<>
 			{!edit && (
-				<div className="grid grid-cols-4 gap-5 text-white">
+				<div className="grid grid-cols-5 gap-5 text-white">
 					<div>
 						<span>{name}</span>
 					</div>
@@ -33,8 +33,10 @@ const EditSkillsField = ({
 					<div>
 						<span>{attributeOptions.filter((item) => item.props.value === attributeReliance)}</span>
 					</div>
-					<div className="flex justify-between">
+					<div className="">
 						<button onClick={() => setEdit(!edit)}>Edit</button>
+					</div>
+					<div>
 						<button onClick={() => onDelete(id)}>Delete</button>
 					</div>
 				</div>
@@ -50,7 +52,7 @@ const EditSkillsField = ({
 					onSubmit={submit}
 				>
 					<Form>
-						<div className="grid grid-cols-4 gap-5">
+						<div className="grid grid-cols-5 gap-5">
 							<div>
 								<TextInputField type="text" name="name" />
 							</div>
@@ -62,8 +64,10 @@ const EditSkillsField = ({
 									{attributeOptions}
 								</Field>
 							</div>
-							<div className="flex justify-between">
+							<div className="">
 								<button type="submit">Save</button>
+							</div>
+							<div>
 								<button type="button" onClick={() => setEdit(!edit)}>
 									Cancel
 								</button>

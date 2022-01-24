@@ -37,7 +37,7 @@ const Skills = (props) => {
 				<span className="">Attribute List</span>
 			</div>
 			<div className="py-3">
-				<div className="grid grid-cols-4 gap-5 text-white">
+				<div className="grid grid-cols-5 gap-5 text-white">
 					<div>
 						<span>Attribute Name</span>
 					</div>
