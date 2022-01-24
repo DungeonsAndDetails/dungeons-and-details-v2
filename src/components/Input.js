@@ -6,14 +6,16 @@ const Input = (props) => {
 
 	return (
 		<div key={props.name} className={`${props.labelLeft ? 'flex justify-between ' : ''}pb-3`}>
-			<div className={props.labelLeft ? 'm-auto pr-3 w-2/5' : ''}>
-				<label
-					htmlFor={props.name}
-					className={`${props.labelClassName}  ${focus ? 'text-white' : 'text-gray-400'}`}
-				>
-					{props.label}
-				</label>
-			</div>
+			{props.label && (
+				<div className={props.labelLeft ? 'm-auto pr-3 w-2/5' : ''}>
+					<label
+						htmlFor={props.name}
+						className={`${props.labelClassName}  ${focus ? 'text-white' : 'text-gray-400'}`}
+					>
+						{props.label}
+					</label>
+				</div>
+			)}
 			<div className="w-full">
 				<input
 					name={props.name}
@@ -35,6 +37,7 @@ const Input = (props) => {
 
 Input.propTypes = {
 	labelLeft: PropTypes.string,
+	label: PropTypes.string,
 };
 
 Input.defaultProps = {
