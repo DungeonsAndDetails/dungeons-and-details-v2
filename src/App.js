@@ -14,6 +14,10 @@ import { LoginContextStateProvider } from './context/loginContext';
 import Spells from './pages/characterSheet/Spells';
 import { CharacterContextStateProvider } from './context/characterContext';
 import Test from './pages/Test';
+import Skills from './pages/skillList/Skills';
+import Attributes from './pages/attributes/Attributes';
+import { SkillListContextStateProvider } from './context/skillListContext';
+import { AttributesContextStateProvider } from './context/attributeContext';
 
 const App = () => {
 	return (
@@ -24,34 +28,37 @@ const App = () => {
 						<Link to="/">Home</Link>
 					</div>
 					<div>
-						<Link to="/create-student">Create Student</Link>
+						<Link to="/skills">Skill List</Link>
+					</div>
+					<div>
+						<Link to="/attributes">Attributes List</Link>
 					</div>
 					<div>
 						<Link to="/character-sheet">Character Sheet</Link>
-					</div>
-					<div>
-						<Link to="/student-list">Student List</Link>
 					</div>
 					<div>
 						<Link to="/test">Test</Link>
 					</div>
 				</div>
 				<hr />
-				<CharacterContextStateProvider>
-					<LoginContextStateProvider>
-						<Routes>
-							<Route path="/" element={<Home />} />
-							<Route path="/sign-up" element={<SignUp />} />
-							<Route path="/create-student" element={<CreateStudent />} />
-							<Route path="/edit-student/:id" element={<EditStudent />} />
-							<Route path="/student-list" element={<StudentList />} />
-							<Route path="/profile" element={<Profile />} />
-							<Route path="/character-sheet" element={<CharacterSheet />} />
-							<Route path="/spells" element={<Spells />} />
-							<Route path="/test" element={<Test />} />
-						</Routes>
-					</LoginContextStateProvider>
-				</CharacterContextStateProvider>
+				<AttributesContextStateProvider>
+					<SkillListContextStateProvider>
+						<CharacterContextStateProvider>
+							<LoginContextStateProvider>
+								<Routes>
+									<Route path="/" element={<Home />} />
+									<Route path="/sign-up" element={<SignUp />} />
+									<Route path="/skills" element={<Skills />} />
+									<Route path="/attributes" element={<Attributes />} />
+									<Route path="/profile" element={<Profile />} />
+									<Route path="/character-sheet" element={<CharacterSheet />} />
+									<Route path="/spells" element={<Spells />} />
+									<Route path="/test" element={<Test />} />
+								</Routes>
+							</LoginContextStateProvider>
+						</CharacterContextStateProvider>
+					</SkillListContextStateProvider>
+				</AttributesContextStateProvider>
 			</BrowserRouter>
 		</div>
 	);
