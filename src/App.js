@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/home/Home';
 import SignUp from './pages/signUp/SignUp';
 import Profile from './pages/profile/profile';
@@ -16,17 +16,8 @@ import { SkillListContextStateProvider } from './context/skillListContext';
 import { AttributesContextStateProvider } from './context/attributeContext';
 import Toast from './components/Toast';
 import { AlertContextStateProvider } from './context/alertContext';
-
-const routes = {
-	HOME_PAGE: '/',
-	SIGN_UP_PAGE: 'sign-up',
-	SKILLS_PAGE: '/skills',
-	ATTRIBUTES_PAGE: '/attributes',
-	PROFILE_PAGE: '/profile',
-	CHARACTER_SHEET_PAGE: '/character-sheet',
-	SPELLS_PAGE: '/spells',
-	TEST_PAGE: '/test',
-};
+import { routes } from './routes';
+import TopNav from './components/TopNav';
 
 const App = () => {
 	return (
@@ -34,24 +25,7 @@ const App = () => {
 			<AlertContextStateProvider>
 				<Toast />
 				<BrowserRouter>
-					<div className="columns-5 font-semibold text-lg text-white">
-						<div>
-							<Link to={routes.HOME_PAGE}>Home</Link>
-						</div>
-						<div>
-							<Link to={routes.SKILLS_PAGE}>Skill List</Link>
-						</div>
-						<div>
-							<Link to={routes.ATTRIBUTES_PAGE}>Attributes List</Link>
-						</div>
-						<div>
-							<Link to={routes.CHARACTER_SHEET_PAGE}>Character Sheet</Link>
-						</div>
-						<div>
-							<Link to={routes.TEST_PAGE}>Test</Link>
-						</div>
-					</div>
-					<hr />
+					<TopNav />
 					<AttributesContextStateProvider>
 						<SkillListContextStateProvider>
 							<CharacterContextStateProvider>
@@ -75,4 +49,5 @@ const App = () => {
 		</div>
 	);
 };
+
 export default App;

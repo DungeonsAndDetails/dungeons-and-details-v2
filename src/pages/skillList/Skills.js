@@ -1,13 +1,12 @@
 import React, { useContext } from 'react';
 import { Field, Form, Formik } from 'formik';
-import * as Yup from 'yup';
 import Button from '../../components/Button';
 import TextInputField from '../../components/TextInputField';
 import { skillListContext } from '../../context/skillListContext';
 import { attributesContext } from '../../context/attributeContext';
 import EditSkillsField from './components/EditSkillsField';
 
-const Skills = (props) => {
+const Skills = () => {
 	const skills = useContext(skillListContext);
 	const attributes = useContext(attributesContext);
 
