@@ -12,16 +12,17 @@ const CharacterSheet = () => {
 	const [HitDice, setHitDice] = useState(0);
 
 	useEffect(() => {
-		const { attributes, hitDie, level, currentHitDie } = charContext.state;
+		const { attributes, hitDie, level, hitDice } = charContext.state;
 		const conMod = Math.floor(attributes.constitution / 2 - 5);
 		const newHpValue = (hitDie.wizard / 2 + (conMod > 0 ? conMod : 0)) * level;
-		const newCurrentHitDie = currentHitDie + level;
-		const currentHitDice = newCurrentHitDie >= 0 ? newCurrentHitDie : 0;
+		const newHitDice = hitDice + level;
+		const currentHitDice = newHitDice >= 0 ? newHitDice : 0;
 		setHp(newHpValue);
 		setHitDice(currentHitDice);
 	}, [charContext.state]);
 
-	console.log(charContext.state.level);
+	console.log(charContext.state.level, 'Level');
+	console.log(charContext.state.hitDice, 'Hit Dice');
 	return (
 		<div>
 			<div>Character Sheet</div>
@@ -170,13 +171,13 @@ const CharacterSheet = () => {
 									incrementOnChange={() =>
 										charContext.dispatch({
 											type: characterContextActions.UPDATE_LEVEL,
-											value: charContext.state.level - 1,
+											value: charContext.state.level + 1,
 										})
 									}
 									decrementOnChange={() =>
 										charContext.dispatch({
 											type: characterContextActions.UPDATE_LEVEL,
-											value: charContext.state.level + 1,
+											value: charContext.state.level - 1,
 										})
 									}
 								/>
@@ -394,22 +395,23 @@ const CharacterSheet = () => {
 							<label className="pl-1 pr-3">Hit Dice</label>
 							<div className="flex flex-row">
 								<div className=" w-10 m-auto border-2 grid grid-cols-3 border-black rounded-full">
-									<span className="text-2xl col-start-2">{HitDice}</span>
+									<span className="text-2xl text-center justify-center flex col-start-2">
+										{HitDice}
+									</span>
 								</div>
 								<div className=" text-transparent border-black border-2 transpar ">
-									{/* Button dont work charcontext usestate */}
 									<ButtonNumber
 										className=" border-transparent"
 										incrementOnChange={() =>
 											charContext.dispatch({
-												type: characterContextActions.UPDATE_CURRENTHITDIE,
-												value: charContext.state.currentHitDie - 1,
+												type: characterContextActions.UPDATE_HITDICE,
+												value: charContext.state.hitDice + 1,
 											})
 										}
 										decrementOnChange={() =>
 											charContext.dispatch({
-												type: characterContextActions.UPDATE_CURRENTHITDIE,
-												value: charContext.state.currentHitDie + 1,
+												type: characterContextActions.UPDATE_HITDICE,
+												value: charContext.state.hitDice - 1,
 											})
 										}
 									/>
@@ -474,7 +476,12 @@ const CharacterSheet = () => {
 						<div className="border-2 border-black">inventory</div>
 					</div>
 				</div>
-				<div>Right</div>
+				<div>
+					<div className=" grid grid-flow-col h-16 border border-black ">
+						<div className=" border border-black">Alignment</div>
+						<div>Inspiration</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	);

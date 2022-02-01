@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { Field, Form, Formik } from 'formik';
-import * as Yup from 'yup';
 import Button from '../../components/Button';
 import TextInputField from '../../components/TextInputField';
 import { skillListContext } from '../../context/skillListContext';
