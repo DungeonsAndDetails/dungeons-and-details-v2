@@ -19,7 +19,7 @@ const initialState = {
 		barbarian: 12,
 	},
 	tempHp: 5,
-	currentHitDie: 0,
+	hitDice: 0,
 };
 const characterContext = createContext(initialState);
 const { Provider } = characterContext;
@@ -28,7 +28,7 @@ export const characterContextActions = {
 	UPDATE_ATTRIBUTES: 'UPDATE_ATTRIBUTES',
 	UPDATE_NAME: 'UPDATE_NAME',
 	UPDATE_LEVEL: 'UPDATE_LEVEL',
-	UPDATE_CURRENTHITDIE: 'UPDATE_CURRENTHITDIE',
+	UPDATE_HITDICE: 'UPDATE_HITDICE',
 };
 
 const CharacterContextStateProvider = ({ children }) => {
@@ -49,10 +49,10 @@ const CharacterContextStateProvider = ({ children }) => {
 					...state,
 					level: action.value,
 				};
-			case characterContextActions.UPDATE_CURRENTHITDIE:
+			case characterContextActions.UPDATE_HITDICE:
 				return {
 					...state,
-					level: action.value,
+					hitDice: action.value,
 				};
 			default:
 				throw new Error();

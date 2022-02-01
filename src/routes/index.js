@@ -7,4 +7,5 @@ export const routes = {
 	CHARACTER_SHEET_PAGE: '/character-sheet',
 	SPELLS_PAGE: '/spells',
 	TEST_PAGE: '/test',
+	ITEMS_PAGE: '/items',
 };
