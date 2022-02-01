@@ -27,14 +27,14 @@ const Items = (props) => {
 					</div>
 				</div>
 				<div className="border">
-					{items.state.items.map((items) => {
+					{items.state.items.map((item) => {
 						return (
 							<EditItemField
-								key={items._id}
-								id={items._id}
-								name={items.name}
-								description={items.description}
-								onDelete={() => items.deleteItem(items._id)}
+								key={item._id}
+								id={item._id}
+								name={item.name}
+								description={item.description}
+								onDelete={() => items.deleteItem(item._id)}
 								onSave={save}
 							/>
 						);
