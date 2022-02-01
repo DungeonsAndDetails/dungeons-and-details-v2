@@ -16,6 +16,8 @@ import { SkillListContextStateProvider } from './context/skillListContext';
 import { AttributesContextStateProvider } from './context/attributeContext';
 import Toast from './components/Toast';
 import { AlertContextStateProvider } from './context/alertContext';
+import { ItemsContextStateProvider } from './context/itemsContext';
+import Items from './pages/items/Items';
 
 const routes = {
 	HOME_PAGE: '/',
@@ -26,6 +28,7 @@ const routes = {
 	CHARACTER_SHEET_PAGE: '/character-sheet',
 	SPELLS_PAGE: '/spells',
 	TEST_PAGE: '/test',
+	ITEMS_PAGE: '/items',
 };
 
 const App = () => {
@@ -52,24 +55,27 @@ const App = () => {
 						</div>
 					</div>
 					<hr />
-					<AttributesContextStateProvider>
-						<SkillListContextStateProvider>
-							<CharacterContextStateProvider>
-								<LoginContextStateProvider>
-									<Routes>
-										<Route path={routes.HOME_PAGE} element={<Home />} />
-										<Route path={routes.SIGN_UP_PAGE} element={<SignUp />} />
-										<Route path={routes.SKILLS_PAGE} element={<Skills />} />
-										<Route path={routes.ATTRIBUTES_PAGE} element={<Attributes />} />
-										<Route path={routes.PROFILE_PAGE} element={<Profile />} />
-										<Route path={routes.CHARACTER_SHEET_PAGE} element={<CharacterSheet />} />
-										<Route path={routes.SPELLS_PAGE} element={<Spells />} />
-										<Route path={routes.TEST_PAGE} element={<Test />} />
-									</Routes>
-								</LoginContextStateProvider>
-							</CharacterContextStateProvider>
-						</SkillListContextStateProvider>
-					</AttributesContextStateProvider>
+					<ItemsContextStateProvider>
+						<AttributesContextStateProvider>
+							<SkillListContextStateProvider>
+								<CharacterContextStateProvider>
+									<LoginContextStateProvider>
+										<Routes>
+											<Route path={routes.HOME_PAGE} element={<Home />} />
+											<Route path={routes.SIGN_UP_PAGE} element={<SignUp />} />
+											<Route path={routes.SKILLS_PAGE} element={<Skills />} />
+											<Route path={routes.ATTRIBUTES_PAGE} element={<Attributes />} />
+											<Route path={routes.PROFILE_PAGE} element={<Profile />} />
+											<Route path={routes.CHARACTER_SHEET_PAGE} element={<CharacterSheet />} />
+											<Route path={routes.SPELLS_PAGE} element={<Spells />} />
+											<Route path={routes.TEST_PAGE} element={<Test />} />
+											<Route path={routes.ITEMS_PAGE} element={<Items />} />
+										</Routes>
+									</LoginContextStateProvider>
+								</CharacterContextStateProvider>
+							</SkillListContextStateProvider>
+						</AttributesContextStateProvider>
+					</ItemsContextStateProvider>
 				</BrowserRouter>
 			</AlertContextStateProvider>
 		</div>

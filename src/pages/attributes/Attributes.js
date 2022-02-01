@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { Form, Formik } from 'formik';
-import * as Yup from 'yup';
 import Button from '../../components/Button';
 import TextInputField from '../../components/TextInputField';
 import { attributesContext } from '../../context/attributeContext';
@@ -43,7 +42,7 @@ const Attributes = (props) => {
 				</div>
 			</div>
 			<div>
-				<span>Create New Attribute</span>
+				<span className="text-white">Create New Attribute</span>
 			</div>
 			<Formik
 				initialValues={{
