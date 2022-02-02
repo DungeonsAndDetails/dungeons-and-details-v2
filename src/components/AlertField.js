@@ -5,6 +5,13 @@ import { alertContext, alertTypes, alertContextActions } from '../context/alertC
 const AlertField = ({ type, text, id }) => {
 	const alerts = useContext(alertContext);
 
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			removeAlert();
+		}, 10000);
+		return () => clearTimeout(timer);
+	}, []);
+
 	const removeAlert = () => {
 		alerts.dispatch({
 			type: alertContextActions.REMOVE_ALERT,
@@ -13,13 +20,6 @@ const AlertField = ({ type, text, id }) => {
 			},
 		});
 	};
-
-	useEffect(() => {
-		const timer = setTimeout(() => {
-			removeAlert();
-		}, 10000);
-		return () => clearTimeout(timer);
-	}, []);
 
 	const title = (type) => {
 		switch (type) {

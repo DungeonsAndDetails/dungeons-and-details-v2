@@ -1,7 +1,6 @@
 import React from 'react';
 import { Form, Formik } from 'formik';
 import TextInputField from '../../components/TextInputField';
-import Button from '../../components/Button';
 
 const Spells = () => {
 	return (

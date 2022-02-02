@@ -5,8 +5,9 @@ import TextInputField from '../../components/TextInputField';
 import { attributesContext } from '../../context/attributeContext';
 import EditAttributeField from './components/EditAttributeField';
 
-const Attributes = (props) => {
+const Attributes = () => {
 	const attributes = useContext(attributesContext);
+	console.log(attributes.state);
 
 	const save = (values, id) => {
 		attributes.updateAttribute(values, id);
