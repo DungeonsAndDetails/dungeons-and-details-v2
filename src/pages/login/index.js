@@ -7,7 +7,7 @@ import Button from '../../components/Button';
 import TextInputField from '../../components/TextInputField';
 import { loginContext, loginContextActions } from '../../context/loginContext';
 
-const Home = () => {
+const Login = () => {
 	const loginState = useContext(loginContext);
 	const navigate = useNavigate();
 	const [showError, setShowError] = useState(null);
@@ -28,9 +28,10 @@ const Home = () => {
 				type: loginContextActions.SIGN_IN,
 				value: {
 					username: response.data.username,
+					loggedIn: true,
 				},
 			});
-			navigate('/profile');
+			navigate('/');
 		} else {
 			setShowError('Incorrect Username and Password');
 		}
@@ -84,7 +85,7 @@ const Home = () => {
 									className="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-sm"
 									type="submit"
 								>
-									Sign Up
+									Sign In
 								</Button>
 							</div>
 							<div className="flex justify-center">
@@ -106,4 +107,4 @@ const Home = () => {
 	);
 };
 
-export default Home;
+export default Login;

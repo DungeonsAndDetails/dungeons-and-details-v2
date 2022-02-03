@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Formik } from 'formik';
-import TextInputField from '../../../components/TextInputField';
+import TextInputField from './TextInputField';
 
 const EditAttributeField = ({ id, name, description, onDelete, onSave }) => {
 	const [edit, setEdit] = useState(false);

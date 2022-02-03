@@ -2,39 +2,40 @@ import React, { useContext } from 'react';
 import { Form, Formik } from 'formik';
 import Button from '../../components/Button';
 import TextInputField from '../../components/TextInputField';
-import EditItemField from './components/EditItemField';
-import { itemsContext } from '../../context/itemsContext';
+import { attributesContext } from '../../context/attributeContext';
+import EditAttributeField from '../../components/EditAttributeField';
 
-const Items = (props) => {
-	const items = useContext(itemsContext);
+const Attributes = () => {
+	const attributes = useContext(attributesContext);
+	console.log(attributes.state);
 
 	const save = (values, id) => {
-		items.updateItem(values, id);
+		attributes.updateAttribute(values, id);
 	};
 
 	return (
 		<>
 			<div>
-				<span className="text-white">Item List</span>
+				<span className="text-white">Attribute List</span>
 			</div>
 			<div className="text-white py-3">
 				<div className="grid grid-cols-3 gap-5">
 					<div>
-						<span>Item Name</span>
+						<span>Attribute Name</span>
 					</div>
 					<div>
-						<span>Item Description</span>
+						<span>Attribute Description</span>
 					</div>
 				</div>
 				<div className="border">
-					{items.state.items.map((item) => {
+					{attributes.state.attributes.map((attribute) => {
 						return (
-							<EditItemField
-								key={item._id}
-								id={item._id}
-								name={item.name}
-								description={item.description}
-								onDelete={() => items.deleteItem(item._id)}
+							<EditAttributeField
+								key={attribute._id}
+								id={attribute._id}
+								name={attribute.name}
+								description={attribute.description}
+								onDelete={() => attributes.deleteAttribute(attribute._id)}
 								onSave={save}
 							/>
 						);
@@ -42,7 +43,7 @@ const Items = (props) => {
 				</div>
 			</div>
 			<div>
-				<span className="text-white">Create New Item</span>
+				<span className="text-white">Create New Attribute</span>
 			</div>
 			<Formik
 				initialValues={{
@@ -50,15 +51,15 @@ const Items = (props) => {
 					// attributeReliance: null,
 					description: '',
 				}}
-				onSubmit={items.createItem}
+				onSubmit={attributes.createAttribute}
 			>
 				<Form>
 					<div className="grid grid-cols-3 gap-5">
 						<div>
-							<TextInputField type="text" name="name" label="Item Name" />
+							<TextInputField type="text" name="name" label="Attribute Name" />
 						</div>
 						<div>
-							<TextInputField type="text" name="description" label="Item Description" />
+							<TextInputField type="text" name="description" label="Attribute Description" />
 						</div>
 						<div className="flex">
 							<Button
@@ -75,4 +76,4 @@ const Items = (props) => {
 	);
 };
 
-export default Items;
+export default Attributes;

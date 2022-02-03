@@ -4,7 +4,8 @@ import Button from '../../components/Button';
 import TextInputField from '../../components/TextInputField';
 import { skillListContext } from '../../context/skillListContext';
 import { attributesContext } from '../../context/attributeContext';
-import EditSkillsField from './components/EditSkillsField';
+import EditSkillsField from '../../components/EditSkillsField';
+// import EditSkillsField from './components/EditSkillsField';
 
 const Skills = () => {
 	const skills = useContext(skillListContext);
