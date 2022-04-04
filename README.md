@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### `npm start`
 
-Runs the app in the development mode.\
+Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 |/| Custom |\|
@@ -16,7 +16,9 @@ Backend - Handles all contact with the Database.
 Ensure to run `npm install` inside both primary dir /dungeons-and-details and backend dir /dungeons-and-details/backend
 `npm install && cd backend && npm install`
 ensure you have nodemon installed on your dev `npm install -g nodemon`
-run `nodemon server.js` inside backend to start up the DB watcher for auto refresh.
+run `nodemon server.js` or `npm start` inside backend to start up the DB watcher for auto refresh.
+open a new terminal.
+run `npm start` inside root dir to start the front-end.
 
 ### Frontend
 

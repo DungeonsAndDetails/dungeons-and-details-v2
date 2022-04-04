@@ -10,6 +10,9 @@ let attributeRoute = require('./routes/attribute.route');
 let profileRoute = require('./routes/profile.route');
 let skillsRoute = require('./routes/skills.route');
 let itemsRoute = require('./routes/items.route');
+let spellsRoute = require('./routes/spells.route');
+let classesRoute = require('./routes/classes.route');
+let featRoute = require('./routes/feats.route');
 
 // Connecting mongoDB Database
 mongoose.Promise = global.Promise;
@@ -33,6 +36,9 @@ app.use('/attributes', attributeRoute);
 app.use('/profiles', profileRoute);
 app.use('/skills', skillsRoute);
 app.use('/items', itemsRoute);
+app.use('/spells', spellsRoute);
+app.use('/classes', classesRoute);
+app.use('/feats', featRoute);
 
 app.listen(4000, function () {
 	console.log('listening on 4000');

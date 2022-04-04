@@ -20,10 +20,12 @@ export const homeRoutes = {
 };
 
 export const adminRoutes = {
+	FEATS: 'feats',
 	ADMIN: 'admin',
 	SKILLS: 'skills',
 	ATTRIBUTES: 'attributes',
 	SPELLS: 'spells',
+	CLASSES: 'classes',
 	TEST: 'test',
 	ITEMS: 'items',
 	PROFILE: 'profile',

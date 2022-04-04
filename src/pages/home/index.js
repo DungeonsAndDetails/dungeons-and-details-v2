@@ -15,6 +15,7 @@ import Login from '../login';
 import Profile from '../profile';
 import SignUp from '../signUp';
 import HomeNav from './components/HomeNav';
+import CharacterSheet from '../characterSheet';
 
 const Home = () => {
 	return (
@@ -25,6 +26,7 @@ const Home = () => {
 				<Route path={homeRoutes.LOGIN} element={<Login />} />
 				<Route path={homeRoutes.SIGN_UP} element={<SignUp />} />
 				<Route path={homeRoutes.PROFILE} element={<Profile />} />
+				<Route path={routes.CHARACTER_SHEET_PAGE} element={<CharacterSheet />} />
 			</Routes>
 		</div>
 	);

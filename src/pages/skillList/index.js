@@ -99,10 +99,7 @@ const Skills = () => {
 							</div>
 						</div>
 						<div className="flex">
-							<Button
-								className="bg-white border border-gray-1 mb-3 mt-auto py-2 w-full"
-								type="submit"
-							>
+							<Button className="border border-gray-1 mb-3 mt-auto py-2 w-full" type="submit">
 								Submit
 							</Button>
 						</div>

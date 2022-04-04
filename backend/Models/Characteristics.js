@@ -288,3 +288,23 @@ const example = {
 		skills: [skills.persuasion.id, skills.intimidation.id],
 	},
 };
+
+const profileId = {
+	characters: [123],
+	campaigns: [],
+	customItems: [],
+	portraits: [],
+};
+
+const npc = {
+	name: 'new',
+	dialog: ['attack', 'shop'],
+	shopInventory: [1, 2, 3, 4, 5, 6, 7],
+};
+
+const items = [
+	{
+		id: 123,
+		displayName: 'shortbow',
+	},
+];
