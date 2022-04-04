@@ -10,6 +10,7 @@ const HomeNav = () => {
 		<div className="flex justify-between font-semibold text-lg text-white border-b mb-2">
 			<Link to={homeRoutes.LANDING}>Home</Link>
 			<Link to={routes.CHARACTER_SHEET_PAGE}>Character Sheet</Link>
+			<Link to={routes.TEST_PAGE}>Test</Link>
 			{login.state.loggedIn && <Link to={adminRoutes.ADMIN}>Admin View</Link>}
 			{login.state.loggedIn ? (
 				<Link to={homeRoutes.PROFILE}>Manage Profile</Link>

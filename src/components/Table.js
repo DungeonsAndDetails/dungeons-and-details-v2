@@ -9,30 +9,26 @@ import PropTypes from 'prop-types';
 const Table = (props) => {
 	console.log('props', props);
 	return (
-		<table class="table-auto text-white">
+		<table className="text-white">
 			<thead>
 				<tr>
-					<th>Song</th>
-					<th>Artist</th>
-					<th>Year</th>
+					{props.headers.map((header) => {
+						return <th key={header.value}>{header.label}</th>;
+					})}
+					{props.enableEdit && <th>Edit</th>}
+					{props.enableDelete && <th>Delete</th>}
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-					<td>Malcolm Lockyer</td>
-					<td>1961</td>
-				</tr>
-				<tr>
-					<td>Witchy Woman</td>
-					<td>The Eagles</td>
-					<td>1972</td>
-				</tr>
-				<tr>
-					<td>Shining Star</td>
-					<td>Earth, Wind, and Fire</td>
-					<td>1975</td>
-				</tr>
+				{props.data.map((item) => {
+					return (
+						<tr key={item._id}>
+							{props.headers.map((header, i) => {
+								return <td key={`${header.value} ${i}`}>{item[header.value]}</td>;
+							})}
+						</tr>
+					);
+				})}
 			</tbody>
 		</table>
 	);
@@ -64,15 +60,15 @@ Table.defaultProps = {
 	headers: [
 		{
 			label: 'Attribute Name',
-			value: 'attributeName',
+			value: 'name',
 		},
 		{
 			label: 'Attribute Description',
-			value: 'attributeDescription',
+			value: 'description',
 		},
 	],
-	enableEdit: false,
-	enableDelete: false,
+	enableEdit: true,
+	enableDelete: true,
 };
 
 export default Table;
