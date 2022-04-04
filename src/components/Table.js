@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 const Table = (props) => {
 	console.log('props', props);
 	return (
-		<table className="text-white">
+		<table className="table-fixed text-white">
 			<thead>
 				<tr>
 					{props.headers.map((header) => {

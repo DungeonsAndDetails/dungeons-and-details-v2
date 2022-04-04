@@ -19,6 +19,9 @@ ensure you have nodemon installed on your dev `npm install -g nodemon`
 run `nodemon server.js` or `npm start` inside backend to start up the DB watcher for auto refresh.
 open a new terminal.
 run `npm start` inside root dir to start the front-end.
+open a new terminal
+run `npm run tailwind:watch` inside root dir to start css watcher.
+If Issues running the command above, try `npm install -D tailwindcss`
 
 ### Frontend
 
@@ -32,6 +35,10 @@ Formik - Used for all Forms and validation. https://formik.org/docs/overview
 If Prettier throws an error from ESLINT. Run `npm install --save-dev eslint-config-prettier`
 If ESLint Babel error [ERROR in Failed to load parser 'babel-eslint' declared in '.eslintrc.json': Cannot find module 'babel-eslint']
 `npm install eslint babel-eslint -g`
+
+### CSS
+
+We are using Tailwind and TailwindCLI to compile the raw Tailwind config into usable CSS.
 
 ### Backend
 
