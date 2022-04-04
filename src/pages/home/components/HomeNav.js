@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { loginContext } from '../../../context/loginContext';
+import { loginContext, loginContextActions } from '../../../context/loginContext';
 import { adminRoutes, homeRoutes, routes } from '../../../routes';
 
 const HomeNav = () => {
@@ -16,6 +16,16 @@ const HomeNav = () => {
 				<Link to={homeRoutes.PROFILE}>Manage Profile</Link>
 			) : (
 				<Link to={homeRoutes.LOGIN}>Login</Link>
+			)}
+			{login.state.loggedIn && (
+				<button
+					className="font-semibold"
+					onClick={() => {
+						login.dispatch({ type: loginContextActions.SIGN_OUT });
+					}}
+				>
+					Logout
+				</button>
 			)}
 		</div>
 	);

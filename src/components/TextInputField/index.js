@@ -1,6 +1,6 @@
 import { Field } from 'formik';
 import React from 'react';
-import Input from './Input';
+import Input from '../Input';
 
 const TextInputField = (props) => {
 	return (

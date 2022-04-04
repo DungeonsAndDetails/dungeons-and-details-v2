@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { loginContext } from '../context/loginContext';
-import { routes, adminRoutes, homeRoutes } from '../routes';
+import { loginContext } from '../../context/loginContext';
+import { adminRoutes, homeRoutes } from '../../routes';
 
 const AdminTopNav = () => {
 	const navigate = useNavigate();

@@ -1,13 +1,8 @@
-import axios from 'axios';
-import { Form, Formik } from 'formik';
-import React, { useContext, useState } from 'react';
-import { Link, Route, Routes, useNavigate } from 'react-router-dom';
-import * as Yup from 'yup';
-import Button from '../../components/Button';
-import TextInputField from '../../components/TextInputField';
-import { loginContext, loginContextActions } from '../../context/loginContext';
+import React, { useContext } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { loginContext } from '../../context/loginContext';
 import Skills from '../skillList';
-import { adminRoutes, routes } from '../../routes';
+import { adminRoutes } from '../../routes';
 import Attributes from '../attributes';
 import AdminTopNav from '../../components/AdminTopNav';
 import Items from '../items';

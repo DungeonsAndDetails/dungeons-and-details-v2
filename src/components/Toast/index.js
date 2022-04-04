@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 // import PropTypes from 'prop-types';
-import { alertContext } from '../context/alertContext';
-import AlertField from './AlertField';
+import { alertContext } from '../../context/alertContext';
+import AlertField from '../AlertField';
 
 const Toast = () => {
 	const alerts = useContext(alertContext);

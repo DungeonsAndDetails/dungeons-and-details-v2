@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { Form, Formik } from 'formik';
 import Button from '../../components/Button';
 import TextInputField from '../../components/TextInputField';
-import { classListContext } from '../../context/classListContext';
 import EditAttributeField from '../../components/EditItemField';
 import { featListContext } from '../../context/featListContext';
 

@@ -1,12 +1,21 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Formik } from 'formik';
-import TextInputField from './TextInputField';
+import { Field, Form, Formik } from 'formik';
+import TextInputField from '../TextInputField';
 
-const EditAttributeField = ({ id, name, description, onDelete, onSave }) => {
+const EditSkillsField = ({
+	id,
+	name,
+	description,
+	onDelete,
+	onSave,
+	attributeReliance,
+	attributeOptions,
+}) => {
 	const [edit, setEdit] = useState(false);
 
 	const submit = (values) => {
+		console.log('saving');
 		onSave(values, id);
 		setEdit(false);
 	};
@@ -14,15 +23,20 @@ const EditAttributeField = ({ id, name, description, onDelete, onSave }) => {
 	return (
 		<>
 			{!edit && (
-				<div className="grid grid-cols-3 gap-5 text-white">
+				<div className="grid grid-cols-5 gap-5 text-white">
 					<div>
 						<span>{name}</span>
 					</div>
 					<div>
 						<span>{description}</span>
 					</div>
-					<div className="flex justify-between">
+					<div>
+						<span>{attributeOptions.filter((item) => item.props.value === attributeReliance)}</span>
+					</div>
+					<div className="">
 						<button onClick={() => setEdit(!edit)}>Edit</button>
+					</div>
+					<div>
 						<button onClick={() => onDelete(id)}>Delete</button>
 					</div>
 				</div>
@@ -33,19 +47,27 @@ const EditAttributeField = ({ id, name, description, onDelete, onSave }) => {
 					initialValues={{
 						name,
 						description,
+						attributeReliance,
 					}}
 					onSubmit={submit}
 				>
 					<Form>
-						<div className="grid grid-cols-3 gap-5 text-white">
+						<div className="grid grid-cols-5 gap-5">
 							<div>
 								<TextInputField type="text" name="name" />
 							</div>
 							<div>
 								<TextInputField type="text" name="description" />
 							</div>
-							<div className="flex justify-between">
+							<div>
+								<Field as="select" name="attributeReliance">
+									{attributeOptions}
+								</Field>
+							</div>
+							<div className="">
 								<button type="submit">Save</button>
+							</div>
+							<div>
 								<button type="button" onClick={() => setEdit(!edit)}>
 									Cancel
 								</button>
@@ -58,14 +80,16 @@ const EditAttributeField = ({ id, name, description, onDelete, onSave }) => {
 	);
 };
 
-EditAttributeField.propTypes = {
+EditSkillsField.propTypes = {
 	id: PropTypes.string.isRequired,
 	name: PropTypes.string.isRequired,
 	description: PropTypes.string.isRequired,
+	attributeReliance: PropTypes.string.isRequired,
 	onDelete: PropTypes.func.isRequired,
 	onSave: PropTypes.func.isRequired,
+	attributeOptions: PropTypes.array.isRequired,
 };
 
-EditAttributeField.defaultProps = {};
+EditSkillsField.defaultProps = {};
 
-export default EditAttributeField;
+export default EditSkillsField;

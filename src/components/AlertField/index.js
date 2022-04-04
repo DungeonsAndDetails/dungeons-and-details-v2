@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { alertContext, alertTypes, alertContextActions } from '../context/alertContext';
+import { alertContext, alertTypes, alertContextActions } from '../../context/alertContext';
 
 const AlertField = ({ type, text, id }) => {
 	const alerts = useContext(alertContext);
@@ -10,6 +10,7 @@ const AlertField = ({ type, text, id }) => {
 			removeAlert();
 		}, 10000);
 		return () => clearTimeout(timer);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const removeAlert = () => {
