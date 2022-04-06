@@ -44,6 +44,7 @@ module.exports = {
 			silver: '#C0C0C0',
 			gold: '#FFD700',
 			platinum: '#e5e4e2',
+			testPrimary: '#1f2937',
 		}),
 		columns: {
 			auto: 'auto',
