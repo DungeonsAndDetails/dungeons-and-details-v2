@@ -10,6 +10,7 @@ import Profile from '../profile';
 import Spells from '../spellList';
 import Classes from '../classList';
 import Feats from '../featList';
+import SpellSchools from '../spellSchoolList';
 
 const Admin = () => {
 	const login = useContext(loginContext);
@@ -21,6 +22,7 @@ const Admin = () => {
 			<Routes>
 				<Route path={adminRoutes.SKILLS} element={<Skills />} />
 				<Route path={adminRoutes.SPELLS} element={<Spells />} />
+				<Route path={adminRoutes.SPELL_SCHOOLS} element={<SpellSchools />} />
 				<Route path={adminRoutes.CLASSES} element={<Classes />} />
 				<Route path={adminRoutes.FEATS} element={<Feats />} />
 				<Route path={adminRoutes.ATTRIBUTES} element={<Attributes />} />

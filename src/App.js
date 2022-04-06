@@ -15,6 +15,7 @@ import { ItemsContextStateProvider } from './context/itemsContext';
 import { SpellListContextStateProvider } from './context/spellListContext';
 import { ClassListContextStateProvider } from './context/classListContext';
 import { FeatListContextStateProvider } from './context/featListContext';
+import { SpellSchoolListContextStateProvider } from './context/spellSchoolListContext';
 
 const App = () => {
 	return (
@@ -22,26 +23,28 @@ const App = () => {
 			<AlertContextStateProvider>
 				<Toast />
 				<BrowserRouter>
-					<FeatListContextStateProvider>
-						<ClassListContextStateProvider>
-							<ItemsContextStateProvider>
-								<AttributesContextStateProvider>
-									<SkillListContextStateProvider>
-										<SpellListContextStateProvider>
-											<CharacterContextStateProvider>
-												<LoginContextStateProvider>
-													<Routes>
-														<Route path={routes.HOME} element={<Home />} />
-														<Route path={routes.ADMIN} element={<Admin />} />
-													</Routes>
-												</LoginContextStateProvider>
-											</CharacterContextStateProvider>
-										</SpellListContextStateProvider>
-									</SkillListContextStateProvider>
-								</AttributesContextStateProvider>
-							</ItemsContextStateProvider>
-						</ClassListContextStateProvider>
-					</FeatListContextStateProvider>
+					<SpellSchoolListContextStateProvider>
+						<FeatListContextStateProvider>
+							<ClassListContextStateProvider>
+								<ItemsContextStateProvider>
+									<AttributesContextStateProvider>
+										<SkillListContextStateProvider>
+											<SpellListContextStateProvider>
+												<CharacterContextStateProvider>
+													<LoginContextStateProvider>
+														<Routes>
+															<Route path={routes.HOME} element={<Home />} />
+															<Route path={routes.ADMIN} element={<Admin />} />
+														</Routes>
+													</LoginContextStateProvider>
+												</CharacterContextStateProvider>
+											</SpellListContextStateProvider>
+										</SkillListContextStateProvider>
+									</AttributesContextStateProvider>
+								</ItemsContextStateProvider>
+							</ClassListContextStateProvider>
+						</FeatListContextStateProvider>
+					</SpellSchoolListContextStateProvider>
 				</BrowserRouter>
 			</AlertContextStateProvider>
 		</div>

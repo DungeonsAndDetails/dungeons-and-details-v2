@@ -18,6 +18,7 @@ const AdminTopNav = () => {
 			<Link to={homeRoutes.LANDING}>Home</Link>
 			<Link to={adminRoutes.SKILLS}>Skill List</Link>
 			<Link to={adminRoutes.SPELLS}>Spell List</Link>
+			<Link to={adminRoutes.SPELL_SCHOOLS}>Spell School List</Link>
 			<Link to={adminRoutes.CLASSES}>Class List</Link>
 			<Link to={adminRoutes.FEATS}>Feat List</Link>
 			<Link to={adminRoutes.ATTRIBUTES}>Attributes List</Link>

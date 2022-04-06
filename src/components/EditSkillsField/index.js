@@ -15,7 +15,6 @@ const EditSkillsField = ({
 	const [edit, setEdit] = useState(false);
 
 	const submit = (values) => {
-		console.log('saving');
 		onSave(values, id);
 		setEdit(false);
 	};
