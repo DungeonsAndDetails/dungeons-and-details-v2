@@ -12,7 +12,8 @@ const Dropdown = ({ buttonClassName, children, buttonName, menuClassName }) => {
 				</button>
 				{open && (
 					<div
-						className={`${menuClassName}  bg-white divide-y flex flex-col rounded list-none text-black absolute`}
+						onClick={() => setOpen(!open)}
+						className={`${menuClassName}  bg-testPrimary border px-2 py-1 text-white divide-slate-200  divide-y flex flex-col rounded list-none  absolute`}
 					>
 						{children}
 					</div>

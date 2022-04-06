@@ -15,12 +15,16 @@ const AdminTopNav = () => {
 	}, [login.state.loggedIn, navigate]);
 
 	return (
-		<div className=" container flex flex-wrap justify-between items-center font-semibold text-lg text-white border border-gray-300 rounded bg-testPrimary px-4 py-2">
-			<span>
+		<div className=" container flex flex-wrap justify-between items-center  text-lg text-white border border-gray-300 rounded bg-testPrimary px-4 py-2">
+			<div className="font-semibold">
 				<Link to={homeRoutes.LANDING}>Home</Link>
-			</span>
-			<span className="">
-				<Dropdown buttonClassName="font-semibold text-lg" buttonName="Lists ▼">
+			</div>
+			<div className=" ">
+				<Dropdown
+					buttonClassName="font-semibold text-lg"
+					menuClassName="font-normal"
+					buttonName="Lists ▼"
+				>
 					<Link to={adminRoutes.SKILLS}>Skill List</Link>
 					<Link to={adminRoutes.SPELLS}>Spell List</Link>
 					<Link to={adminRoutes.CLASSES}>Class List</Link>
@@ -28,8 +32,8 @@ const AdminTopNav = () => {
 					<Link to={adminRoutes.ATTRIBUTES}>Attributes List</Link>
 					<Link to={adminRoutes.ITEMS}>Items List</Link>
 				</Dropdown>
-			</span>
-			<span>
+			</div>
+			<div>
 				<Dropdown buttonClassName="font-semibold text-lg" buttonName="Profile ▼">
 					{login.state.loggedIn && <Link to={adminRoutes.ADMIN}>Admin View</Link>}
 					{login.state.loggedIn ? (
@@ -48,7 +52,7 @@ const AdminTopNav = () => {
 						</button>
 					)}
 				</Dropdown>
-			</span>
+			</div>
 		</div>
 	);
 };

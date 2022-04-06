@@ -10,16 +10,21 @@ const HomeNav = () => {
 	return (
 		<nav className="bg-testPrimary rounded border-gray-200 px-4 py-2 text-xl  ">
 			<div className="text-white font-semibold container flex flex-wrap justify-between items-center mx-auto">
-				<span>
+				<div>
 					<Link to={homeRoutes.LANDING}>Home</Link>
-				</span>
-				<span className="flex flex-row space-x-8 mt-0 text-sm font-medium ">
+				</div>
+				<div>
 					<Link to={routes.CHARACTER_SHEET_PAGE}>Character Sheet</Link>
+				</div>
+				<div>
 					<Link to={routes.TEST_PAGE}>Test</Link>
+				</div>
+				<div>
 					<Link to={homeRoutes.MONSTERS}>Monsters</Link>
-				</span>
-				<span>
-					<Dropdown buttonName="Profile">
+				</div>
+
+				<div>
+					<Dropdown buttonClassName="font-semibold" buttonName="Profile ▼">
 						{login.state.loggedIn && <Link to={adminRoutes.ADMIN}>Admin View</Link>}
 						{login.state.loggedIn ? (
 							<Link to={homeRoutes.PROFILE}>Manage Profile</Link>
@@ -37,7 +42,7 @@ const HomeNav = () => {
 							</button>
 						)}
 					</Dropdown>
-				</span>
+				</div>
 			</div>
 		</nav>
 		// <div className="flex justify-between font-semibold text-lg text-white border-b mb-2">
