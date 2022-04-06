@@ -1,7 +1,8 @@
 import React, { useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { loginContext } from '../../context/loginContext';
+import { loginContext, loginContextActions } from '../../context/loginContext';
 import { adminRoutes, homeRoutes } from '../../routes';
+import Dropdown from '../Dropdown';
 
 const AdminTopNav = () => {
 	const navigate = useNavigate();
@@ -14,15 +15,40 @@ const AdminTopNav = () => {
 	}, [login.state.loggedIn, navigate]);
 
 	return (
-		<div className="flex justify-between font-semibold text-lg text-white border-b mb-2">
-			<Link to={homeRoutes.LANDING}>Home</Link>
-			<Link to={adminRoutes.SKILLS}>Skill List</Link>
-			<Link to={adminRoutes.SPELLS}>Spell List</Link>
-			<Link to={adminRoutes.CLASSES}>Class List</Link>
-			<Link to={adminRoutes.FEATS}>Feat List</Link>
-			<Link to={adminRoutes.ATTRIBUTES}>Attributes List</Link>
-			<Link to={adminRoutes.ITEMS}>Items List</Link>
-			<Link to={adminRoutes.PROFILE}>Manage Profile</Link>
+		<div className=" container flex flex-wrap justify-between items-center font-semibold text-lg text-white border border-gray-300 rounded bg-testPrimary px-4 py-2">
+			<span>
+				<Link to={homeRoutes.LANDING}>Home</Link>
+			</span>
+			<span className="">
+				<Dropdown buttonClassName="font-semibold text-lg" buttonName="Lists ▼">
+					<Link to={adminRoutes.SKILLS}>Skill List</Link>
+					<Link to={adminRoutes.SPELLS}>Spell List</Link>
+					<Link to={adminRoutes.CLASSES}>Class List</Link>
+					<Link to={adminRoutes.FEATS}>Feat List</Link>
+					<Link to={adminRoutes.ATTRIBUTES}>Attributes List</Link>
+					<Link to={adminRoutes.ITEMS}>Items List</Link>
+				</Dropdown>
+			</span>
+			<span>
+				<Dropdown buttonClassName="font-semibold text-lg" buttonName="Profile ▼">
+					{login.state.loggedIn && <Link to={adminRoutes.ADMIN}>Admin View</Link>}
+					{login.state.loggedIn ? (
+						<Link to={homeRoutes.PROFILE}>Manage Profile</Link>
+					) : (
+						<Link to={homeRoutes.LOGIN}>Login</Link>
+					)}
+					{login.state.loggedIn && (
+						<button
+							className="font-semibold"
+							onClick={() => {
+								login.dispatch({ type: loginContextActions.SIGN_OUT });
+							}}
+						>
+							Logout
+						</button>
+					)}
+				</Dropdown>
+			</span>
 		</div>
 	);
 };

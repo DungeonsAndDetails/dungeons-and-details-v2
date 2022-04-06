@@ -17,6 +17,7 @@ export const homeRoutes = {
 	LOGIN: 'login',
 	SIGN_UP: 'sign-up',
 	PROFILE: 'profile',
+	MONSTERS: 'monsters',
 };
 
 export const adminRoutes = {
