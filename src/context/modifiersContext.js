@@ -1,6 +1,5 @@
 import axios from 'axios';
-import React, { createContext, useEffect, useReducer, useContext } from 'react';
-import { alertContext, alertContextActions, alertTypes } from './alertContext';
+import React, { createContext, useEffect, useReducer } from 'react';
 
 // Inital Values of the Store
 
