@@ -26,9 +26,20 @@ export const adminRoutes = {
 	SKILLS: 'skills',
 	ATTRIBUTES: 'attributes',
 	SPELLS: 'spells',
-	SPELL_SCHOOLS: 'spell-schools',
 	CLASSES: 'classes',
 	TEST: 'test',
 	ITEMS: 'items',
 	PROFILE: 'profile',
+};
+
+export const modifierRoutes = {
+	MODIFIERS: 'modifiers',
+	COMPONENTS: 'components',
+	CONCENTRATIONS: 'concentrations',
+	DURATIONS: 'durations',
+	RANGES: 'ranges',
+	SOURCES: 'sources',
+	SPELL_LEVELS: 'spell-levels',
+	SPELL_SCHOOLS: 'spell-schools',
+	TIMES: 'times',
 };

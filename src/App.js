@@ -15,7 +15,7 @@ import { ItemsContextStateProvider } from './context/itemsContext';
 import { SpellListContextStateProvider } from './context/spellListContext';
 import { ClassListContextStateProvider } from './context/classListContext';
 import { FeatListContextStateProvider } from './context/featListContext';
-import { SpellSchoolListContextStateProvider } from './context/spellSchoolListContext';
+import { ModifierListContextStateProvider } from './context/modifiersContext';
 
 const App = () => {
 	return (
@@ -23,7 +23,7 @@ const App = () => {
 			<AlertContextStateProvider>
 				<Toast />
 				<BrowserRouter>
-					<SpellSchoolListContextStateProvider>
+					<ModifierListContextStateProvider>
 						<FeatListContextStateProvider>
 							<ClassListContextStateProvider>
 								<ItemsContextStateProvider>
@@ -44,7 +44,7 @@ const App = () => {
 								</ItemsContextStateProvider>
 							</ClassListContextStateProvider>
 						</FeatListContextStateProvider>
-					</SpellSchoolListContextStateProvider>
+					</ModifierListContextStateProvider>
 				</BrowserRouter>
 			</AlertContextStateProvider>
 		</div>

@@ -13,8 +13,7 @@ let itemsRoute = require('./routes/items.route');
 let spellsRoute = require('./routes/spells.route');
 let classesRoute = require('./routes/classes.route');
 let featRoute = require('./routes/feats.route');
-let spellSchoolRoute = require('./routes/spell.school.route');
-let variablesRoute = require('./routes/variable.route');
+let modifiersRoute = require('./routes/modifiers.route');
 
 // Connecting mongoDB Database
 mongoose.Promise = global.Promise;
@@ -41,8 +40,7 @@ app.use('/items', itemsRoute);
 app.use('/spells', spellsRoute);
 app.use('/classes', classesRoute);
 app.use('/feats', featRoute);
-app.use('/spell-schools', spellSchoolRoute);
-app.use('/variables', variablesRoute);
+app.use('/modifiers', modifiersRoute);
 
 app.listen(4000, function () {
 	console.log('listening on 4000');

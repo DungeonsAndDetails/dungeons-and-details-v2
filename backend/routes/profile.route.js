@@ -22,7 +22,6 @@ router.route('/all').get((req, res) => {
 		.find()
 		.toArray()
 		.then((result) => {
-			console.log(result);
 			res.send(result);
 		})
 		.catch((error) => {
@@ -41,13 +40,11 @@ router.post('/login', (req, res) => {
 			}
 		})
 		.catch((error) => {
-			console.log('error', error);
 			res.send(error);
 		});
 });
 
 router.post('/update', (req, res) => {
-	console.log('updating profile');
 	const { body } = req;
 	const newValues = {
 		$set: {

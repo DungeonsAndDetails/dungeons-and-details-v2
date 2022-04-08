@@ -6,11 +6,11 @@ let router = express.Router();
 // let characterSchema = require('../Models/Character');
 
 const db = mongoose.connection;
-const spellSchoolCollection = db.collection('Spell Schools');
+const sourcesCollection = db.collection('Sources');
 
 // CREATE Character
 router.route('/create').put((req, res) => {
-	spellSchoolCollection
+	sourcesCollection
 		.insertOne(req.body)
 		.then((result) => {
 			res.send(result.ops);
@@ -21,11 +21,10 @@ router.route('/create').put((req, res) => {
 });
 
 router.route('/all').get((req, res) => {
-	spellSchoolCollection
+	sourcesCollection
 		.find()
 		.toArray()
 		.then((result) => {
-			console.log(result);
 			res.send(result);
 		})
 		.catch((error) => {
@@ -34,9 +33,8 @@ router.route('/all').get((req, res) => {
 });
 
 router.route('/update/:id').put((req, res) => {
-	console.log('UPDATING', req.body);
 	const id = new mongoose.Types.ObjectId(req.params.id);
-	spellSchoolCollection
+	sourcesCollection
 		.updateOne({ _id: id }, { $set: { ...req.body } })
 		.then((result) => {
 			res.send(result.ops);
@@ -48,7 +46,7 @@ router.route('/update/:id').put((req, res) => {
 
 router.route('/:id').delete((req, res) => {
 	const id = new mongoose.Types.ObjectId(req.params.id);
-	spellSchoolCollection
+	sourcesCollection
 		.deleteOne({ _id: id })
 		.then((result) => res.send(result))
 		.catch((error) => {

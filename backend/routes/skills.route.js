@@ -25,7 +25,6 @@ router.route('/all').get((req, res) => {
 		.find()
 		.toArray()
 		.then((result) => {
-			console.log(result);
 			res.send(result);
 		})
 		.catch((error) => {
@@ -34,7 +33,6 @@ router.route('/all').get((req, res) => {
 });
 
 router.route('/update/:id').put((req, res) => {
-	console.log('UPDATING', req.body);
 	const id = new mongoose.Types.ObjectId(req.params.id);
 	skillsCollection
 		.updateOne({ _id: id }, { $set: { ...req.body } })
