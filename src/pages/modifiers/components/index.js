@@ -5,11 +5,12 @@ import TextInputField from '../../../components/TextInputField';
 import EditAttributeField from '../../../components/EditItemField';
 import { modifierListContext } from '../../../context/modifiersContext';
 import axios from 'axios';
+import Table, { inputTypes } from '../../../components/Table';
 
 const Components = () => {
 	const modifiers = useContext(modifierListContext);
 
-	const saveComponent = async (values, id) => {
+	const saveComponent = async ({ values, id }) => {
 		const response = await axios.put(
 			`http://localhost:4000/modifiers/components/update/${id}`,
 			values,
@@ -37,34 +38,36 @@ const Components = () => {
 		return null;
 	}
 
+	const componentHeaders = [
+		{
+			label: 'Name',
+			value: 'name',
+			type: inputTypes.TEXT,
+		},
+		{
+			label: 'Value',
+			value: 'value',
+			type: inputTypes.TEXT,
+		},
+		{
+			label: 'Description',
+			value: 'description',
+			type: inputTypes.TEXT,
+		},
+	];
+
 	return (
 		<>
 			<div>
 				<span className="">Components List</span>
 			</div>
 			<div className="py-3">
-				<div className="grid grid-cols-3 gap-5 text-white">
-					<div>
-						<span>Components Name</span>
-					</div>
-					<div>
-						<span>Components Description</span>
-					</div>
-				</div>
-				<div className="border">
-					{modifiers.state.modifiers.components.map((component) => {
-						return (
-							<EditAttributeField
-								key={component._id}
-								id={component._id}
-								name={component.name}
-								description={component.description}
-								onDelete={() => deleteComponent(component._id)}
-								onSave={saveComponent}
-							/>
-						);
-					})}
-				</div>
+				<Table
+					data={modifiers.state.modifiers.components}
+					headers={componentHeaders}
+					onDelete={deleteComponent}
+					onEditSave={saveComponent}
+				/>
 			</div>
 			<div>
 				<span>Create New Component</span>
@@ -72,6 +75,7 @@ const Components = () => {
 			<Formik
 				initialValues={{
 					name: '',
+					value: '',
 					description: '',
 				}}
 				onSubmit={createComponent}
@@ -79,10 +83,13 @@ const Components = () => {
 				<Form>
 					<div className="grid grid-cols-3 gap-5">
 						<div>
-							<TextInputField type="text" name="name" label="Component Name" />
+							<TextInputField type="text" name="name" label="Name" />
 						</div>
 						<div>
-							<TextInputField type="text" name="description" label="Component Description" />
+							<TextInputField type="text" name="value" label="Value" />
+						</div>
+						<div>
+							<TextInputField type="text" name="description" label="Description" />
 						</div>
 						<div className="flex">
 							<Button className="border mt-auto py-2 w-full" type="submit">

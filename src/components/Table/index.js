@@ -10,37 +10,39 @@ import Button from '../Button';
 
 // Create component for each specific row
 
-const inputTypes = {
+export const inputTypes = {
 	TEXT: 'text',
 	NUMBER: 'number',
 	SELECT: 'select',
 };
 
-const BuildInput = ({ header }) => {
-	switch (header.type) {
-		case inputTypes.NUMBER:
-			return (
-				<TextInputField name={header.value} type={header.type} className="border-0 p-1 pb-2" />
-			);
+const BuildInput = (props) => {
+	switch (props.header.type) {
 		case inputTypes.SELECT:
 			return (
 				<TextInputField
-					options={header.options}
-					name={header.value}
-					type={header.type}
+					options={props.header.options}
+					name={props.header.value}
+					type={props.header.type}
 					className="border-0 p-1 pb-2"
+					{...props}
 				/>
 			);
+		case inputTypes.NUMBER:
 		case inputTypes.TEXT:
 			return (
-				<TextInputField name={header.value} type={header.type} className="border-0 p-1 pb-2" />
+				<TextInputField
+					name={props.header.value}
+					type={props.header.type}
+					className="border-0 p-1 pb-2"
+				/>
 			);
 		default:
 			return null;
 	}
 };
 
-const BuildRow = ({ item, headers, columnCount, enableManageColumn }) => {
+const BuildRow = ({ item, headers, columnCount, enableManageColumn, onEditSave, onDelete }) => {
 	const [edit, setEdit] = useState(false);
 
 	const editOnClick = () => {
@@ -48,7 +50,7 @@ const BuildRow = ({ item, headers, columnCount, enableManageColumn }) => {
 	};
 
 	const deleteOnClick = () => {
-		console.log('delete');
+		onDelete(item._id);
 	};
 
 	const saveOnClick = (values) => {
@@ -56,11 +58,22 @@ const BuildRow = ({ item, headers, columnCount, enableManageColumn }) => {
 	};
 
 	const onSubmit = (values) => {
-		console.log('onSubmit', values);
+		onEditSave({ values, id: item._id });
+		setEdit(!edit);
+	};
+
+	const buildInitialValues = () => {
+		const initialValues = {};
+		headers.forEach((header) => {
+			initialValues[header.value] =
+				typeof item[header.value] === 'object' ? item[header.value]._id : item[header.value];
+		});
+		console.log('initialValues', initialValues);
+		return initialValues;
 	};
 
 	return (
-		<Formik initialValues={item} onSubmit={onSubmit}>
+		<Formik initialValues={buildInitialValues()} onSubmit={onSubmit}>
 			<Form>
 				<div
 					className={`grid grid-cols-${columnCount} border-b border-slate-300 py-1 hover:bg-slate-700 gap-2`}
@@ -73,7 +86,9 @@ const BuildRow = ({ item, headers, columnCount, enableManageColumn }) => {
 						headers.map((header) => {
 							return (
 								<div key={`${header.value} text`} className="p-1">
-									{item[header.value]}
+									{typeof item[header.value] === 'object'
+										? item[header.value].name
+										: item[header.value]}
 								</div>
 							);
 						})}
@@ -103,7 +118,7 @@ const BuildRow = ({ item, headers, columnCount, enableManageColumn }) => {
 	);
 };
 
-const BuildData = ({ columnCount, data, headers, enableManageColumn }) => {
+const BuildData = ({ columnCount, data, headers, enableManageColumn, onEditSave, onDelete }) => {
 	return data.map((item) => {
 		return (
 			<BuildRow
@@ -112,6 +127,8 @@ const BuildData = ({ columnCount, data, headers, enableManageColumn }) => {
 				headers={headers}
 				columnCount={columnCount}
 				enableManageColumn={enableManageColumn}
+				onEditSave={onEditSave}
+				onDelete={onDelete}
 			/>
 		);
 	});
@@ -122,10 +139,10 @@ const BuildHeaders = ({ columnCount, headers }) => {
 		<div
 			className={`grid grid-cols-${columnCount} border-b border-b-slate-300 font-semibold gap-2`}
 		>
-			{headers.map((header) => {
+			{headers.map((header, i) => {
 				console.log('header', header);
 				return (
-					<div key={header.value} className="p-1">
+					<div key={`${header.value} ${i}`} className="p-1">
 						{header.label}
 					</div>
 				);
@@ -134,17 +151,7 @@ const BuildHeaders = ({ columnCount, headers }) => {
 	);
 };
 
-const Table = ({ headers, data, onEdit, onDelete, enableEdit, enableDelete }) => {
-	const onSave = (_id, values) => {
-		console.log('save', _id, values);
-	};
-
-	const submit = (values, _id) => {
-		console.log('values', values);
-		console.log('_id', _id);
-		onSave(values, _id);
-	};
-
+const Table = ({ headers, data, onEditSave, onDelete, enableEdit, enableDelete }) => {
 	const enableManageColumn = enableEdit || enableDelete;
 	const columnCount = enableManageColumn ? headers.length + 1 : headers.length;
 
@@ -156,6 +163,8 @@ const Table = ({ headers, data, onEdit, onDelete, enableEdit, enableDelete }) =>
 				data={data}
 				headers={headers}
 				enableManageColumn={enableManageColumn}
+				onEditSave={onEditSave}
+				onDelete={onDelete}
 			/>
 		</div>
 	);
@@ -170,7 +179,7 @@ Table.propTypes = {
 		}),
 	).isRequired,
 	data: PropTypes.array,
-	onEdit: PropTypes.func,
+	onEditSave: PropTypes.func,
 	onDelete: PropTypes.func,
 	enableEdit: PropTypes.bool,
 	enableDelete: PropTypes.bool,
@@ -254,35 +263,35 @@ Table.defaultProps = {
 			type: inputTypes.SELECT,
 			options: [
 				{
-					label: 'Transmutation',
+					name: 'Transmutation',
 					value: 'transmutation',
 				},
 				{
-					label: 'Necromancy',
+					name: 'Necromancy',
 					value: 'necromancy',
 				},
 				{
-					label: 'Illusion',
+					name: 'Illusion',
 					value: 'illusion',
 				},
 				{
-					label: 'Evocation',
+					name: 'Evocation',
 					value: 'evocation',
 				},
 				{
-					label: 'Enchanting',
+					name: 'Enchanting',
 					value: 'enchanting',
 				},
 				{
-					label: 'Divination',
+					name: 'Divination',
 					value: 'divination',
 				},
 				{
-					label: 'Conjuration',
+					name: 'Conjuration',
 					value: 'conjuration',
 				},
 				{
-					label: 'Abjuration',
+					name: 'Abjuration',
 					value: 'abjuration',
 				},
 			],

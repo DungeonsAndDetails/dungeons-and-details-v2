@@ -5,11 +5,12 @@ import TextInputField from '../../../components/TextInputField';
 import EditAttributeField from '../../../components/EditItemField';
 import { modifierListContext } from '../../../context/modifiersContext';
 import axios from 'axios';
+import Table, { inputTypes } from '../../../components/Table';
 
 const Sources = () => {
 	const modifiers = useContext(modifierListContext);
 
-	const saveSource = async (values, id) => {
+	const saveSource = async ({ values, id }) => {
 		const response = await axios.put(
 			`http://localhost:4000/modifiers/sources/update/${id}`,
 			values,
@@ -37,34 +38,36 @@ const Sources = () => {
 		return null;
 	}
 
+	const sourceHeaders = [
+		{
+			label: 'Source Name',
+			value: 'name',
+			type: inputTypes.TEXT,
+		},
+		{
+			label: 'Value',
+			value: 'value',
+			type: inputTypes.TEXT,
+		},
+		{
+			label: 'Description',
+			value: 'description',
+			type: inputTypes.TEXT,
+		},
+	];
+
 	return (
 		<>
 			<div>
 				<span className="">Sources List</span>
 			</div>
 			<div className="py-3">
-				<div className="grid grid-cols-3 gap-5 text-white">
-					<div>
-						<span>Source Name</span>
-					</div>
-					<div>
-						<span>Source Description</span>
-					</div>
-				</div>
-				<div className="border">
-					{modifiers.state.modifiers.sources.map((source) => {
-						return (
-							<EditAttributeField
-								key={source._id}
-								id={source._id}
-								name={source.name}
-								description={source.description}
-								onDelete={() => deleteSource(source._id)}
-								onSave={saveSource}
-							/>
-						);
-					})}
-				</div>
+				<Table
+					data={modifiers.state.modifiers.sources}
+					headers={sourceHeaders}
+					onDelete={deleteSource}
+					onEditSave={saveSource}
+				/>
 			</div>
 			<div>
 				<span>Create New Source</span>
@@ -79,10 +82,13 @@ const Sources = () => {
 				<Form>
 					<div className="grid grid-cols-3 gap-5">
 						<div>
-							<TextInputField type="text" name="name" label="Source Name" />
+							<TextInputField type="text" name="name" label="Name" />
 						</div>
 						<div>
-							<TextInputField type="text" name="description" label="Source Description" />
+							<TextInputField type="text" name="value" label="Value" />
+						</div>
+						<div>
+							<TextInputField type="text" name="description" label="Description" />
 						</div>
 						<div className="flex">
 							<Button className="border mt-auto py-2 w-full" type="submit">

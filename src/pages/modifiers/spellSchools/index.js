@@ -5,12 +5,13 @@ import TextInputField from '../../../components/TextInputField';
 import EditAttributeField from '../../../components/EditItemField';
 import { modifierListContext } from '../../../context/modifiersContext';
 import axios from 'axios';
+import Table, { inputTypes } from '../../../components/Table';
 
 const SpellSchools = () => {
 	const modifiers = useContext(modifierListContext);
 	console.log('dsjhkfghjlskdfgljkhsgdlfkhj', modifiers.state);
 
-	const saveSpellSchool = async (values, id) => {
+	const saveSpellSchool = async ({ values, id }) => {
 		const response = await axios.put(
 			`http://localhost:4000/modifiers/spell-schools/update/${id}`,
 			values,
@@ -41,34 +42,38 @@ const SpellSchools = () => {
 		return null;
 	}
 
+	const spellSchoolHeaders = [
+		{
+			label: 'Spell School Name',
+			value: 'name',
+			type: inputTypes.TEXT,
+		},
+		{
+			label: 'Value',
+			value: 'value',
+			type: inputTypes.TEXT,
+		},
+		{
+			label: 'Description',
+			value: 'description',
+			type: inputTypes.TEXT,
+		},
+	];
+
+	console.log('modifiers', modifiers.state);
+
 	return (
 		<>
 			<div>
 				<span className="">Spell School List</span>
 			</div>
 			<div className="py-3">
-				<div className="grid grid-cols-3 gap-5 text-white">
-					<div>
-						<span>Spell School Name</span>
-					</div>
-					<div>
-						<span>Spell School Description</span>
-					</div>
-				</div>
-				<div className="border">
-					{modifiers.state.modifiers.spellSchools.map((spellSchool) => {
-						return (
-							<EditAttributeField
-								key={spellSchool._id}
-								id={spellSchool._id}
-								name={spellSchool.name}
-								description={spellSchool.description}
-								onDelete={() => deleteSpellSchool(spellSchool._id)}
-								onSave={saveSpellSchool}
-							/>
-						);
-					})}
-				</div>
+				<Table
+					data={modifiers.state.modifiers.spellSchools}
+					headers={spellSchoolHeaders}
+					onDelete={deleteSpellSchool}
+					onEditSave={saveSpellSchool}
+				/>
 			</div>
 			<div>
 				<span>Create New Spell School</span>
@@ -76,6 +81,7 @@ const SpellSchools = () => {
 			<Formik
 				initialValues={{
 					name: '',
+					value: '',
 					description: '',
 				}}
 				onSubmit={createSpellSchool}
@@ -83,10 +89,13 @@ const SpellSchools = () => {
 				<Form>
 					<div className="grid grid-cols-3 gap-5">
 						<div>
-							<TextInputField type="text" name="name" label="Spell School Name" />
+							<TextInputField type="text" name="name" label="Name" />
 						</div>
 						<div>
-							<TextInputField type="text" name="description" label="Spell School Description" />
+							<TextInputField type="text" name="value" label="Value" />
+						</div>
+						<div>
+							<TextInputField type="text" name="description" label="Description" />
 						</div>
 						<div className="flex">
 							<Button className="border mt-auto py-2 w-full" type="submit">

@@ -5,11 +5,12 @@ import TextInputField from '../../../components/TextInputField';
 import EditAttributeField from '../../../components/EditItemField';
 import { modifierListContext } from '../../../context/modifiersContext';
 import axios from 'axios';
+import Table, { inputTypes } from '../../../components/Table';
 
 const Ranges = () => {
 	const modifiers = useContext(modifierListContext);
 
-	const saveRange = async (values, id) => {
+	const saveRange = async ({ values, id }) => {
 		const response = await axios.put(`http://localhost:4000/modifiers/ranges/update/${id}`, values);
 		if (response.status === 200 || response.status === 201) {
 			modifiers.getModifiers();
@@ -34,34 +35,36 @@ const Ranges = () => {
 		return null;
 	}
 
+	const rangesHeaders = [
+		{
+			label: 'Name',
+			value: 'name',
+			type: inputTypes.TEXT,
+		},
+		{
+			label: 'Value',
+			value: 'value',
+			type: inputTypes.TEXT,
+		},
+		{
+			label: 'Description',
+			value: 'description',
+			type: inputTypes.TEXT,
+		},
+	];
+
 	return (
 		<>
 			<div>
 				<span className="">Ranges List</span>
 			</div>
 			<div className="py-3">
-				<div className="grid grid-cols-3 gap-5 text-white">
-					<div>
-						<span>Range Name</span>
-					</div>
-					<div>
-						<span>Range Description</span>
-					</div>
-				</div>
-				<div className="border">
-					{modifiers.state.modifiers.ranges.map((range) => {
-						return (
-							<EditAttributeField
-								key={range._id}
-								id={range._id}
-								name={range.name}
-								description={range.description}
-								onDelete={() => deleteRange(range._id)}
-								onSave={saveRange}
-							/>
-						);
-					})}
-				</div>
+				<Table
+					data={modifiers.state.modifiers.ranges}
+					headers={rangesHeaders}
+					onDelete={deleteRange}
+					onEditSave={saveRange}
+				/>
 			</div>
 			<div>
 				<span>Create Range</span>
@@ -69,6 +72,7 @@ const Ranges = () => {
 			<Formik
 				initialValues={{
 					name: '',
+					value: '',
 					description: '',
 				}}
 				onSubmit={createRange}
@@ -76,10 +80,13 @@ const Ranges = () => {
 				<Form>
 					<div className="grid grid-cols-3 gap-5">
 						<div>
-							<TextInputField type="text" name="name" label="Range Name" />
+							<TextInputField type="text" name="name" label="Name" />
 						</div>
 						<div>
-							<TextInputField type="text" name="description" label="Range Description" />
+							<TextInputField type="text" name="value" label="Value" />
+						</div>
+						<div>
+							<TextInputField type="text" name="description" label="Description" />
 						</div>
 						<div className="flex">
 							<Button className="border mt-auto py-2 w-full" type="submit">

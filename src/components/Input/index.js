@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 
 const InputSelect = (props) => {
 	const [focus, setFocus] = useState(false);
-	console.log('input props', props);
 	return (
-		<div key={props.name} className={`${props.labelLeft ? 'flex justify-between ' : ''}`}>
+		<div className={`${props.labelLeft ? 'flex justify-between ' : ''}`}>
 			{props.label && (
 				<div className={props.labelLeft ? 'm-auto pr-3 w-2/5' : ''}>
 					<label
@@ -44,8 +43,8 @@ const InputSelect = (props) => {
 						<option hidden>Choose...</option>
 						{props.options.map((option) => {
 							return (
-								<option key={option.value} value={option.value}>
-									{option.label}
+								<option key={option._id} value={option._id}>
+									{option.name}
 								</option>
 							);
 						})}

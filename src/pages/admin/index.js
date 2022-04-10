@@ -17,7 +17,7 @@ import Durations from '../modifiers/durations';
 import Ranges from '../modifiers/ranges';
 import Sources from '../modifiers/sources';
 import SpellLevels from '../modifiers/spellLevels';
-import Times from '../modifiers/times';
+import TimeTypes from '../modifiers/timeTypes';
 
 const Admin = () => {
 	const login = useContext(loginContext);
@@ -43,7 +43,7 @@ const Admin = () => {
 				<Route path={modifierRoutes.SOURCES} element={<Sources />} />
 				<Route path={modifierRoutes.SPELL_LEVELS} element={<SpellLevels />} />
 				<Route path={modifierRoutes.SPELL_SCHOOLS} element={<SpellSchools />} />
-				<Route path={modifierRoutes.TIMES} element={<Times />} />
+				<Route path={modifierRoutes.TIME_TYPES} element={<TimeTypes />} />
 			</Routes>
 		</div>
 	);

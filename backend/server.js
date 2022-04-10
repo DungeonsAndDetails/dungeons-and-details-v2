@@ -5,7 +5,7 @@ let bodyParser = require('body-parser');
 let dbConfig = require('./database/db');
 
 // Express Route
-let characterRoute = require('./routes/character.route');
+let characterRoute = require('./routes/characters.route');
 let attributeRoute = require('./routes/attribute.route');
 let profileRoute = require('./routes/profile.route');
 let skillsRoute = require('./routes/skills.route');

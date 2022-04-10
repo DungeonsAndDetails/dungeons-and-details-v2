@@ -31,7 +31,7 @@ const AdminTopNav = () => {
 				<Link to={modifierRoutes.SOURCES}>Sources</Link>
 				<Link to={modifierRoutes.SPELL_LEVELS}>Spell Levels</Link>
 				<Link to={modifierRoutes.SPELL_SCHOOLS}>Spell Schools</Link>
-				<Link to={modifierRoutes.TIMES}>Times</Link>
+				<Link to={modifierRoutes.TIME_TYPES}>Time Types</Link>
 			</Dropdown>
 			<Dropdown
 				buttonClassName="font-semibold text-lg"

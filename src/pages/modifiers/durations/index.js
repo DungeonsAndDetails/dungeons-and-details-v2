@@ -2,14 +2,17 @@ import React, { useContext } from 'react';
 import { Form, Formik } from 'formik';
 import Button from '../../../components/Button';
 import TextInputField from '../../../components/TextInputField';
-import EditAttributeField from '../../../components/EditItemField';
 import { modifierListContext } from '../../../context/modifiersContext';
 import axios from 'axios';
+import Table, { inputTypes } from '../../../components/Table';
 
 const Durations = () => {
 	const modifiers = useContext(modifierListContext);
 
-	const saveDuration = async (values, id) => {
+	const saveDuration = async ({ values, id }) => {
+		values.timeType = modifiers.state.modifiers.timeTypes.find(
+			(timeType) => timeType._id === values.timeType,
+		);
 		const response = await axios.put(
 			`http://localhost:4000/modifiers/durations/update/${id}`,
 			values,
@@ -20,6 +23,9 @@ const Durations = () => {
 	};
 
 	const createDuration = async (values) => {
+		values.timeType = modifiers.state.modifiers.timeTypes.find(
+			(timeType) => timeType._id === values.timeType,
+		);
 		const response = await axios.put('http://localhost:4000/modifiers/durations/create', values);
 		if (response.status === 200 || response.status === 201) {
 			modifiers.getModifiers();
@@ -37,52 +43,56 @@ const Durations = () => {
 		return null;
 	}
 
+	const durationHeaders = [
+		{
+			label: 'Duration Name',
+			value: 'value',
+			type: inputTypes.TEXT,
+		},
+		{
+			label: 'Time Type',
+			value: 'timeType',
+			type: inputTypes.SELECT,
+			options: modifiers.state.modifiers.timeTypes,
+		},
+	];
+
 	return (
 		<>
 			<div>
 				<span className="">Durations List</span>
 			</div>
 			<div className="py-3">
-				<div className="grid grid-cols-3 gap-5 text-white">
-					<div>
-						<span>Duration Name</span>
-					</div>
-					<div>
-						<span>Duration Description</span>
-					</div>
-				</div>
-				<div className="border">
-					{modifiers.state.modifiers.durations.map((duration) => {
-						return (
-							<EditAttributeField
-								key={duration._id}
-								id={duration._id}
-								name={duration.name}
-								description={duration.description}
-								onDelete={() => deleteDuration(duration._id)}
-								onSave={saveDuration}
-							/>
-						);
-					})}
-				</div>
+				<Table
+					data={modifiers.state.modifiers.durations}
+					headers={durationHeaders}
+					onDelete={deleteDuration}
+					onEditSave={saveDuration}
+				/>
 			</div>
 			<div>
 				<span>Create Duration</span>
 			</div>
 			<Formik
 				initialValues={{
-					name: '',
-					description: '',
+					value: '',
+					timeType: '',
 				}}
 				onSubmit={createDuration}
 			>
 				<Form>
 					<div className="grid grid-cols-3 gap-5">
 						<div>
-							<TextInputField type="text" name="name" label="Duration Name" />
+							<TextInputField type="text" name="value" label="Duration Amount" />
 						</div>
 						<div>
-							<TextInputField type="text" name="description" label="Duration Description" />
+							<TextInputField
+								options={modifiers.state.modifiers.timeTypes}
+								name="timeType"
+								type={inputTypes.SELECT}
+								className="border-0 p-1 pb-2"
+								label="Time Type"
+							/>
 						</div>
 						<div className="flex">
 							<Button className="border mt-auto py-2 w-full" type="submit">

@@ -5,11 +5,12 @@ import TextInputField from '../../../components/TextInputField';
 import EditAttributeField from '../../../components/EditItemField';
 import { modifierListContext } from '../../../context/modifiersContext';
 import axios from 'axios';
+import Table, { inputTypes } from '../../../components/Table';
 
 const SpellLevels = () => {
 	const modifiers = useContext(modifierListContext);
 
-	const saveSpellLevel = async (values, id) => {
+	const saveSpellLevel = async ({ values, id }) => {
 		const response = await axios.put(
 			`http://localhost:4000/modifiers/spell-levels/update/${id}`,
 			values,
@@ -37,34 +38,36 @@ const SpellLevels = () => {
 		return null;
 	}
 
+	const spellLevelHeaders = [
+		{
+			label: 'Spell Level Name',
+			value: 'name',
+			type: inputTypes.TEXT,
+		},
+		{
+			label: 'Value',
+			value: 'value',
+			type: inputTypes.TEXT,
+		},
+		{
+			label: 'Spell Level Description',
+			value: 'description',
+			type: inputTypes.TEXT,
+		},
+	];
+
 	return (
 		<>
 			<div>
 				<span className="">Spell Levels List</span>
 			</div>
 			<div className="py-3">
-				<div className="grid grid-cols-3 gap-5 text-white">
-					<div>
-						<span>Spell Level Name</span>
-					</div>
-					<div>
-						<span>Spell Level Description</span>
-					</div>
-				</div>
-				<div className="border">
-					{modifiers.state.modifiers.spellLevels.map((spellLevel) => {
-						return (
-							<EditAttributeField
-								key={spellLevel._id}
-								id={spellLevel._id}
-								name={spellLevel.name}
-								description={spellLevel.description}
-								onDelete={() => deleteSpellLevel(spellLevel._id)}
-								onSave={saveSpellLevel}
-							/>
-						);
-					})}
-				</div>
+				<Table
+					data={modifiers.state.modifiers.spellLevels}
+					headers={spellLevelHeaders}
+					onDelete={deleteSpellLevel}
+					onEditSave={saveSpellLevel}
+				/>
 			</div>
 			<div>
 				<span>Create New Spell Level</span>
@@ -80,6 +83,9 @@ const SpellLevels = () => {
 					<div className="grid grid-cols-3 gap-5">
 						<div>
 							<TextInputField type="text" name="name" label="Spell Level Name" />
+						</div>
+						<div>
+							<TextInputField type="text" name="value" label="Spell Level Value" />
 						</div>
 						<div>
 							<TextInputField type="text" name="description" label="Spell Level Description" />

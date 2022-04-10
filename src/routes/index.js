@@ -41,5 +41,5 @@ export const modifierRoutes = {
 	SOURCES: 'sources',
 	SPELL_LEVELS: 'spell-levels',
 	SPELL_SCHOOLS: 'spell-schools',
-	TIMES: 'times',
+	TIME_TYPES: 'time-types',
 };
