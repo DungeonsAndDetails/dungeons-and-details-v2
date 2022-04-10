@@ -7,7 +7,6 @@ import EditAttributeField from './components/EditMonsterField';
 
 const Monsters = () => {
 	const attributes = useContext(attributesContext);
-	console.log(attributes.state);
 
 	const save = (values, id) => {
 		attributes.updateAttribute(values, id);

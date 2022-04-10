@@ -33,7 +33,6 @@ const AlertContextStateProvider = ({ children }) => {
 					alerts,
 				};
 			case alertContextActions.NEW_ALERT:
-				console.log('hitting alert context action', action.value);
 				return {
 					...state,
 					alerts: [...state.alerts, { ...action.value, id: uuidv4() }],

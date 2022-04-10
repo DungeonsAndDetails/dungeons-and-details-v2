@@ -20,9 +20,6 @@ import SpellLevels from '../modifiers/spellLevels';
 import TimeTypes from '../modifiers/timeTypes';
 
 const Admin = () => {
-	const login = useContext(loginContext);
-	console.log('login', login);
-
 	return (
 		<div className="text-white">
 			<AdminTopNav />

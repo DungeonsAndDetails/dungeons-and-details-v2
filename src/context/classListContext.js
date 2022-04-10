@@ -17,7 +17,6 @@ export const classListContextActions = {
 const ClassListContextStateProvider = ({ children }) => {
 	const alerts = useContext(alertContext);
 	const getClasses = async () => {
-		console.log('???????????????');
 		const response = await axios.get('http://localhost:4000/classes/all');
 		if (response.status === 200) {
 			dispatch({
@@ -30,7 +29,6 @@ const ClassListContextStateProvider = ({ children }) => {
 	};
 
 	const createClass = async (values) => {
-		console.log('Create Class');
 		const response = await axios.put('http://localhost:4000/classes/create', values);
 		if (response.status === 200) {
 			getClasses();

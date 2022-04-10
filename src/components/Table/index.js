@@ -68,7 +68,6 @@ const BuildRow = ({ item, headers, columnCount, enableManageColumn, onEditSave, 
 			initialValues[header.value] =
 				typeof item[header.value] === 'object' ? item[header.value]._id : item[header.value];
 		});
-		console.log('initialValues', initialValues);
 		return initialValues;
 	};
 
@@ -140,7 +139,6 @@ const BuildHeaders = ({ columnCount, headers }) => {
 			className={`grid grid-cols-${columnCount} border-b border-b-slate-300 font-semibold gap-2`}
 		>
 			{headers.map((header, i) => {
-				console.log('header', header);
 				return (
 					<div key={`${header.value} ${i}`} className="p-1">
 						{header.label}

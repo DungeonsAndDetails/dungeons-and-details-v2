@@ -22,7 +22,6 @@ const Login = () => {
 			password: values.password,
 		};
 		const response = await axios.post('http://localhost:4000/profiles/login', request);
-		console.log(response);
 		if (response.data.username) {
 			loginState.dispatch({
 				type: loginContextActions.SIGN_IN,

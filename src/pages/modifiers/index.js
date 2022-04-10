@@ -11,7 +11,7 @@ const Modifiers = () => {
 	const save = (values, id) => {
 		modifierList.updateModifier(values, id);
 	};
-	console.log('modifierList', modifierList);
+
 	return (
 		<>
 			<div>

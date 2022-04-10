@@ -9,7 +9,6 @@ import Table, { inputTypes } from '../../../components/Table';
 
 const SpellSchools = () => {
 	const modifiers = useContext(modifierListContext);
-	console.log('dsjhkfghjlskdfgljkhsgdlfkhj', modifiers.state);
 
 	const saveSpellSchool = async ({ values, id }) => {
 		const response = await axios.put(
@@ -59,8 +58,6 @@ const SpellSchools = () => {
 			type: inputTypes.TEXT,
 		},
 	];
-
-	console.log('modifiers', modifiers.state);
 
 	return (
 		<>
