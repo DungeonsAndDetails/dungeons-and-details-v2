@@ -5,6 +5,7 @@ import TextInputField from '../../components/TextInputField';
 import { skillListContext } from '../../context/skillListContext';
 import { attributesContext } from '../../context/attributeContext';
 import EditSkillsField from '../../components/EditSkillsField';
+import Table from '../../components/Table';
 // import EditSkillsField from './components/EditSkillsField';
 
 const Skills = () => {
@@ -37,33 +38,12 @@ const Skills = () => {
 				<span className="">Attribute List</span>
 			</div>
 			<div className="py-3">
-				<div className="grid grid-cols-5 gap-5 text-white">
-					<div>
-						<span>Attribute Name</span>
-					</div>
-					<div>
-						<span>Attribute Description</span>
-					</div>
-					<div>
-						<span>Attribute Reliance</span>
-					</div>
-				</div>
-				<div className="border">
-					{skills.state.skills.map((skill) => {
-						return (
-							<EditSkillsField
-								key={skill._id}
-								id={skill._id}
-								name={skill.name}
-								description={skill.description}
-								onDelete={() => skills.deleteSkill(skill._id)}
-								onSave={save}
-								attributeReliance={skill.attributeReliance}
-								attributeOptions={options()}
-							/>
-						);
-					})}
-				</div>
+				{/* <Table
+					data={skills.state.skills}
+					headers={durationHeaders}
+					onDelete={deleteDuration}
+					onEditSave={saveDuration}
+				/> */}
 			</div>
 			<div>
 				<span>Create New Skills</span>
