@@ -5,7 +5,7 @@ let bodyParser = require('body-parser');
 let dbConfig = require('./database/db');
 
 // Express Route
-let characterRoute = require('./routes/character.route');
+let characterRoute = require('./routes/characters.route');
 let attributeRoute = require('./routes/attribute.route');
 let profileRoute = require('./routes/profile.route');
 let skillsRoute = require('./routes/skills.route');
@@ -13,6 +13,7 @@ let itemsRoute = require('./routes/items.route');
 let spellsRoute = require('./routes/spells.route');
 let classesRoute = require('./routes/classes.route');
 let featRoute = require('./routes/feats.route');
+let diceRoute = require('./routes/dice.route');
 
 // Connecting mongoDB Database
 mongoose.Promise = global.Promise;
@@ -39,6 +40,7 @@ app.use('/items', itemsRoute);
 app.use('/spells', spellsRoute);
 app.use('/classes', classesRoute);
 app.use('/feats', featRoute);
+app.use('/dice', diceRoute);
 
 app.listen(4000, function () {
 	console.log('listening on 4000');
