@@ -16,7 +16,10 @@ const InputSelect = (props) => {
 				</div>
 			)}
 			<div className="w-full h-full">
-				{(props.type === 'text' || props.type === 'number') && (
+				{(props.type === 'text' ||
+					props.type === 'number' ||
+					props.type === 'email' ||
+					props.type === 'password') && (
 					<input
 						name={props.name}
 						type={props.type}
