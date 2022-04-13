@@ -16,6 +16,7 @@ import { SpellListContextStateProvider } from './context/spellListContext';
 import { ClassListContextStateProvider } from './context/classListContext';
 import { FeatListContextStateProvider } from './context/featListContext';
 import { CharacterCreationContextStateProvider } from './context/characterCreationContext';
+import { ModifierListContextStateProvider } from './context/modifiersContext';
 
 const App = () => {
 	return (
@@ -23,28 +24,30 @@ const App = () => {
 			<AlertContextStateProvider>
 				<Toast />
 				<BrowserRouter>
-					<CharacterCreationContextStateProvider>
-						<FeatListContextStateProvider>
-							<ClassListContextStateProvider>
-								<ItemsContextStateProvider>
-									<AttributesContextStateProvider>
-										<SkillListContextStateProvider>
-											<SpellListContextStateProvider>
-												<CharacterContextStateProvider>
-													<LoginContextStateProvider>
-														<Routes>
-															<Route path={routes.HOME} element={<Home />} />
-															<Route path={routes.ADMIN} element={<Admin />} />
-														</Routes>
-													</LoginContextStateProvider>
-												</CharacterContextStateProvider>
-											</SpellListContextStateProvider>
-										</SkillListContextStateProvider>
-									</AttributesContextStateProvider>
-								</ItemsContextStateProvider>
-							</ClassListContextStateProvider>
-						</FeatListContextStateProvider>
-					</CharacterCreationContextStateProvider>
+					<ModifierListContextStateProvider>
+						<CharacterCreationContextStateProvider>
+							<FeatListContextStateProvider>
+								<ClassListContextStateProvider>
+									<ItemsContextStateProvider>
+										<AttributesContextStateProvider>
+											<SkillListContextStateProvider>
+												<SpellListContextStateProvider>
+													<CharacterContextStateProvider>
+														<LoginContextStateProvider>
+															<Routes>
+																<Route path={routes.HOME} element={<Home />} />
+																<Route path={routes.ADMIN} element={<Admin />} />
+															</Routes>
+														</LoginContextStateProvider>
+													</CharacterContextStateProvider>
+												</SpellListContextStateProvider>
+											</SkillListContextStateProvider>
+										</AttributesContextStateProvider>
+									</ItemsContextStateProvider>
+								</ClassListContextStateProvider>
+							</FeatListContextStateProvider>
+						</CharacterCreationContextStateProvider>
+					</ModifierListContextStateProvider>
 				</BrowserRouter>
 			</AlertContextStateProvider>
 		</div>

@@ -31,7 +31,6 @@ const LoginContextStateProvider = ({ children }) => {
 	useEffect(() => {
 		const checkLogin = JSON.parse(localStorage.getItem('login'));
 		if (checkLogin.loggedIn) {
-			console.log('inside');
 			dispatch({
 				type: loginContextActions.SIGN_IN,
 				value: checkLogin,

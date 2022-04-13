@@ -13,7 +13,6 @@ const SignUp = (props) => {
 	});
 	const submit = async (values) => {
 		const response = await axios.put('http://localhost:4000/profiles/create', values);
-		console.log(response);
 	};
 	return (
 		<div className="w-full max-w-md flex justify-center m-auto p-5 rounded-md mt-36 bg-indigo-100">

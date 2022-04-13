@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { loginContext, loginContextActions } from '../../context/loginContext';
-import { adminRoutes, homeRoutes } from '../../routes';
+import { adminRoutes, homeRoutes, modifierRoutes } from '../../routes';
 import Dropdown from '../Dropdown';
 
 const AdminTopNav = () => {
@@ -19,40 +19,50 @@ const AdminTopNav = () => {
 			<div className="font-semibold">
 				<Link to={homeRoutes.LANDING}>Home</Link>
 			</div>
-			<div className=" ">
-				<Dropdown
-					buttonClassName="font-semibold text-lg"
-					menuClassName="font-normal"
-					buttonName="Lists ▼"
-				>
-					<Link to={adminRoutes.SKILLS}>Skill List</Link>
-					<Link to={adminRoutes.SPELLS}>Spell List</Link>
-					<Link to={adminRoutes.CLASSES}>Class List</Link>
-					<Link to={adminRoutes.FEATS}>Feat List</Link>
-					<Link to={adminRoutes.ATTRIBUTES}>Attributes List</Link>
-					<Link to={adminRoutes.ITEMS}>Items List</Link>
-				</Dropdown>
-			</div>
-			<div>
-				<Dropdown buttonClassName="font-semibold text-lg" buttonName="Profile ▼">
-					{login.state.loggedIn && <Link to={adminRoutes.ADMIN}>Admin View</Link>}
-					{login.state.loggedIn ? (
-						<Link to={homeRoutes.PROFILE}>Manage Profile</Link>
-					) : (
-						<Link to={homeRoutes.LOGIN}>Login</Link>
-					)}
-					{login.state.loggedIn && (
-						<button
-							className="font-semibold"
-							onClick={() => {
-								login.dispatch({ type: loginContextActions.SIGN_OUT });
-							}}
-						>
-							Logout
-						</button>
-					)}
-				</Dropdown>
-			</div>
+			<Dropdown
+				buttonClassName="font-semibold text-lg"
+				menuClassName="font-normal"
+				buttonName="Modifiers ▼"
+			>
+				<Link to={modifierRoutes.COMPONENTS}>Components</Link>
+				<Link to={modifierRoutes.CONCENTRATIONS}>Concentrations</Link>
+				<Link to={modifierRoutes.DURATIONS}>Durations</Link>
+				<Link to={modifierRoutes.RANGES}>Ranges</Link>
+				<Link to={modifierRoutes.SOURCES}>Sources</Link>
+				<Link to={modifierRoutes.SPELL_LEVELS}>Spell Levels</Link>
+				<Link to={modifierRoutes.SPELL_SCHOOLS}>Spell Schools</Link>
+				<Link to={modifierRoutes.TIME_TYPES}>Time Types</Link>
+			</Dropdown>
+			<Dropdown
+				buttonClassName="font-semibold text-lg"
+				menuClassName="font-normal"
+				buttonName="Lists ▼"
+			>
+				<Link to={adminRoutes.SKILLS}>Skill List</Link>
+				<Link to={adminRoutes.SPELLS}>Spell List</Link>
+				<Link to={adminRoutes.CLASSES}>Class List</Link>
+				<Link to={adminRoutes.FEATS}>Feat List</Link>
+				<Link to={adminRoutes.ATTRIBUTES}>Attributes List</Link>
+				<Link to={adminRoutes.ITEMS}>Items List</Link>
+			</Dropdown>
+			<Dropdown buttonClassName="font-semibold text-lg" buttonName="Profile ▼">
+				{login.state.loggedIn && <Link to={adminRoutes.ADMIN}>Admin View</Link>}
+				{login.state.loggedIn ? (
+					<Link to={homeRoutes.PROFILE}>Manage Profile</Link>
+				) : (
+					<Link to={homeRoutes.LOGIN}>Login</Link>
+				)}
+				{login.state.loggedIn && (
+					<button
+						className="font-semibold"
+						onClick={() => {
+							login.dispatch({ type: loginContextActions.SIGN_OUT });
+						}}
+					>
+						Logout
+					</button>
+				)}
+			</Dropdown>
 		</div>
 	);
 };

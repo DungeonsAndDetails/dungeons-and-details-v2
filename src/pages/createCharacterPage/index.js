@@ -7,7 +7,6 @@ import TextInputField from '../../components/TextInputField';
 const createCharacter = () => {
 	const submit = async (e) => {
 		const response = await axios.put('http://localhost:4000/characters/create', e);
-		console.log('response', response.data);
 	};
 
 	return (

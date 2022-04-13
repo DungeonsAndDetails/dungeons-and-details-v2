@@ -7,7 +7,6 @@ import { characterContext, characterContextActions } from '../../context/charact
 //BG color of sheet TBD palceholder gray 600
 const CharacterSheet = () => {
 	const charContext = useContext(characterContext);
-	console.log('charContext', charContext);
 	const [hp, setHp] = useState(0);
 	const [HitDice, setHitDice] = useState(0);
 
@@ -21,8 +20,6 @@ const CharacterSheet = () => {
 		setHitDice(currentHitDice);
 	}, [charContext.state]);
 
-	console.log(charContext.state.level, 'Level');
-	console.log(charContext.state.hitDice, 'Hit Dice');
 	return (
 		<div>
 			<div>Character Sheet</div>

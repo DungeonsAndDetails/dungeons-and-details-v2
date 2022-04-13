@@ -88,7 +88,7 @@ const BuildDisplays = ({ step, setStep }) => {
 	}
 };
 
-const Test = (props) => {
+const Test = ({ headers }) => {
 	const validationSchema = Yup.object().shape({
 		name: Yup.string().required('Required'),
 		race: Yup.string().required('Required'),
@@ -116,7 +116,7 @@ const Test = (props) => {
 					console.log('Props', props);
 					return (
 						<Form onSubmit={props.handleSubmit}>
-							<BuildHeaders step={step} setStep={setStep} headers={props.headers} />
+							<BuildHeaders step={step} setStep={setStep} headers={headers} />
 							<BuildDisplays step={step} setStep={setStep} />
 						</Form>
 					);

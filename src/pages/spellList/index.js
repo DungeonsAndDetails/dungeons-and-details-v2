@@ -1,15 +1,99 @@
 import React, { useContext } from 'react';
-import { Form, Formik } from 'formik';
-import Button from '../../components/Button';
-import TextInputField from '../../components/TextInputField';
 import { spellListContext } from '../../context/spellListContext';
-import EditAttributeField from '../../components/EditItemField';
+import Table, { inputTypes } from '../../components/Table';
+import { modifierListContext } from '../../context/modifiersContext';
 
 const Spells = () => {
 	const spells = useContext(spellListContext);
+	const modifiers = useContext(modifierListContext);
 
-	const save = (values, id) => {
-		spells.updateSpells(values, id);
+	// range: '',
+	const spellListHeaders = [
+		{
+			label: 'Name',
+			value: 'name',
+			type: inputTypes.TEXT,
+		},
+		{
+			label: 'Value',
+			value: 'value',
+			type: inputTypes.TEXT,
+		},
+		{
+			label: 'Spell level',
+			value: 'spellLevel',
+			type: inputTypes.SELECT,
+			options: modifiers.state.modifiers.spellLevels,
+		},
+		{
+			label: 'Cast Time',
+			value: 'castTime',
+			type: inputTypes.SELECT,
+			options: modifiers.state.modifiers.durations,
+		},
+		{
+			label: 'Spell School',
+			value: 'spellSchool',
+			type: inputTypes.SELECT,
+			options: modifiers.state.modifiers.spellSchools,
+		},
+		{
+			label: 'Concentration?',
+			value: 'concentration',
+			type: inputTypes.SELECT,
+			options: modifiers.state.modifiers.concentrations,
+		},
+		{
+			label: 'Range',
+			value: 'range',
+			type: inputTypes.SELECT,
+			options: modifiers.state.modifiers.ranges,
+		},
+		{
+			label: 'Description',
+			value: 'description',
+			type: inputTypes.TEXT,
+		},
+	];
+
+	const saveSpell = ({ values, id }) => {
+		const newValues = {
+			...values,
+			spellLevel: modifiers.state.modifiers.spellLevels.find(
+				(spellLevel) => spellLevel._id === values.spellLevel,
+			),
+			castTime: modifiers.state.modifiers.durations.find(
+				(duration) => duration._id === values.castTime,
+			),
+			spellSchool: modifiers.state.modifiers.spellSchools.find(
+				(spellSchool) => spellSchool._id === values.spellSchool,
+			),
+			concentration: modifiers.state.modifiers.concentrations.find(
+				(concentration) => concentration._id === values.concentration,
+			),
+			range: modifiers.state.modifiers.ranges.find((range) => range._id === values.range),
+		};
+		spells.updateSpell({ values: newValues, id });
+	};
+
+	const createSpell = (values) => {
+		const newValues = {
+			...values,
+			spellLevel: modifiers.state.modifiers.spellLevels.find(
+				(spellLevel) => spellLevel._id === values.spellLevel,
+			),
+			castTime: modifiers.state.modifiers.durations.find(
+				(duration) => duration._id === values.castTime,
+			),
+			spellSchool: modifiers.state.modifiers.spellSchools.find(
+				(spellSchool) => spellSchool._id === values.spellSchool,
+			),
+			concentration: modifiers.state.modifiers.concentrations.find(
+				(concentration) => concentration._id === values.concentration,
+			),
+			range: modifiers.state.modifiers.ranges.find((range) => range._id === values.range),
+		};
+		spells.createSpell(newValues);
 	};
 
 	return (
@@ -18,71 +102,14 @@ const Spells = () => {
 				<span className="">Spell List</span>
 			</div>
 			<div className="py-3">
-				<div className="grid grid-cols-3 gap-5 text-white">
-					<div>
-						<span>Spell Name</span>
-					</div>
-					<div>
-						<span>Spell Description</span>
-					</div>
-				</div>
-				<div className="border">
-					{spells.state.spells.map((spell) => {
-						return (
-							<EditAttributeField
-								key={spell._id}
-								id={spell._id}
-								name={spell.name}
-								description={spell.description}
-								onDelete={() => spells.deleteSpell(spell._id)}
-								onSave={save}
-							/>
-						);
-					})}
-				</div>
+				<Table
+					data={spells.state.spells}
+					headers={spellListHeaders}
+					onDelete={spells.deleteSpell}
+					onEditSave={saveSpell}
+					onCreate={createSpell}
+				/>
 			</div>
-			<div>
-				<span>Create New Spell</span>
-			</div>
-			<Formik
-				initialValues={{
-					name: '',
-					description: '',
-					attributeReliance: 0,
-				}}
-				onSubmit={spells.createSpell}
-			>
-				<Form>
-					<div className="grid grid-cols-3 gap-5">
-						<div>
-							<TextInputField type="text" name="name" label="Skill Name" />
-						</div>
-						<div>
-							<TextInputField type="text" name="level" label="Spell Level" />
-						</div>
-						<div>
-							<TextInputField type="number" name="castingTime" label="Casting Time" />
-						</div>
-						<div>
-							<TextInputField type="text" name="school" label="Spell School" />
-						</div>
-						<div>
-							<TextInputField type="text" name="concentration" label="Concentration?" />
-						</div>
-						<div>
-							<TextInputField type="text" name="range" label="Spell Range" />
-						</div>
-						<div>
-							<TextInputField type="text" name="description" label="Skill Description" />
-						</div>
-						<div className="flex">
-							<Button className="border mb-3 mt-auto py-2 w-full" type="submit">
-								Submit
-							</Button>
-						</div>
-					</div>
-				</Form>
-			</Formik>
 		</>
 	);
 };

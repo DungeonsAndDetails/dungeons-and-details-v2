@@ -45,7 +45,6 @@ const SkillListContextStateProvider = ({ children }) => {
 	};
 
 	const updateSkill = async (values, id) => {
-		console.log('called context');
 		const response = await axios.put(`http://localhost:4000/skills/update/${id}`, values);
 		if (response.status === 200 || response.status === 201) {
 			getSkills();

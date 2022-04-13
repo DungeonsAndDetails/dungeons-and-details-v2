@@ -1,63 +1,233 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-
+import { Field, FieldArray, Form, Formik } from 'formik';
+import TextInputField from '../TextInputField';
+import Button from '../Button';
 // https://tailwindcss.com/docs/table-layout
 // https://tailwind-elements.com/docs/standard/components/tables/
 // Goal, expandable dataset wise.
 // prop toggle edit & delete buttons.
 
-const Table = (props) => {
-	console.log('props', props);
+// Create component for each specific row
+
+export const inputTypes = {
+	TEXT: 'text',
+	NUMBER: 'number',
+	SELECT: 'select',
+};
+
+const BuildInput = (props) => {
+	switch (props.header.type) {
+		case inputTypes.SELECT:
+			return (
+				<TextInputField
+					options={props.header.options}
+					name={props.header.value}
+					type={props.header.type}
+					className="border-0 p-1 pb-2"
+					{...props}
+				/>
+			);
+		case inputTypes.NUMBER:
+		case inputTypes.TEXT:
+			return (
+				<TextInputField
+					name={props.header.value}
+					type={props.header.type}
+					className="border-0 p-1 pb-2"
+					{...props}
+				/>
+			);
+		default:
+			return null;
+	}
+};
+
+const BuildRow = ({ item, headers, columnCount, enableManageColumn, onEditSave, onDelete }) => {
+	const [edit, setEdit] = useState(false);
+
+	const editOnClick = () => {
+		setEdit(!edit);
+	};
+
+	const deleteOnClick = () => {
+		onDelete(item._id);
+	};
+
+	const saveOnClick = (values) => {
+		console.log('saveOnClick', values);
+	};
+
+	const onSubmit = (values) => {
+		onEditSave({ values, id: item._id });
+		setEdit(!edit);
+	};
+
+	const buildInitialValues = () => {
+		const initialValues = {};
+		headers.forEach((header) => {
+			initialValues[header.value] =
+				typeof item[header.value] === 'object' ? item[header.value]._id : item[header.value];
+		});
+		return initialValues;
+	};
+
 	return (
-		<table className="table-auto text-white w-full">
-			<thead>
-				<tr className="border-b">
-					{props.headers.map((header) => {
+		<Formik initialValues={buildInitialValues()} onSubmit={onSubmit}>
+			<Form>
+				<div
+					className={`grid grid-cols-${columnCount} border-b border-slate-300 py-1 hover:bg-slate-700 gap-2`}
+				>
+					{edit &&
+						headers.map((header) => {
+							return <BuildInput key={`${header.value} input`} header={header} />;
+						})}
+					{!edit &&
+						headers.map((header) => {
+							return (
+								<div key={`${header.value} text`} className="p-1">
+									{typeof item[header.value] === 'object'
+										? item[header.value].name
+										: item[header.value]}
+								</div>
+							);
+						})}
+					{enableManageColumn && !edit && (
+						<div className="grid grid-cols-2 gap-1">
+							<Button type="button" onClick={editOnClick}>
+								Edit
+							</Button>
+							<Button type="button" onClick={deleteOnClick}>
+								Delete
+							</Button>
+						</div>
+					)}
+					{enableManageColumn && edit && (
+						<div className="grid grid-cols-2 gap-1">
+							<Button type="submit" onClick={saveOnClick}>
+								Save
+							</Button>
+							<Button type="button" onClick={editOnClick}>
+								Cancel
+							</Button>
+						</div>
+					)}
+				</div>
+			</Form>
+		</Formik>
+	);
+};
+
+const BuildData = ({ columnCount, data, headers, enableManageColumn, onEditSave, onDelete }) => {
+	return data.map((item) => {
+		return (
+			<BuildRow
+				key={item._id}
+				item={item}
+				headers={headers}
+				columnCount={columnCount}
+				enableManageColumn={enableManageColumn}
+				onEditSave={onEditSave}
+				onDelete={onDelete}
+			/>
+		);
+	});
+};
+
+const BuildHeaders = ({ columnCount, headers }) => {
+	return (
+		<div
+			className={`grid grid-cols-${columnCount} border-b border-b-slate-300 font-semibold gap-2`}
+		>
+			{headers.map((header, i) => {
+				return (
+					<div key={`${header.value} ${i}`} className="p-1">
+						{header.label}
+					</div>
+				);
+			})}
+		</div>
+	);
+};
+
+const BuildNewEntry = ({ headers, onCreate }) => {
+	const buildInitialValues = () => {
+		const initialValues = {};
+		headers.forEach((header) => {
+			switch (header.type) {
+				case inputTypes.NUMBER:
+					initialValues[header.value] = 0;
+					break;
+				case inputTypes.SELECT:
+				case inputTypes.TEXT:
+					initialValues[header.value] = '';
+					break;
+				default:
+					initialValues[header.value] = '';
+					break;
+			}
+		});
+		return initialValues;
+	};
+
+	return (
+		<Formik initialValues={buildInitialValues()} onSubmit={onCreate}>
+			<Form>
+				<div>
+					<span>Create New</span>
+				</div>
+				<div className={`grid grid-cols-3 border-slate-300 py-1 hover:bg-slate-700 gap-2`}>
+					{headers.map((header) => {
 						return (
-							<th className="text-left" key={header.value}>
-								{header.label}
-							</th>
+							<div>
+								<BuildInput key={`${header.value} input`} header={header} label={header.label} />
+							</div>
 						);
 					})}
-					{props.enableEdit && <th className="text-left">Edit</th>}
-					{props.enableDelete && <th className="text-left">Delete</th>}
-				</tr>
-			</thead>
-			<tbody>
-				{props.data.map((item) => {
-					return (
-						<tr key={item._id}>
-							{props.headers.map((header, i) => {
-								return <td key={`${header.value} ${i}`}>{item[header.value]}</td>;
-							})}
-							{props.enableEdit && (
-								<td>
-									<button>Edit</button>
-								</td>
-							)}
-							{props.enableDelete && (
-								<td>
-									<button>Delete</button>
-								</td>
-							)}
-						</tr>
-					);
-				})}
-			</tbody>
-		</table>
+					<div className="mt-auto pb-1">
+						<Button type="submit" className="w-full">
+							Create
+						</Button>
+					</div>
+				</div>
+			</Form>
+		</Formik>
+	);
+};
+
+const Table = ({ headers, data, onEditSave, onDelete, enableEdit, enableDelete, onCreate }) => {
+	const enableManageColumn = enableEdit || enableDelete;
+	const columnCount = enableManageColumn ? headers.length + 1 : headers.length;
+
+	return (
+		<div className="container grid grid-cols-1 gap-5">
+			<div>
+				<BuildHeaders columnCount={columnCount} headers={headers} />
+				<BuildData
+					columnCount={columnCount}
+					data={data}
+					headers={headers}
+					enableManageColumn={enableManageColumn}
+					onEditSave={onEditSave}
+					onDelete={onDelete}
+				/>
+			</div>
+			<BuildNewEntry onCreate={onCreate} headers={headers} />
+		</div>
 	);
 };
 
 Table.propTypes = {
 	headers: PropTypes.arrayOf(
 		PropTypes.shape({
-			label: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-			value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+			label: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+			value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+			type: PropTypes.oneOf([inputTypes.TEXT, inputTypes.NUMBER, inputTypes.SELECT]).isRequired,
 		}),
-	),
+	).isRequired,
 	data: PropTypes.array,
-	edit: PropTypes.func,
-	delete: PropTypes.func,
+	onEditSave: PropTypes.func,
+	onDelete: PropTypes.func,
 	enableEdit: PropTypes.bool,
 	enableDelete: PropTypes.bool,
 };
@@ -70,7 +240,7 @@ Table.defaultProps = {
 			description: 'placeholder',
 			level: 'Cantrip',
 			time: 'Action',
-			school: 'Conj.',
+			school: 'necromancy',
 			range: '60 feet',
 		},
 		{
@@ -120,22 +290,63 @@ Table.defaultProps = {
 		{
 			label: 'Name',
 			value: 'name',
+			type: inputTypes.TEXT,
 		},
 		{
 			label: 'Level',
 			value: 'level',
+			type: inputTypes.NUMBER,
+			minimum: 0,
+			maximum: 20,
 		},
 		{
 			label: 'Time',
 			value: 'time',
+			type: inputTypes.TEXT,
 		},
 		{
 			label: 'School',
 			value: 'school',
+			type: inputTypes.SELECT,
+			options: [
+				{
+					name: 'Transmutation',
+					value: 'transmutation',
+				},
+				{
+					name: 'Necromancy',
+					value: 'necromancy',
+				},
+				{
+					name: 'Illusion',
+					value: 'illusion',
+				},
+				{
+					name: 'Evocation',
+					value: 'evocation',
+				},
+				{
+					name: 'Enchanting',
+					value: 'enchanting',
+				},
+				{
+					name: 'Divination',
+					value: 'divination',
+				},
+				{
+					name: 'Conjuration',
+					value: 'conjuration',
+				},
+				{
+					name: 'Abjuration',
+					value: 'abjuration',
+				},
+			],
 		},
 		{
 			label: 'Range',
 			value: 'range',
+			type: inputTypes.TEXT,
 		},
 	],
 	enableEdit: true,

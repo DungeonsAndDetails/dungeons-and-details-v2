@@ -10,7 +10,6 @@ import { loginContext } from '../../context/loginContext';
 const Profile = () => {
 	const loginState = useContext(loginContext);
 
-	console.log('loginState', loginState.state);
 	const submit = () => {};
 	return (
 		<div className="w-full max-w-md flex justify-center m-auto p-5 rounded-md mt-36 bg-black">

@@ -31,3 +31,15 @@ export const adminRoutes = {
 	ITEMS: 'items',
 	PROFILE: 'profile',
 };
+
+export const modifierRoutes = {
+	MODIFIERS: 'modifiers',
+	COMPONENTS: 'components',
+	CONCENTRATIONS: 'concentrations',
+	DURATIONS: 'durations',
+	RANGES: 'ranges',
+	SOURCES: 'sources',
+	SPELL_LEVELS: 'spell-levels',
+	SPELL_SCHOOLS: 'spell-schools',
+	TIME_TYPES: 'time-types',
+};

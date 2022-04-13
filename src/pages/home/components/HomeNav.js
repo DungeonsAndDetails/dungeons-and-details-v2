@@ -6,7 +6,6 @@ import { adminRoutes, homeRoutes, routes } from '../../../routes';
 
 const HomeNav = () => {
 	const login = useContext(loginContext);
-	console.log('login', login);
 	return (
 		<nav className="bg-testPrimary rounded border-gray-200 px-4 py-2 text-xl  ">
 			<div className="text-white font-semibold container flex flex-wrap justify-between items-center mx-auto">
