@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { Form, Formik } from 'formik';
 import Button from '../../../components/Button';
 import TextInputField from '../../../components/TextInputField';
-import EditAttributeField from '../../../components/EditItemField';
 import { modifierListContext } from '../../../context/modifiersContext';
 import axios from 'axios';
 import Table, { inputTypes } from '../../../components/Table';

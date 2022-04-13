@@ -35,6 +35,7 @@ const BuildInput = (props) => {
 					name={props.header.value}
 					type={props.header.type}
 					className="border-0 p-1 pb-2"
+					{...props}
 				/>
 			);
 		default:
@@ -149,21 +150,69 @@ const BuildHeaders = ({ columnCount, headers }) => {
 	);
 };
 
-const Table = ({ headers, data, onEditSave, onDelete, enableEdit, enableDelete }) => {
+const BuildNewEntry = ({ headers, onCreate }) => {
+	const buildInitialValues = () => {
+		const initialValues = {};
+		headers.forEach((header) => {
+			switch (header.type) {
+				case inputTypes.NUMBER:
+					initialValues[header.value] = 0;
+					break;
+				case inputTypes.SELECT:
+				case inputTypes.TEXT:
+					initialValues[header.value] = '';
+					break;
+				default:
+					initialValues[header.value] = '';
+					break;
+			}
+		});
+		return initialValues;
+	};
+
+	return (
+		<Formik initialValues={buildInitialValues()} onSubmit={onCreate}>
+			<Form>
+				<div>
+					<span>Create New</span>
+				</div>
+				<div className={`grid grid-cols-3 border-slate-300 py-1 hover:bg-slate-700 gap-2`}>
+					{headers.map((header) => {
+						return (
+							<div>
+								<BuildInput key={`${header.value} input`} header={header} label={header.label} />
+							</div>
+						);
+					})}
+					<div className="mt-auto pb-1">
+						<Button type="submit" className="w-full">
+							Create
+						</Button>
+					</div>
+				</div>
+			</Form>
+		</Formik>
+	);
+};
+
+const Table = ({ headers, data, onEditSave, onDelete, enableEdit, enableDelete, onCreate }) => {
 	const enableManageColumn = enableEdit || enableDelete;
 	const columnCount = enableManageColumn ? headers.length + 1 : headers.length;
 
 	return (
-		<div>
-			<BuildHeaders columnCount={columnCount} headers={headers} />
-			<BuildData
-				columnCount={columnCount}
-				data={data}
-				headers={headers}
-				enableManageColumn={enableManageColumn}
-				onEditSave={onEditSave}
-				onDelete={onDelete}
-			/>
+		<div className="container grid grid-cols-1 gap-5">
+			<div>
+				<BuildHeaders columnCount={columnCount} headers={headers} />
+				<BuildData
+					columnCount={columnCount}
+					data={data}
+					headers={headers}
+					enableManageColumn={enableManageColumn}
+					onEditSave={onEditSave}
+					onDelete={onDelete}
+				/>
+			</div>
+			<BuildNewEntry onCreate={onCreate} headers={headers} />
 		</div>
 	);
 };

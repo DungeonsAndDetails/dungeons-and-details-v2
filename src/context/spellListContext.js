@@ -44,7 +44,7 @@ const SpellListContextStateProvider = ({ children }) => {
 		}
 	};
 
-	const updateSpell = async (values, id) => {
+	const updateSpell = async ({ values, id }) => {
 		const response = await axios.put(`http://localhost:4000/spells/update/${id}`, values);
 		if (response.status === 200 || response.status === 201) {
 			getSpells();

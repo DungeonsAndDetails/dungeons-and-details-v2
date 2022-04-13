@@ -45,6 +45,11 @@ const Durations = () => {
 
 	const durationHeaders = [
 		{
+			label: 'Name',
+			value: 'name',
+			type: inputTypes.TEXT,
+		},
+		{
 			label: 'Duration Name',
 			value: 'value',
 			type: inputTypes.TEXT,
@@ -75,6 +80,7 @@ const Durations = () => {
 			</div>
 			<Formik
 				initialValues={{
+					name: '',
 					value: '',
 					timeType: '',
 				}}
@@ -82,6 +88,9 @@ const Durations = () => {
 			>
 				<Form>
 					<div className="grid grid-cols-3 gap-5">
+						<div>
+							<TextInputField type="text" name="name" label="Name" />
+						</div>
 						<div>
 							<TextInputField type="text" name="value" label="Duration Amount" />
 						</div>
