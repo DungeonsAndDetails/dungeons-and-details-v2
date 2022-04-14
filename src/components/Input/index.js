@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
+//field and meta need to be their own objects inside of props
+
 const InputSelect = (props) => {
 	const [focus, setFocus] = useState(false);
+	// console.log('props', props);
 	return (
 		<div className={`${props.labelLeft ? 'flex justify-between ' : ''}`}>
-			{props.label && (
+			{props.label && !props.type === 'radio' && (
 				<div className={props.labelLeft ? 'm-auto pr-3 w-2/5' : ''}>
 					<label
 						htmlFor={props.name}
@@ -49,6 +52,23 @@ const InputSelect = (props) => {
 							);
 						})}
 					</select>
+				)}
+				{props.type === 'radio' && (
+					<div>
+						<input
+							id={props.id}
+							name={props.name}
+							type={props.type}
+							value={props.id}
+							onChange={props.onChange}
+							onFocus={() => setFocus(true)}
+							onBlur={() => setFocus(false)}
+							className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-testPrimary checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+						/>
+						<label className={` ${props.className} pl-2 form-check-label inline-block`}>
+							{props.label}
+						</label>
+					</div>
 				)}
 				{props.meta.touched && props.meta.error && (
 					<span className="flex text-center">{props.meta.error}</span>
