@@ -1,7 +1,6 @@
 import React from 'react';
 
 const BuildHeaders = ({ headers, step, setStep }) => {
-	console.log(headers);
 	return (
 		<div>
 			<div className={`grid grid-cols-${headers.length} text-center`}>

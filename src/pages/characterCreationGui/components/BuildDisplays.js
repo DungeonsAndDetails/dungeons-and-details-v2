@@ -3,6 +3,8 @@ import Button from '../../../components/Button';
 import TextInputField from '../../../components/TextInputField';
 import { characterCreationContext } from '../../../context/characterCreationContext';
 import BuildClasses from './BuildClasses';
+import BuildRaces from './BuildRaces';
+import BuildSubraces from './BuildSubraces';
 
 const BuildDisplays = ({
 	step,
@@ -14,6 +16,8 @@ const BuildDisplays = ({
 	classes,
 	setFieldValue,
 	selectedClass,
+	races,
+	subraces,
 }) => {
 	const characterCreation = useContext(characterCreationContext);
 	const validateStepOne = async () => {
@@ -37,8 +41,8 @@ const BuildDisplays = ({
 		}
 	};
 	// console.log(characterCreation.state);
-	console.log('errors', errors);
-	console.log('values', values);
+	// console.log('errors', errors);
+	// console.log('values', values);
 
 	switch (step) {
 		case 0:
@@ -60,43 +64,18 @@ const BuildDisplays = ({
 						<div className="grid border-2 col-start-5 col-span-3">Picture</div>
 						<div className="grid w-fit h-fit col-span-2 col-start-9">
 							<span>Races</span>
-							<TextInputField type="radio" id="human" name="race" label="Human" value="human" />
-							<TextInputField type="radio" id="elf" name="race" label="Elf" value="elf" />
-							<TextInputField type="radio" id="dwarf" name="race" label="Dwarf" value="dwarf" />
-							<TextInputField type="radio" id="orc" name="race" label="Orc" value="orc" />
-							<TextInputField
-								type="radio"
-								id="celestial"
-								name="race"
-								label="Celestial"
-								value="celestial"
-							/>
-							<TextInputField type="radio" id="male" name="race" label="Custom" value="custom" />
+							<BuildRaces setFieldValue={setFieldValue} races={races} />
 						</div>
 
 						<div className="grid w-fit h-fit col-start-11 col-span-2">
 							<span>Sub-Races</span>
-							<TextInputField
-								type="radio"
-								id="redorc"
-								name="subRace"
-								label="Red Orc"
-								value="redorc"
-							/>
-							<TextInputField
-								type="radio"
-								id="cavedwarf"
-								name="subRace"
-								label="Cave Dwarf"
-								value="cavedwarf"
-							/>
-							<TextInputField
-								type="radio"
-								id="darkelf"
-								name="subRace"
-								label="Dark Elf"
-								value="darkelf"
-							/>
+							<div className=" overflow-auto h-44 border-2">
+								<BuildSubraces
+									selectedRace={values.race}
+									setFieldValue={setFieldValue}
+									subraces={subraces}
+								/>
+							</div>
 						</div>
 					</div>
 					<div className="grid pt-4 grid-cols-12">

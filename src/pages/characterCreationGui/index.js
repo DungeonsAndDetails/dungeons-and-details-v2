@@ -5,6 +5,8 @@ import { Form, Formik } from 'formik';
 import BuildDisplays from './components/BuildDisplays';
 import BuildHeaders from './components/BuildHeaders';
 import { classListContext } from '../../context/classListContext';
+import { raceListContext } from '../../context/raceListContext';
+import { subraceListContext } from '../../context/subraceListContext';
 
 const CharacterCreationGui = ({ headers }) => {
 	const validationSchema = Yup.object().shape({
@@ -15,8 +17,13 @@ const CharacterCreationGui = ({ headers }) => {
 	});
 	const characterCreation = useContext(characterCreationContext);
 	const classes = useContext(classListContext);
-	// console.log(characterCreation.state);
-	console.log('Classes', classes);
+	const races = useContext(raceListContext);
+	const subraces = useContext(subraceListContext);
+
+	// console.log('characterCreation.state', characterCreation.state);
+	// console.log('Classes', classes);
+	// console.log('Races', races);
+	// console.log('Subraces', subraces);
 
 	const [step, setStep] = useState(0);
 
@@ -46,6 +53,7 @@ const CharacterCreationGui = ({ headers }) => {
 								step={step}
 								setStep={setStep}
 								classes={classes.state.classes}
+								races={races.state.races}
 								{...props}
 							/>
 						</Form>

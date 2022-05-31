@@ -8,8 +8,8 @@ const BuildClasses = ({ classes, setFieldValue }) => {
 		setSelectedClass(values);
 		setFieldValue('class', values);
 	};
-	console.log('selectedClass', selectedClass);
-	console.log(classes);
+	// console.log('selectedClass', selectedClass);
+	// console.log(classes);
 	return (
 		<div>
 			<div>
@@ -18,8 +18,9 @@ const BuildClasses = ({ classes, setFieldValue }) => {
 						<div key={classInfo.name}>
 							<ClassButton
 								onClick={() => setClass(classInfo)}
-								classInfo={classInfo}
+								display={classInfo.name}
 								className="capitalize"
+								type="button"
 							/>
 						</div>
 					);
