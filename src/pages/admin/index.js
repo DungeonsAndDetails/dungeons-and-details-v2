@@ -19,6 +19,7 @@ import SpellLevels from '../modifiers/spellLevels';
 import TimeTypes from '../modifiers/timeTypes';
 import Races from '../raceList';
 import Subraces from '../subraceList';
+import Subclasses from '../subclassList';
 
 const Admin = () => {
 	return (
@@ -28,6 +29,7 @@ const Admin = () => {
 				<Route path={adminRoutes.SKILLS} element={<Skills />} />
 				<Route path={adminRoutes.SPELLS} element={<Spells />} />
 				<Route path={adminRoutes.CLASSES} element={<Classes />} />
+				<Route path={adminRoutes.SUBCLASSES} element={<Subclasses />} />
 				<Route path={adminRoutes.FEATS} element={<Feats />} />
 				<Route path={adminRoutes.ATTRIBUTES} element={<Attributes />} />
 				<Route path={adminRoutes.ITEMS} element={<Items />} />

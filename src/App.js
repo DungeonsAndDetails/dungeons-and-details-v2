@@ -18,6 +18,7 @@ import { FeatListContextStateProvider } from './context/featListContext';
 import { ModifierListContextStateProvider } from './context/modifiersContext';
 import { RaceListContextStateProvider } from './context/raceListContext';
 import { SubraceListContextStateProvider } from './context/subraceListContext';
+import { SubclassListContextStateProvider } from './context/subclassListContext';
 
 const App = () => {
 	return (
@@ -30,22 +31,24 @@ const App = () => {
 							<ModifierListContextStateProvider>
 								<FeatListContextStateProvider>
 									<ClassListContextStateProvider>
-										<ItemsContextStateProvider>
-											<AttributesContextStateProvider>
-												<SkillListContextStateProvider>
-													<SpellListContextStateProvider>
-														<CharacterContextStateProvider>
-															<LoginContextStateProvider>
-																<Routes>
-																	<Route path={routes.HOME} element={<Home />} />
-																	<Route path={routes.ADMIN} element={<Admin />} />
-																</Routes>
-															</LoginContextStateProvider>
-														</CharacterContextStateProvider>
-													</SpellListContextStateProvider>
-												</SkillListContextStateProvider>
-											</AttributesContextStateProvider>
-										</ItemsContextStateProvider>
+										<SubclassListContextStateProvider>
+											<ItemsContextStateProvider>
+												<AttributesContextStateProvider>
+													<SkillListContextStateProvider>
+														<SpellListContextStateProvider>
+															<CharacterContextStateProvider>
+																<LoginContextStateProvider>
+																	<Routes>
+																		<Route path={routes.HOME} element={<Home />} />
+																		<Route path={routes.ADMIN} element={<Admin />} />
+																	</Routes>
+																</LoginContextStateProvider>
+															</CharacterContextStateProvider>
+														</SpellListContextStateProvider>
+													</SkillListContextStateProvider>
+												</AttributesContextStateProvider>
+											</ItemsContextStateProvider>
+										</SubclassListContextStateProvider>
 									</ClassListContextStateProvider>
 								</FeatListContextStateProvider>
 							</ModifierListContextStateProvider>

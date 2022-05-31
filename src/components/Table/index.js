@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Form, Formik } from 'formik';
 import TextInputField from '../TextInputField';
 import Button from '../Button';
+import Modal from '../Modal';
 
 export const inputTypes = {
 	TEXT: 'text',
@@ -39,13 +40,23 @@ const BuildInput = (props) => {
 
 const BuildRow = ({ item, headers, columnCount, enableManageColumn, onEditSave, onDelete }) => {
 	const [edit, setEdit] = useState(false);
+	const [deleteRow, setDeleteRow] = useState(null);
 
 	const editOnClick = () => {
 		setEdit(!edit);
 	};
 
 	const deleteOnClick = () => {
-		onDelete(item._id);
+		setDeleteRow(item);
+	};
+
+	const deleteSubmit = () => {
+		onDelete(deleteRow._id);
+		setDeleteRow(null);
+	};
+
+	const deleteCancel = () => {
+		setDeleteRow(null);
 	};
 
 	const saveOnClick = (values) => {
@@ -65,67 +76,92 @@ const BuildRow = ({ item, headers, columnCount, enableManageColumn, onEditSave, 
 		});
 		return initialValues;
 	};
+	console.log('deleteRow', deleteRow);
+
+	const modalDescription = () => {
+		return (
+			<div>
+				<div>Are you sure you want to delete the following item?</div>
+				<div className="font-bold text-black">{deleteRow.name}</div>
+			</div>
+		);
+	};
 
 	return (
-		<Formik initialValues={buildInitialValues()} onSubmit={onSubmit}>
-			<Form>
-				<div
-					className={`grid grid-cols-${columnCount} border-b border-slate-300 py-1 hover:bg-slate-700 gap-2`}
-				>
-					{edit &&
-						headers.map((header) => {
-							return <BuildInput key={`${header.value} input`} header={header} />;
-						})}
-					{!edit &&
-						headers.map((header) => {
-							return (
-								<div key={`${header.value} text`} className="py-1 px-3 my-auto truncate">
-									{typeof item[header.value] === 'object'
-										? item[header.value].name
-										: item[header.value]}
-								</div>
-							);
-						})}
-					{enableManageColumn && !edit && (
-						<div className="grid grid-cols-2 gap-1">
-							<Button type="button" onClick={editOnClick}>
-								Edit
-							</Button>
-							<Button type="button" onClick={deleteOnClick}>
-								Delete
-							</Button>
-						</div>
-					)}
-					{enableManageColumn && edit && (
-						<div className="grid grid-cols-2 gap-1">
-							<Button type="submit" onClick={saveOnClick}>
-								Save
-							</Button>
-							<Button type="button" onClick={editOnClick}>
-								Cancel
-							</Button>
-						</div>
-					)}
-				</div>
-			</Form>
-		</Formik>
+		<>
+			{deleteRow && (
+				<Modal
+					title="Confirmation"
+					description={modalDescription()}
+					submit={deleteSubmit}
+					cancel={deleteCancel}
+					saveButtonLabel="Delete"
+				/>
+			)}
+			<Formik initialValues={buildInitialValues()} onSubmit={onSubmit}>
+				<Form>
+					<div
+						className={`grid grid-cols-${columnCount} border-b border-slate-300 py-1 hover:bg-slate-700 gap-2`}
+					>
+						{edit &&
+							headers.map((header) => {
+								return <BuildInput key={`${header.value} input`} header={header} />;
+							})}
+						{!edit &&
+							headers.map((header) => {
+								return (
+									<div key={`${header.value} text`} className="py-1 px-3 my-auto truncate">
+										{typeof item[header.value] === 'object'
+											? item[header.value].name
+											: item[header.value]}
+									</div>
+								);
+							})}
+						{enableManageColumn && !edit && (
+							<div className="grid grid-cols-2 gap-1">
+								<Button type="button" onClick={editOnClick}>
+									Edit
+								</Button>
+								<Button type="button" onClick={deleteOnClick}>
+									Delete
+								</Button>
+							</div>
+						)}
+						{enableManageColumn && edit && (
+							<div className="grid grid-cols-2 gap-1">
+								<Button type="submit" onClick={saveOnClick}>
+									Save
+								</Button>
+								<Button type="button" onClick={editOnClick}>
+									Cancel
+								</Button>
+							</div>
+						)}
+					</div>
+				</Form>
+			</Formik>
+		</>
 	);
 };
 
 const BuildData = ({ columnCount, data, headers, enableManageColumn, onEditSave, onDelete }) => {
-	return data.map((item) => {
-		return (
-			<BuildRow
-				key={item._id}
-				item={item}
-				headers={headers}
-				columnCount={columnCount}
-				enableManageColumn={enableManageColumn}
-				onEditSave={onEditSave}
-				onDelete={onDelete}
-			/>
-		);
-	});
+	return (
+		<div className="overflow-auto max-h-96">
+			{data.map((item) => {
+				return (
+					<BuildRow
+						key={item._id}
+						item={item}
+						headers={headers}
+						columnCount={columnCount}
+						enableManageColumn={enableManageColumn}
+						onEditSave={onEditSave}
+						onDelete={onDelete}
+					/>
+				);
+			})}
+		</div>
+	);
 };
 
 const BuildHeaders = ({ columnCount, headers }) => {
@@ -192,20 +228,22 @@ const Table = ({ headers, data, onEditSave, onDelete, enableEdit, enableDelete, 
 	const columnCount = enableManageColumn ? headers.length + 1 : headers.length;
 
 	return (
-		<div className="container grid grid-cols-1 gap-5">
-			<div>
-				<BuildHeaders columnCount={columnCount} headers={headers} />
-				<BuildData
-					columnCount={columnCount}
-					data={data}
-					headers={headers}
-					enableManageColumn={enableManageColumn}
-					onEditSave={onEditSave}
-					onDelete={onDelete}
-				/>
+		<>
+			<div className="container grid grid-cols-1 gap-5">
+				<div>
+					<BuildHeaders columnCount={columnCount} headers={headers} />
+					<BuildData
+						columnCount={columnCount}
+						data={data}
+						headers={headers}
+						enableManageColumn={enableManageColumn}
+						onEditSave={onEditSave}
+						onDelete={onDelete}
+					/>
+				</div>
+				<BuildNewEntry onCreate={onCreate} headers={headers} />
 			</div>
-			<BuildNewEntry onCreate={onCreate} headers={headers} />
-		</div>
+		</>
 	);
 };
 
