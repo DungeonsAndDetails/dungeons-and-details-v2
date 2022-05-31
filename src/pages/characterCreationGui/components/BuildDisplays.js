@@ -4,7 +4,17 @@ import TextInputField from '../../../components/TextInputField';
 import { characterCreationContext } from '../../../context/characterCreationContext';
 import BuildClasses from './BuildClasses';
 
-const BuildDisplays = ({ step, setStep, validateField, errors, touched, values, classes }) => {
+const BuildDisplays = ({
+	step,
+	setStep,
+	validateField,
+	errors,
+	touched,
+	values,
+	classes,
+	setFieldValue,
+	selectedClass,
+}) => {
 	const characterCreation = useContext(characterCreationContext);
 	const validateStepOne = async () => {
 		if (!errors.name) {
@@ -112,12 +122,18 @@ const BuildDisplays = ({ step, setStep, validateField, errors, touched, values, 
 				<div className="grid pt-2">
 					<div className="grid grid-cols-12">
 						<div className="border-2">
-							<span>Class Names</span>
+							<div className="border-b">
+								<span className="">Class Names</span>
+							</div>
 							<div>
 								<div>
-									<BuildClasses classes={classes} />
+									<BuildClasses setFieldValue={setFieldValue} classes={classes} />
 								</div>
 							</div>
+						</div>
+						<div className="grid grid-rows-5 col-start-3 col-span-3 border-2">
+							<label className=" border-b">Description</label>
+							<div className="grid row-start-2 row-span-4">{values.class.description}</div>
 						</div>
 					</div>
 					<div>

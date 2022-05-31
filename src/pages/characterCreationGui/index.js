@@ -4,8 +4,9 @@ import React, { useState, useContext } from 'react';
 import { Form, Formik } from 'formik';
 import BuildDisplays from './components/BuildDisplays';
 import BuildHeaders from './components/BuildHeaders';
+import { classListContext } from '../../context/classListContext';
 
-const CharacterCreationGui = ({ headers, classes }) => {
+const CharacterCreationGui = ({ headers }) => {
 	const validationSchema = Yup.object().shape({
 		name: Yup.string().required('Required'),
 		race: Yup.string().required('Required'),
@@ -13,7 +14,9 @@ const CharacterCreationGui = ({ headers, classes }) => {
 		sex: Yup.string().required('Required'),
 	});
 	const characterCreation = useContext(characterCreationContext);
+	const classes = useContext(classListContext);
 	// console.log(characterCreation.state);
+	console.log('Classes', classes);
 
 	const [step, setStep] = useState(0);
 
@@ -26,24 +29,24 @@ const CharacterCreationGui = ({ headers, classes }) => {
 					family: '',
 					title: '',
 
-					class: '',
+					class: {},
+					subClass: {},
 					subRace: '',
 					race: '',
 					sex: '',
 				}}
 				onSubmit={characterCreation.createCharacterCreation}
 			>
-				{({ validateField, errors, touched, values }) => {
+				{(props) => {
+					console.log('props', props);
 					return (
 						<Form>
 							<BuildHeaders step={step} setStep={setStep} headers={headers} />
 							<BuildDisplays
 								step={step}
 								setStep={setStep}
-								errors={errors}
-								values={values}
-								touched={touched}
-								classes={classes}
+								classes={classes.state.classes}
+								{...props}
 							/>
 						</Form>
 					);
@@ -72,17 +75,6 @@ CharacterCreationGui.defaultProps = {
 		},
 		{
 			name: 'Final',
-		},
-	],
-	classes: [
-		{
-			name: 'wizard',
-		},
-		{
-			name: 'paladin',
-		},
-		{
-			name: 'monk',
 		},
 	],
 };

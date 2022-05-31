@@ -29,7 +29,7 @@ const Classes = () => {
 					headers={classListHeaders}
 					onDelete={classes.deleteSpell}
 					onEditSave={classes.updateClass}
-					onCreate={classes.createSpell}
+					onCreate={classes.createClass}
 				/>
 			</div>
 		</>
