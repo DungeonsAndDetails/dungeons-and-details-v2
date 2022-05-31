@@ -47,3 +47,8 @@ export const modifierRoutes = {
 	SPELL_SCHOOLS: 'spell-schools',
 	TIME_TYPES: 'time-types',
 };
+
+export const compendiumRoutes = {
+	MONSTERS: 'monsters',
+	NPC: 'NPC',
+};

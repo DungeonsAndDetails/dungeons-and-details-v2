@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Skills from '../skillList';
-import { adminRoutes, modifierRoutes } from '../../routes';
+import { adminRoutes, compendiumRoutes, modifierRoutes } from '../../routes';
 import Attributes from '../attributes';
 import AdminTopNav from '../../components/AdminTopNav';
 import Items from '../items';
@@ -20,6 +20,7 @@ import TimeTypes from '../modifiers/timeTypes';
 import Races from '../raceList';
 import Subraces from '../subraceList';
 import Subclasses from '../subclassList';
+import Monsters from '../compendium/monsterList';
 
 const Admin = () => {
 	return (
@@ -45,6 +46,8 @@ const Admin = () => {
 				<Route path={modifierRoutes.SPELL_LEVELS} element={<SpellLevels />} />
 				<Route path={modifierRoutes.SPELL_SCHOOLS} element={<SpellSchools />} />
 				<Route path={modifierRoutes.TIME_TYPES} element={<TimeTypes />} />
+				{/* Compendium */}
+				<Route path={compendiumRoutes.MONSTERS} element={<Monsters />} />
 			</Routes>
 		</div>
 	);
