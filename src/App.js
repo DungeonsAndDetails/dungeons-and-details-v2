@@ -16,6 +16,8 @@ import { SpellListContextStateProvider } from './context/spellListContext';
 import { ClassListContextStateProvider } from './context/classListContext';
 import { FeatListContextStateProvider } from './context/featListContext';
 import { ModifierListContextStateProvider } from './context/modifiersContext';
+import { RaceListContextStateProvider } from './context/raceListContext';
+import { SubraceListContextStateProvider } from './context/subraceListContext';
 
 const App = () => {
 	return (
@@ -23,28 +25,32 @@ const App = () => {
 			<AlertContextStateProvider>
 				<Toast />
 				<BrowserRouter>
-					<ModifierListContextStateProvider>
-						<FeatListContextStateProvider>
-							<ClassListContextStateProvider>
-								<ItemsContextStateProvider>
-									<AttributesContextStateProvider>
-										<SkillListContextStateProvider>
-											<SpellListContextStateProvider>
-												<CharacterContextStateProvider>
-													<LoginContextStateProvider>
-														<Routes>
-															<Route path={routes.HOME} element={<Home />} />
-															<Route path={routes.ADMIN} element={<Admin />} />
-														</Routes>
-													</LoginContextStateProvider>
-												</CharacterContextStateProvider>
-											</SpellListContextStateProvider>
-										</SkillListContextStateProvider>
-									</AttributesContextStateProvider>
-								</ItemsContextStateProvider>
-							</ClassListContextStateProvider>
-						</FeatListContextStateProvider>
-					</ModifierListContextStateProvider>
+					<RaceListContextStateProvider>
+						<SubraceListContextStateProvider>
+							<ModifierListContextStateProvider>
+								<FeatListContextStateProvider>
+									<ClassListContextStateProvider>
+										<ItemsContextStateProvider>
+											<AttributesContextStateProvider>
+												<SkillListContextStateProvider>
+													<SpellListContextStateProvider>
+														<CharacterContextStateProvider>
+															<LoginContextStateProvider>
+																<Routes>
+																	<Route path={routes.HOME} element={<Home />} />
+																	<Route path={routes.ADMIN} element={<Admin />} />
+																</Routes>
+															</LoginContextStateProvider>
+														</CharacterContextStateProvider>
+													</SpellListContextStateProvider>
+												</SkillListContextStateProvider>
+											</AttributesContextStateProvider>
+										</ItemsContextStateProvider>
+									</ClassListContextStateProvider>
+								</FeatListContextStateProvider>
+							</ModifierListContextStateProvider>
+						</SubraceListContextStateProvider>
+					</RaceListContextStateProvider>
 				</BrowserRouter>
 			</AlertContextStateProvider>
 		</div>

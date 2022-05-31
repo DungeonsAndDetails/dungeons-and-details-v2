@@ -14,6 +14,8 @@ let spellsRoute = require('./routes/spells.route');
 let classesRoute = require('./routes/classes.route');
 let featRoute = require('./routes/feats.route');
 let modifiersRoute = require('./routes/modifiers.route');
+let racesRoute = require('./routes/races.route');
+let subracesRoute = require('./routes/subraces.route');
 
 // Connecting mongoDB Database
 mongoose.Promise = global.Promise;
@@ -41,6 +43,8 @@ app.use('/spells', spellsRoute);
 app.use('/classes', classesRoute);
 app.use('/feats', featRoute);
 app.use('/modifiers', modifiersRoute);
+app.use('/races', racesRoute);
+app.use('/subraces', subracesRoute);
 
 app.listen(4000, function () {
 	console.log('listening on 4000');
