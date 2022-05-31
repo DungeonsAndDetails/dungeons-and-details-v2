@@ -1,91 +1,65 @@
 import React, { useContext } from 'react';
-import { Field, Form, Formik } from 'formik';
-import Button from '../../components/Button';
-import TextInputField from '../../components/TextInputField';
 import { skillListContext } from '../../context/skillListContext';
 import { attributesContext } from '../../context/attributeContext';
-import EditSkillsField from '../../components/EditSkillsField';
-import Table from '../../components/Table';
-// import EditSkillsField from './components/EditSkillsField';
+import Table, { inputTypes } from '../../components/Table';
 
 const Skills = () => {
 	const skills = useContext(skillListContext);
 	const attributes = useContext(attributesContext);
 
-	const save = (values, id) => {
-		skills.updateSkill(values, id);
+	const skillListHeaders = [
+		{
+			label: 'Name',
+			value: 'name',
+			type: inputTypes.TEXT,
+		},
+		{
+			label: 'Description',
+			value: 'description',
+			type: inputTypes.TEXT,
+		},
+		{
+			label: 'Attribute Reliance',
+			value: 'attributeReliance',
+			type: inputTypes.SELECT,
+			options: attributes.state.attributes,
+		},
+	];
+
+	const saveSkill = ({ values, id }) => {
+		const newValues = {
+			...values,
+			attributeReliance: attributes.state.attributes.find(
+				(attribute) => attribute._id === values.attributeReliance,
+			),
+		};
+		skills.updateSkill({ values: newValues, id });
 	};
 
-	const options = () => {
-		const optionList = [
-			<option value={0} hidden key={0}>
-				Choose...
-			</option>,
-		];
-		attributes.state.attributes.forEach((attribute) => {
-			optionList.push(
-				<option value={attribute._id} key={attribute._id}>
-					{attribute.name}
-				</option>,
-			);
-		});
-		return optionList;
+	const createSkill = (values) => {
+		const newValues = {
+			...values,
+			attributeReliance: attributes.state.attributes.find(
+				(attribute) => attribute._id === values.attributeReliance,
+			),
+		};
+		skills.createSkill(newValues);
 	};
 
 	return (
 		<>
 			<div>
-				<span className="">Attribute List</span>
+				<span className="">Spell List</span>
 			</div>
 			<div className="py-3">
-				{/* <Table
+				<Table
 					data={skills.state.skills}
-					headers={durationHeaders}
-					onDelete={deleteDuration}
-					onEditSave={saveDuration}
-				/> */}
+					headers={skillListHeaders}
+					onDelete={skills.deleteSkill}
+					onEditSave={saveSkill}
+					onCreate={createSkill}
+				/>
 			</div>
-			<div>
-				<span>Create New Skills</span>
-			</div>
-			<Formik
-				initialValues={{
-					name: '',
-					// attributeReliance: null,
-					description: '',
-					attributeReliance: 0,
-				}}
-				// onSubmit={skills.createSkill}
-				onSubmit={skills.createSkill}
-			>
-				<Form>
-					<div className="grid grid-cols-4 gap-5">
-						<div>
-							<TextInputField type="text" name="name" label="Skill Name" />
-						</div>
-						<div>
-							<TextInputField type="text" name="description" label="Skill Description" />
-						</div>
-						<div>
-							<div>
-								<label htmlFor="attributeReliance" className="text-gray-400">
-									Attribute Reliance
-								</label>
-							</div>
-							<div>
-								<Field className="w-full" as="select" name="attributeReliance">
-									{options()}
-								</Field>
-							</div>
-						</div>
-						<div className="flex">
-							<Button className="border border-gray-1 mb-3 mt-auto py-2 w-full" type="submit">
-								Submit
-							</Button>
-						</div>
-					</div>
-				</Form>
-			</Formik>
 		</>
 	);
 };

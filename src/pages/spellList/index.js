@@ -7,7 +7,6 @@ const Spells = () => {
 	const spells = useContext(spellListContext);
 	const modifiers = useContext(modifierListContext);
 
-	// range: '',
 	const spellListHeaders = [
 		{
 			label: 'Name',

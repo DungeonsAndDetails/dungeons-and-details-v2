@@ -1,8 +1,4 @@
 import React, { useContext } from 'react';
-import { Form, Formik } from 'formik';
-import Button from '../../../components/Button';
-import TextInputField from '../../../components/TextInputField';
-import EditAttributeField from '../../../components/EditItemField';
 import { modifierListContext } from '../../../context/modifiersContext';
 import axios from 'axios';
 import Table, { inputTypes } from '../../../components/Table';
@@ -67,37 +63,9 @@ const SpellLevels = () => {
 					headers={spellLevelHeaders}
 					onDelete={deleteSpellLevel}
 					onEditSave={saveSpellLevel}
+					onCreate={createSpellLevel}
 				/>
 			</div>
-			<div>
-				<span>Create New Spell Level</span>
-			</div>
-			<Formik
-				initialValues={{
-					name: '',
-					description: '',
-				}}
-				onSubmit={createSpellLevel}
-			>
-				<Form>
-					<div className="grid grid-cols-3 gap-5">
-						<div>
-							<TextInputField type="text" name="name" label="Spell Level Name" />
-						</div>
-						<div>
-							<TextInputField type="text" name="value" label="Spell Level Value" />
-						</div>
-						<div>
-							<TextInputField type="text" name="description" label="Spell Level Description" />
-						</div>
-						<div className="flex">
-							<Button className="border mt-auto py-2 w-full" type="submit">
-								Submit
-							</Button>
-						</div>
-					</div>
-				</Form>
-			</Formik>
 		</>
 	);
 };
