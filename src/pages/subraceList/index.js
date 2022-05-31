@@ -9,7 +9,13 @@ const Subraces = () => {
 
 	const subraceListHeaders = [
 		{
-			label: 'Name',
+			label: 'Race',
+			value: 'race',
+			type: inputTypes.SELECT,
+			options: races.state.races,
+		},
+		{
+			label: 'Subrace',
 			value: 'name',
 			type: inputTypes.TEXT,
 		},
@@ -17,12 +23,6 @@ const Subraces = () => {
 			label: 'Description',
 			value: 'description',
 			type: inputTypes.TEXT,
-		},
-		{
-			label: 'Race',
-			value: 'race',
-			type: inputTypes.SELECT,
-			options: races.state.races,
 		},
 	];
 
@@ -41,7 +41,7 @@ const Subraces = () => {
 		};
 		subraces.createSubrace(newValues);
 	};
-	console.log('subraces', subraces);
+
 	return (
 		<>
 			<div>

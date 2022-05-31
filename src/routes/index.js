@@ -28,6 +28,7 @@ export const adminRoutes = {
 	ATTRIBUTES: 'attributes',
 	SPELLS: 'spells',
 	CLASSES: 'classes',
+	SUBCLASSES: 'subclasses',
 	TEST: 'test',
 	ITEMS: 'items',
 	PROFILE: 'profile',
