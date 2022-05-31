@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { loginContext } from '../../context/loginContext';
 import Skills from '../skillList';
 import { adminRoutes, modifierRoutes } from '../../routes';
 import Attributes from '../attributes';
@@ -18,6 +17,8 @@ import Ranges from '../modifiers/ranges';
 import Sources from '../modifiers/sources';
 import SpellLevels from '../modifiers/spellLevels';
 import TimeTypes from '../modifiers/timeTypes';
+import Races from '../raceList';
+import Subraces from '../subraceList';
 
 const Admin = () => {
 	return (
@@ -31,7 +32,8 @@ const Admin = () => {
 				<Route path={adminRoutes.ATTRIBUTES} element={<Attributes />} />
 				<Route path={adminRoutes.ITEMS} element={<Items />} />
 				<Route path={adminRoutes.PROFILE} element={<Profile />} />
-
+				<Route path={adminRoutes.RACES} element={<Races />} />
+				<Route path={adminRoutes.SUBRACES} element={<Subraces />} />
 				{/* Modifiers */}
 				<Route path={modifierRoutes.COMPONENTS} element={<Components />} />
 				<Route path={modifierRoutes.CONCENTRATIONS} element={<Concentrations />} />

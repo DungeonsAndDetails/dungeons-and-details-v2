@@ -31,6 +31,8 @@ export const adminRoutes = {
 	TEST: 'test',
 	ITEMS: 'items',
 	PROFILE: 'profile',
+	RACES: 'races',
+	SUBRACES: 'subraces',
 };
 
 export const modifierRoutes = {

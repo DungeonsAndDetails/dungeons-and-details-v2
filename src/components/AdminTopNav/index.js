@@ -44,6 +44,8 @@ const AdminTopNav = () => {
 				<Link to={adminRoutes.FEATS}>Feat List</Link>
 				<Link to={adminRoutes.ATTRIBUTES}>Attributes List</Link>
 				<Link to={adminRoutes.ITEMS}>Items List</Link>
+				<Link to={adminRoutes.RACES}>Race List</Link>
+				<Link to={adminRoutes.SUBRACES}>Subrace List</Link>
 			</Dropdown>
 			<Dropdown buttonClassName="font-semibold text-lg" buttonName="Profile ▼">
 				{login.state.loggedIn && <Link to={adminRoutes.ADMIN}>Admin View</Link>}
