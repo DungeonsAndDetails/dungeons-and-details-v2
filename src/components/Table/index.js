@@ -1,14 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Field, FieldArray, Form, Formik } from 'formik';
+import { Form, Formik } from 'formik';
 import TextInputField from '../TextInputField';
 import Button from '../Button';
-// https://tailwindcss.com/docs/table-layout
-// https://tailwind-elements.com/docs/standard/components/tables/
-// Goal, expandable dataset wise.
-// prop toggle edit & delete buttons.
-
-// Create component for each specific row
 
 export const inputTypes = {
 	TEXT: 'text',
@@ -24,7 +18,7 @@ const BuildInput = (props) => {
 					options={props.header.options}
 					name={props.header.value}
 					type={props.header.type}
-					className="border-0 p-1 pb-2"
+					className="border-0"
 					{...props}
 				/>
 			);
@@ -34,7 +28,7 @@ const BuildInput = (props) => {
 				<TextInputField
 					name={props.header.value}
 					type={props.header.type}
-					className="border-0 p-1 pb-2"
+					className="border-0"
 					{...props}
 				/>
 			);
@@ -85,7 +79,7 @@ const BuildRow = ({ item, headers, columnCount, enableManageColumn, onEditSave, 
 					{!edit &&
 						headers.map((header) => {
 							return (
-								<div key={`${header.value} text`} className="p-1">
+								<div key={`${header.value} text`} className="py-1 px-3 my-auto truncate">
 									{typeof item[header.value] === 'object'
 										? item[header.value].name
 										: item[header.value]}
@@ -141,7 +135,7 @@ const BuildHeaders = ({ columnCount, headers }) => {
 		>
 			{headers.map((header, i) => {
 				return (
-					<div key={`${header.value} ${i}`} className="p-1">
+					<div key={`${header.value} ${i}`} className="pl-3">
 						{header.label}
 					</div>
 				);
@@ -176,15 +170,13 @@ const BuildNewEntry = ({ headers, onCreate }) => {
 				<div>
 					<span>Create New</span>
 				</div>
-				<div className={`grid grid-cols-3 border-slate-300 py-1 hover:bg-slate-700 gap-2`}>
+				<div className={`grid grid-cols-3 border-slate-300 py-1 gap-2`}>
 					{headers.map((header) => {
 						return (
-							<div>
-								<BuildInput key={`${header.value} input`} header={header} label={header.label} />
-							</div>
+							<BuildInput key={`${header.value} input`} header={header} label={header.label} />
 						);
 					})}
-					<div className="mt-auto pb-1">
+					<div className="mt-auto">
 						<Button type="submit" className="w-full">
 							Create
 						</Button>

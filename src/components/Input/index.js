@@ -15,7 +15,7 @@ const InputSelect = (props) => {
 					</label>
 				</div>
 			)}
-			<div className="w-full h-full">
+			<div className="">
 				{(props.type === 'text' ||
 					props.type === 'number' ||
 					props.type === 'email' ||
@@ -28,7 +28,7 @@ const InputSelect = (props) => {
 						onChange={props.onChange}
 						onFocus={() => setFocus(true)}
 						onBlur={() => setFocus(false)}
-						className={`${props.className} w-full bg-slate-800 text-slate-200 h-full`}
+						className={`${props.className} w-full bg-slate-800 text-slate-200 h-10`}
 					/>
 				)}
 				{props.type === 'select' && (
@@ -41,7 +41,7 @@ const InputSelect = (props) => {
 						onChange={props.onChange}
 						onFocus={() => setFocus(true)}
 						onBlur={() => setFocus(false)}
-						className={`${props.className} w-full bg-slate-800 text-slate-200 h-full`}
+						className={`${props.className} w-full bg-slate-800 text-slate-200 h-10`}
 					>
 						<option hidden>Choose...</option>
 						{props.options.map((option) => {

@@ -1,7 +1,4 @@
 import React, { useContext } from 'react';
-import { Form, Formik } from 'formik';
-import Button from '../../../components/Button';
-import TextInputField from '../../../components/TextInputField';
 import { modifierListContext } from '../../../context/modifiersContext';
 import axios from 'axios';
 import Table, { inputTypes } from '../../../components/Table';
@@ -63,38 +60,9 @@ const Ranges = () => {
 					headers={rangesHeaders}
 					onDelete={deleteRange}
 					onEditSave={saveRange}
+					onCreate={createRange}
 				/>
 			</div>
-			<div>
-				<span>Create Range</span>
-			</div>
-			<Formik
-				initialValues={{
-					name: '',
-					value: '',
-					description: '',
-				}}
-				onSubmit={createRange}
-			>
-				<Form>
-					<div className="grid grid-cols-3 gap-5">
-						<div>
-							<TextInputField type="text" name="name" label="Name" />
-						</div>
-						<div>
-							<TextInputField type="text" name="value" label="Value" />
-						</div>
-						<div>
-							<TextInputField type="text" name="description" label="Description" />
-						</div>
-						<div className="flex">
-							<Button className="border mt-auto py-2 w-full" type="submit">
-								Submit
-							</Button>
-						</div>
-					</div>
-				</Form>
-			</Formik>
 		</>
 	);
 };

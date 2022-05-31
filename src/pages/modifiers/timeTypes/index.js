@@ -1,7 +1,4 @@
 import React, { useContext } from 'react';
-import { Form, Formik } from 'formik';
-import Button from '../../../components/Button';
-import TextInputField from '../../../components/TextInputField';
 import { modifierListContext } from '../../../context/modifiersContext';
 import axios from 'axios';
 import Table, { inputTypes } from '../../../components/Table';
@@ -61,35 +58,9 @@ const TimeTypes = () => {
 					headers={timeTypeHeaders}
 					onDelete={deleteTimeType}
 					onEditSave={saveTimeType}
+					onCreate={createTimeType}
 				/>
 			</div>
-			<div>
-				<span>Create New Time Type</span>
-			</div>
-			<Formik
-				initialValues={{
-					name: '',
-					value: '',
-					description: '',
-				}}
-				onSubmit={createTimeType}
-			>
-				<Form>
-					<div className="grid grid-cols-3 gap-5">
-						<div>
-							<TextInputField type="text" name="name" label="Display Name" />
-						</div>
-						<div>
-							<TextInputField type="text" name="abbreviation" label="Abbreviation" />
-						</div>
-						<div className="flex">
-							<Button className="border mt-auto py-2 w-full" type="submit">
-								Submit
-							</Button>
-						</div>
-					</div>
-				</Form>
-			</Formik>
 		</>
 	);
 };

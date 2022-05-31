@@ -50,7 +50,7 @@ const Durations = () => {
 			type: inputTypes.TEXT,
 		},
 		{
-			label: 'Duration Name',
+			label: 'Value',
 			value: 'value',
 			type: inputTypes.TEXT,
 		},
@@ -73,44 +73,9 @@ const Durations = () => {
 					headers={durationHeaders}
 					onDelete={deleteDuration}
 					onEditSave={saveDuration}
+					onCreate={createDuration}
 				/>
 			</div>
-			<div>
-				<span>Create Duration</span>
-			</div>
-			<Formik
-				initialValues={{
-					name: '',
-					value: '',
-					timeType: '',
-				}}
-				onSubmit={createDuration}
-			>
-				<Form>
-					<div className="grid grid-cols-3 gap-5">
-						<div>
-							<TextInputField type="text" name="name" label="Name" />
-						</div>
-						<div>
-							<TextInputField type="text" name="value" label="Duration Amount" />
-						</div>
-						<div>
-							<TextInputField
-								options={modifiers.state.modifiers.timeTypes}
-								name="timeType"
-								type={inputTypes.SELECT}
-								className="border-0 p-1 pb-2"
-								label="Time Type"
-							/>
-						</div>
-						<div className="flex">
-							<Button className="border mt-auto py-2 w-full" type="submit">
-								Submit
-							</Button>
-						</div>
-					</div>
-				</Form>
-			</Formik>
 		</>
 	);
 };
