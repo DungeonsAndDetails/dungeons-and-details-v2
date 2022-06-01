@@ -19,12 +19,13 @@ const BuildSubraces = ({ setFieldValue, selectedRace }) => {
 	}, [selectedRace, subraces.state.subraces]);
 	const setSubrace = (values) => {
 		setSelectedSubrace(values);
-		setFieldValue('class', values);
+		setFieldValue('subrace', values);
 	};
 
 	// console.log('SUBRACE RACE', test);
-	console.log('selectedSubrace', selectedSubrace);
-	console.log('availableSubraces', availableSubraces);
+	// console.log('selectedSubrace', selectedSubrace);
+	// console.log('availableSubraces', availableSubraces);
+	// console.log('selectedRace', selectedRace);
 
 	return (
 		<div>
