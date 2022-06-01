@@ -4,6 +4,7 @@ import TextInputField from '../../../components/TextInputField';
 import { characterCreationContext } from '../../../context/characterCreationContext';
 import BuildClasses from './BuildClasses';
 import BuildRaces from './BuildRaces';
+import BuildSubclasses from './BuildSubclasses';
 import BuildSubraces from './BuildSubraces';
 
 const BuildDisplays = ({
@@ -18,6 +19,7 @@ const BuildDisplays = ({
 	selectedClass,
 	races,
 	subraces,
+	subclasses,
 }) => {
 	const characterCreation = useContext(characterCreationContext);
 	const validateStepOne = async () => {
@@ -42,7 +44,7 @@ const BuildDisplays = ({
 	};
 	// console.log(characterCreation.state);
 	// console.log('errors', errors);
-	// console.log('values', values);
+	console.log('values', values);
 
 	switch (step) {
 		case 0:
@@ -99,8 +101,8 @@ const BuildDisplays = ({
 			return (
 				// make an array that adds more class buttons
 				<div className="grid pt-2">
-					<div className="grid grid-cols-12">
-						<div className="border-2">
+					<div className="grid  grid-cols-12">
+						<div className="border-2 col-span-1 col-start-1">
 							<div className="border-b">
 								<span className="">Class Names</span>
 							</div>
@@ -110,9 +112,21 @@ const BuildDisplays = ({
 								</div>
 							</div>
 						</div>
-						<div className="grid grid-rows-5 col-start-3 col-span-3 border-2">
-							<label className=" border-b">Description</label>
-							<div className="grid row-start-2 row-span-4">{values.class.description}</div>
+						<div className="grid  my-auto   col-start-3 col-span-3 border-2">
+							<span className="h-min border-b top-0 ">Description</span>
+							<div className="">{values.class.description}</div>
+						</div>
+						<div className="col-start-7 col-span-1 ">
+							<span className="border-b">
+								<BuildSubclasses
+									selectedClass={values.class}
+									subclasses={subclasses}
+									setFieldValue={setFieldValue}
+								/>
+							</span>
+						</div>
+						<div className="col-start-9 col-span-3 ">
+							<span className="border-b">{values.subclass.description}</span>
 						</div>
 					</div>
 					<div>

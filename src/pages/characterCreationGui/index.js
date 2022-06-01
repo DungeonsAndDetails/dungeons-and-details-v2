@@ -37,8 +37,8 @@ const CharacterCreationGui = ({ headers }) => {
 					title: '',
 
 					class: {},
-					subClass: {},
-					subRace: '',
+					subclass: {},
+					subrace: '',
 					race: '',
 					sex: '',
 				}}
