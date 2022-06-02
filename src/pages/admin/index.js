@@ -21,12 +21,27 @@ import Races from '../raceList';
 import Subraces from '../subraceList';
 import Subclasses from '../subclassList';
 import Monsters from '../compendium/monsterList';
+import DamageTypes from '../modifiers/damageTypes';
+import Backgrounds from '../backgroundList';
 
 const Admin = () => {
 	return (
 		<div className="text-white">
 			<AdminTopNav />
 			<Routes>
+				{/* Modifiers */}
+				<Route path={modifierRoutes.COMPONENTS} element={<Components />} />
+				<Route path={modifierRoutes.CONCENTRATIONS} element={<Concentrations />} />
+				<Route path={modifierRoutes.DURATIONS} element={<Durations />} />
+				<Route path={modifierRoutes.RANGES} element={<Ranges />} />
+				<Route path={modifierRoutes.SOURCES} element={<Sources />} />
+				<Route path={modifierRoutes.SPELL_LEVELS} element={<SpellLevels />} />
+				<Route path={modifierRoutes.SPELL_SCHOOLS} element={<SpellSchools />} />
+				<Route path={modifierRoutes.TIME_TYPES} element={<TimeTypes />} />
+				<Route path={modifierRoutes.DAMAGE_TYPES} element={<DamageTypes />} />
+				{/* Compendium */}
+				<Route path={compendiumRoutes.MONSTERS} element={<Monsters />} />
+				{/* List */}
 				<Route path={adminRoutes.SKILLS} element={<Skills />} />
 				<Route path={adminRoutes.SPELLS} element={<Spells />} />
 				<Route path={adminRoutes.CLASSES} element={<Classes />} />
@@ -37,17 +52,7 @@ const Admin = () => {
 				<Route path={adminRoutes.PROFILE} element={<Profile />} />
 				<Route path={adminRoutes.RACES} element={<Races />} />
 				<Route path={adminRoutes.SUBRACES} element={<Subraces />} />
-				{/* Modifiers */}
-				<Route path={modifierRoutes.COMPONENTS} element={<Components />} />
-				<Route path={modifierRoutes.CONCENTRATIONS} element={<Concentrations />} />
-				<Route path={modifierRoutes.DURATIONS} element={<Durations />} />
-				<Route path={modifierRoutes.RANGES} element={<Ranges />} />
-				<Route path={modifierRoutes.SOURCES} element={<Sources />} />
-				<Route path={modifierRoutes.SPELL_LEVELS} element={<SpellLevels />} />
-				<Route path={modifierRoutes.SPELL_SCHOOLS} element={<SpellSchools />} />
-				<Route path={modifierRoutes.TIME_TYPES} element={<TimeTypes />} />
-				{/* Compendium */}
-				<Route path={compendiumRoutes.MONSTERS} element={<Monsters />} />
+				<Route path={adminRoutes.BACKGROUNDS} element={<Backgrounds />} />
 			</Routes>
 		</div>
 	);

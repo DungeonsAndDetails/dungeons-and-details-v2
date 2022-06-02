@@ -32,6 +32,7 @@ const AdminTopNav = () => {
 				<Link to={modifierRoutes.SPELL_LEVELS}>Spell Levels</Link>
 				<Link to={modifierRoutes.SPELL_SCHOOLS}>Spell Schools</Link>
 				<Link to={modifierRoutes.TIME_TYPES}>Time Types</Link>
+				<Link to={modifierRoutes.DAMAGE_TYPES}>Damage Types</Link>
 			</Dropdown>
 			<Dropdown
 				buttonClassName="font-semibold text-lg"
@@ -54,6 +55,7 @@ const AdminTopNav = () => {
 				<Link to={adminRoutes.ITEMS}>Items List</Link>
 				<Link to={adminRoutes.RACES}>Race List</Link>
 				<Link to={adminRoutes.SUBRACES}>Subrace List</Link>
+				<Link to={adminRoutes.BACKGROUNDS}>Background List</Link>
 			</Dropdown>
 			<Dropdown buttonClassName="font-semibold text-lg" buttonName="Profile ▼">
 				{login.state.loggedIn && <Link to={adminRoutes.ADMIN}>Admin View</Link>}

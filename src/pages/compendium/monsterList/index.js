@@ -16,6 +16,21 @@ const Monsters = () => {
 			value: 'description',
 			type: inputTypes.TEXT,
 		},
+		{
+			label: 'Hit Points',
+			value: 'hitPoints',
+			type: inputTypes.NUMBER,
+		},
+		{
+			label: 'Armor Class',
+			value: 'armorClass',
+			type: inputTypes.NUMBER,
+		},
+		{
+			label: 'Speed',
+			value: 'movementSpeed',
+			type: inputTypes.NUMBER,
+		},
 	];
 
 	return (

@@ -5,10 +5,10 @@ import PropTypes from 'prop-types';
 
 const InputSelect = (props) => {
 	const [focus, setFocus] = useState(false);
-	// console.log('props', props);
+
 	return (
 		<div className={`${props.labelLeft ? 'flex justify-between ' : ''}`}>
-			{props.label && !props.type === 'radio' && (
+			{props.label && !(props.type === 'radio') && (
 				<div className={props.labelLeft ? 'm-auto pr-3 w-2/5' : ''}>
 					<label
 						htmlFor={props.name}
