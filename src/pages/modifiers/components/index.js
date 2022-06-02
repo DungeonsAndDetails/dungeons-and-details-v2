@@ -51,7 +51,7 @@ const Components = () => {
 			type: inputTypes.TEXT,
 		},
 	];
-
+	console.log('modifiers', modifiers);
 	return (
 		<>
 			<div>

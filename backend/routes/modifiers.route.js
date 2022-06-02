@@ -10,6 +10,7 @@ let spellLevelsRoute = require('./modifiers/spell.levels.route');
 let spellSchoolRoute = require('./modifiers/spell.schools.route');
 let timesRoute = require('./modifiers/times.route');
 let timeTypesRoute = require('./modifiers/time.types.route');
+let damageTypesRoute = require('./modifiers/damage.types.route');
 
 const db = mongoose.connection;
 const componentsCollection = db.collection('Components');
@@ -21,6 +22,7 @@ const spellLevelsCollection = db.collection('Spell Levels');
 const spellSchoolCollection = db.collection('Spell Schools');
 const timesCollection = db.collection('Times');
 const timeTypesCollection = db.collection('Time Types');
+const damageTypesCollection = db.collection('Damage Types');
 
 router.route('/all').get((req, res) => {
 	const components = componentsCollection.find().toArray();
@@ -32,6 +34,7 @@ router.route('/all').get((req, res) => {
 	const spellSchools = spellSchoolCollection.find().toArray();
 	const times = timesCollection.find().toArray();
 	const timeTypes = timeTypesCollection.find().toArray();
+	const damageTypes = damageTypesCollection.find().toArray();
 
 	Promise.all([
 		components,
@@ -43,6 +46,7 @@ router.route('/all').get((req, res) => {
 		spellSchools,
 		times,
 		timeTypes,
+		damageTypes,
 	])
 		.then(
 			([
@@ -55,6 +59,7 @@ router.route('/all').get((req, res) => {
 				spellSchools,
 				times,
 				timeTypes,
+				damageTypes,
 			]) => {
 				res.send({
 					components,
@@ -66,6 +71,7 @@ router.route('/all').get((req, res) => {
 					spellSchools,
 					times,
 					timeTypes,
+					damageTypes,
 				});
 			},
 		)
@@ -83,5 +89,6 @@ router.use('/spell-levels', spellLevelsRoute);
 router.use('/spell-schools', spellSchoolRoute);
 router.use('/times', timesRoute);
 router.use('/time-types', timeTypesRoute);
+router.use('/damage-types', damageTypesRoute);
 
 module.exports = router;

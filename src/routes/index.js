@@ -34,6 +34,7 @@ export const adminRoutes = {
 	PROFILE: 'profile',
 	RACES: 'races',
 	SUBRACES: 'subraces',
+	BACKGROUNDS: 'backgrounds',
 };
 
 export const modifierRoutes = {
@@ -46,4 +47,10 @@ export const modifierRoutes = {
 	SPELL_LEVELS: 'spell-levels',
 	SPELL_SCHOOLS: 'spell-schools',
 	TIME_TYPES: 'time-types',
+	DAMAGE_TYPES: 'damage-types',
+};
+
+export const compendiumRoutes = {
+	MONSTERS: 'monsters',
+	NPC: 'NPC',
 };

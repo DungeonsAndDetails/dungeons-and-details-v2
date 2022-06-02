@@ -21,7 +21,7 @@ const Modal = ({ title, description, submit, cancel, saveButtonLabel }) => {
 					</div>
 					{/* body */}
 					<div className="relative p-6 flex-auto">
-						<p className="my-4 text-slate-500 text-lg leading-relaxed">{description}</p>
+						<div className="my-4 text-slate-500 text-lg leading-relaxed">{description}</div>
 					</div>
 					{/* footer */}
 					<div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">

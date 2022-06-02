@@ -22,12 +22,6 @@ const BuildSubclasses = ({ setFieldValue, selectedClass }) => {
 		setFieldValue('subclass', values);
 	};
 
-	// console.log('SUBRACE RACE', test);
-	// console.log('selectedSubclass', selectedSubclass);
-	// console.log('availableSubclasses', availableSubclasses);
-	// console.log('Classes', classes.state.classes);
-	// console.log('Subclasses', subclasses.state.subclasses);
-
 	return (
 		<div>
 			<div>

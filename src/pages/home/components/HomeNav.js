@@ -18,9 +18,6 @@ const HomeNav = () => {
 				<div>
 					<Link to={routes.TEST_PAGE}>Test</Link>
 				</div>
-				<div>
-					<Link to={homeRoutes.MONSTERS}>Monsters</Link>
-				</div>
 
 				<div>
 					<Dropdown buttonClassName="font-semibold" buttonName="Profile ▼">

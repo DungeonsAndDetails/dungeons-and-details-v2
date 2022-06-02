@@ -8,7 +8,6 @@ import SignUp from '../signUp';
 import HomeNav from './components/HomeNav';
 import CharacterSheet from '../characterSheet';
 import Test from '../Test';
-import Monsters from '../monster/Monster';
 import CharacterCreationGui from '../characterCreationGui';
 
 const Home = () => {
@@ -16,7 +15,6 @@ const Home = () => {
 		<div className="text-white">
 			<HomeNav />
 			<Routes>
-				<Route path={homeRoutes.MONSTERS} element={<Monsters />} />
 				<Route path={homeRoutes.LANDING} element={<Landing />} />
 				<Route path={homeRoutes.LOGIN} element={<Login />} />
 				<Route path={routes.TEST_PAGE} element={<Test />} />
