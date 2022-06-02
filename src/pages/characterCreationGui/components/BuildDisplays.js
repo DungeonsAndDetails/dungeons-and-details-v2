@@ -140,11 +140,21 @@ const BuildDisplays = ({
 			return (
 				<div>
 					<div>
-						<TextInputField type="text" name="race" placeholder="Race" />
-						<TextInputField type="text" name="sex" placeholder="Sex" />
-						<Button onClick={validateStepThree} type="button">
-							Next
-						</Button>
+						<div className="border-2">DM sponsered heritage backgrounds</div>
+						<div className="border-2">Decriptions of heritage/background</div>
+						<div>
+							<TextInputField
+								className="bg-transparent"
+								type="text"
+								name="backstory"
+								placeholder="Custom Backstory Information"
+							/>
+						</div>
+						<div>
+							<Button onClick={validateStepThree} type="button">
+								Next
+							</Button>
+						</div>
 						<div>
 							<Button type="submit">Submit</Button>
 						</div>
