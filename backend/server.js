@@ -19,6 +19,7 @@ let modifiersRoute = require('./routes/modifiers.route');
 let racesRoute = require('./routes/races.route');
 let subracesRoute = require('./routes/subraces.route');
 let monstersRoute = require('./routes/monsters.route');
+let npcsRoute = require('./routes/npcs.route');
 let backgroundsRoute = require('./routes/backgrounds.route');
 
 // Connecting mongoDB Database
@@ -52,6 +53,7 @@ app.use('/modifiers', modifiersRoute);
 app.use('/races', racesRoute);
 app.use('/subraces', subracesRoute);
 app.use('/monsters', monstersRoute);
+app.use('/npcs', npcsRoute);
 app.use('/backgrounds', backgroundsRoute);
 
 app.listen(4000, function () {

@@ -59,6 +59,7 @@ const BuildRow = ({ item, headers, columnCount, enableManageColumn, onEditSave, 
 		setDeleteRow(null);
 	};
 
+	// Look into func
 	const saveOnClick = (values) => {
 		console.log('saveOnClick', values);
 	};
@@ -76,7 +77,6 @@ const BuildRow = ({ item, headers, columnCount, enableManageColumn, onEditSave, 
 		});
 		return initialValues;
 	};
-	console.log('deleteRow', deleteRow);
 
 	const modalDescription = () => {
 		return (

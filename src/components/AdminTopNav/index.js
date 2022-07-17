@@ -40,6 +40,7 @@ const AdminTopNav = () => {
 				buttonName="Compendium ▼"
 			>
 				<Link to={compendiumRoutes.MONSTERS}>Monsters</Link>
+				<Link to={compendiumRoutes.NPCS}>NPCs</Link>
 			</Dropdown>
 			<Dropdown
 				buttonClassName="font-semibold text-lg"

@@ -23,6 +23,7 @@ import Subclasses from '../subclassList';
 import Monsters from '../compendium/monsterList';
 import DamageTypes from '../modifiers/damageTypes';
 import Backgrounds from '../backgroundList';
+import Npcs from '../compendium/npcList';
 
 const Admin = () => {
 	return (
@@ -41,6 +42,7 @@ const Admin = () => {
 				<Route path={modifierRoutes.DAMAGE_TYPES} element={<DamageTypes />} />
 				{/* Compendium */}
 				<Route path={compendiumRoutes.MONSTERS} element={<Monsters />} />
+				<Route path={compendiumRoutes.NPCS} element={<Npcs />} />
 				{/* List */}
 				<Route path={adminRoutes.SKILLS} element={<Skills />} />
 				<Route path={adminRoutes.SPELLS} element={<Spells />} />

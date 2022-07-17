@@ -52,5 +52,5 @@ export const modifierRoutes = {
 
 export const compendiumRoutes = {
 	MONSTERS: 'monsters',
-	NPC: 'NPC',
+	NPCS: 'npcs',
 };
