@@ -41,11 +41,18 @@ const CharacterCreationGui = ({ headers }) => {
 					subrace: '',
 					race: '',
 					sex: '',
+					strength: '10',
+					dexterity: '10',
+					constitution: '10',
+					intelligence: '10',
+					wisdom: '10',
+					charisma: '10',
 				}}
 				onSubmit={characterCreation.createCharacterCreation}
 			>
 				{(props) => {
 					console.log('props', props);
+
 					return (
 						<Form>
 							<BuildHeaders step={step} setStep={setStep} headers={headers} />
@@ -76,10 +83,13 @@ CharacterCreationGui.defaultProps = {
 			name: 'background',
 		},
 		{
-			name: 'ablitlity scores',
+			name: 'ability scores',
 		},
 		{
 			name: 'skills',
+		},
+		{
+			name: 'equipment',
 		},
 		{
 			name: 'Final',

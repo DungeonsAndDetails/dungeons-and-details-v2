@@ -163,8 +163,58 @@ const BuildDisplays = ({
 			);
 		case 3:
 			return (
+				//Modifiers need to be implimented
 				<div>
-					<div>{values.name}</div>
+					<div className="grid grid-cols-12">
+						<div className="col-span-2 mx-auto">
+							<span>Ability Scores</span>
+						</div>
+						<div className=" container grid grid-rows-2  col-start-1 col-span-2">
+							<div className="">
+								<div className="  border-2 col-start-1 col-span-2">
+									<div className="">
+										<span className="">Strength</span>
+									</div>
+									<TextInputField className="" placeholder="" name="strength" type="text" />
+								</div>
+								<div className="  border-2 col-start-1 col-span-2">
+									<div className="">
+										<span className="">Dexterity</span>
+									</div>
+									<TextInputField className="" placeholder="" name="dexterity" type="text" />
+								</div>
+								<div className="  border-2 col-start-1 col-span-2">
+									<div className="">
+										<span className="">Constitution</span>
+									</div>
+									<TextInputField className="" placeholder="" name="constitution" type="text" />
+								</div>
+							</div>
+							<div className="col-start-2">
+								<div className="  border-2 col-start-1 col-span-2">
+									<div className="">
+										<span className="">Intelligence</span>
+									</div>
+									<TextInputField className="" placeholder="" name="intelligence" type="text" />
+								</div>
+								<div className="  border-2 col-start-1 col-span-2">
+									<div className="">
+										<span className="">Wisdom</span>
+									</div>
+									<TextInputField className="" placeholder="" name="wisdom" type="text" />
+								</div>
+								<div className="  border-2 col-start-1 col-span-2">
+									<div className="">
+										<span className="">Charisma</span>
+									</div>
+									<TextInputField className="" placeholder="" name="charisma" type="text" />
+								</div>
+							</div>
+						</div>
+						<div>
+							<span>Description of stat spreads *3 of them</span>
+						</div>
+					</div>
 				</div>
 			);
 
