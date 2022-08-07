@@ -6,8 +6,6 @@ import TextInputField from '../../components/TextInputField';
 //set limit to rolls to 100 times
 
 const BuildDiceRolls = ({ rolls }) => {
-	console.log(rolls);
-
 	let sum = 0;
 	let items = [];
 	rolls.diceRolls.forEach((roll, i) => {
@@ -37,10 +35,7 @@ const Dice = (props) => {
 		const temp = [...rolls];
 		temp.push({ diceRolls, diceModifier });
 		setRolls(temp);
-		console.log(values);
 	};
-
-	console.log();
 
 	return (
 		<Formik

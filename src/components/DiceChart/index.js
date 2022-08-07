@@ -47,7 +47,6 @@ const DiceChart = (value) => {
 	};
 	const onChangeHandler2 = (e) => {
 		setModd(parseInt(e.target.value, 10));
-		console.log('EVENT', e.target.value);
 	};
 
 	const getRoll = (number, mod) => {
@@ -65,11 +64,7 @@ const DiceChart = (value) => {
 		const temp = [...rolls];
 		temp.push(diceRolls);
 		setRolls(temp);
-
-		console.log('Dice Roll ', diceRolls);
 	};
-
-	console.log('Rolls Var.', rolls);
 
 	return (
 		<div className="">
