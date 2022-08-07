@@ -56,6 +56,28 @@ const InputSelect = (props) => {
 						})}
 					</select>
 				)}
+				{props.type === 'multiSelect' && (
+					<select
+						id={props.id}
+						name={props.name}
+						type={props.type}
+						placeholder={props.placeholder}
+						value={props.value}
+						onChange={props.onChange}
+						onFocus={() => setFocus(true)}
+						onBlur={() => setFocus(false)}
+						className={`${props.className} w-full bg-slate-800 text-slate-200 h-10`}
+					>
+						<option hidden>Choose...</option>
+						{props.options.map((option) => {
+							return (
+								<option key={option._id} value={option._id}>
+									{option.name}
+								</option>
+							);
+						})}
+					</select>
+				)}
 				{props.type === 'radio' && (
 					<div>
 						<input
