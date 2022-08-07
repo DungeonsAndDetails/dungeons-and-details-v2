@@ -9,12 +9,14 @@ import HomeNav from './components/HomeNav';
 import CharacterSheet from '../characterSheet';
 import Test from '../Test';
 import CharacterCreationGui from '../characterCreationGui';
+import Dice from '../dice';
 
 const Home = () => {
 	return (
 		<div className="text-white">
 			<HomeNav />
 			<Routes>
+				<Route path={homeRoutes.DICE} element={<Dice />} />
 				<Route path={homeRoutes.LANDING} element={<Landing />} />
 				<Route path={homeRoutes.LOGIN} element={<Login />} />
 				<Route path={routes.TEST_PAGE} element={<Test />} />

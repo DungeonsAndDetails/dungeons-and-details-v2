@@ -13,6 +13,9 @@ const HomeNav = () => {
 					<Link to={homeRoutes.LANDING}>Home</Link>
 				</div>
 				<div>
+					<Link to={homeRoutes.DICE}>Dice</Link>
+				</div>
+				<div>
 					<Link to={routes.CHARACTER_SHEET_PAGE}>Character Sheet</Link>
 				</div>
 				<div>

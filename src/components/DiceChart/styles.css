@@ -1,0 +1,15 @@
+.roll {
+	min-width: 16px;
+}
+.roll-output {
+	max-width: 250px;
+}
+.roll-chart {
+	max-width: 250px;
+}
+.roll-container {
+	max-width: 384px;
+	min-width: 384px;
+	max-height: 400px;
+	min-height: 400px;
+}
