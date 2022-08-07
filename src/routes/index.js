@@ -19,6 +19,7 @@ export const homeRoutes = {
 	PROFILE: 'profile',
 	MONSTERS: 'monsters',
 	CHARACTER_CREATION_GUI: 'ccg',
+	DICE: 'dice',
 };
 
 export const adminRoutes = {
