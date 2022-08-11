@@ -10,11 +10,13 @@ import CharacterSheet from '../characterSheet';
 import Test from '../Test';
 import CharacterCreationGui from '../characterCreationGui';
 import Dice from '../dice';
+import Chat from '../../components/Chat';
 
 const Home = () => {
 	return (
 		<div className="text-white">
 			<HomeNav />
+			<Chat />
 			<Routes>
 				<Route path={homeRoutes.DICE} element={<Dice />} />
 				<Route path={homeRoutes.LANDING} element={<Landing />} />

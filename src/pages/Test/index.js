@@ -1,7 +1,11 @@
 import './styles.css';
 
-const Test = (value) => {
-	return <div>rawr</div>;
+const Test = (props) => {
+	return (
+		<div className="">
+			<div className="">hi</div>
+		</div>
+	);
 };
 
 Test.defaultProps = {};

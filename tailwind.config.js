@@ -1,6 +1,8 @@
 module.exports = {
 	content: ['./src/**/*.{html,js}'],
 	safelist: [
+		'h-96',
+		'h-0',
 		'grid-cols-1',
 		'grid-cols-2',
 		'grid-cols-3',
@@ -607,7 +609,7 @@ module.exports = {
 			none: '1',
 			tight: '1.25',
 			snug: '1.375',
-			normal: '1.5',
+			normal: '1',
 			relaxed: '1.625',
 			loose: '2',
 			3: '.75rem',
@@ -878,6 +880,12 @@ module.exports = {
 			opacity: 'opacity',
 			shadow: 'box-shadow',
 			transform: 'transform',
+			extend: {
+				transitionProperty: {
+					height: 'height',
+					spacing: 'margin, padding',
+				},
+			},
 		},
 		transitionTimingFunction: {
 			DEFAULT: 'cubic-bezier(0.4, 0, 0.2, 1)',

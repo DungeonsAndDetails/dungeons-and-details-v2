@@ -7,7 +7,7 @@ const InputSelect = (props) => {
 	const [focus, setFocus] = useState(false);
 
 	return (
-		<div className={`${props.labelLeft ? 'flex justify-between ' : ''}`}>
+		<div className={`${props.labelLeft ? 'flex justify-between ' : 'w-full'}`}>
 			{props.label && !(props.type === 'radio') && (
 				<div className={props.labelLeft ? 'm-auto pr-3 w-2/5' : ''}>
 					<label
@@ -18,7 +18,7 @@ const InputSelect = (props) => {
 					</label>
 				</div>
 			)}
-			<div className="">
+			<div className="w-full">
 				{(props.type === 'text' ||
 					props.type === 'number' ||
 					props.type === 'email' ||
@@ -32,6 +32,8 @@ const InputSelect = (props) => {
 						onFocus={() => setFocus(true)}
 						onBlur={() => setFocus(false)}
 						className={`${props.className} w-full bg-slate-800 text-slate-200 h-10`}
+						autoComplete="off"
+						// added autoComplete="off" to turn off autofill in forms
 					/>
 				)}
 				{props.type === 'select' && (

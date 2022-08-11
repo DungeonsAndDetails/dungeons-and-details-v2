@@ -24,11 +24,13 @@ import Monsters from '../compendium/monsterList';
 import DamageTypes from '../modifiers/damageTypes';
 import Backgrounds from '../backgroundList';
 import Npcs from '../compendium/npcList';
+import Chat from '../../components/Chat';
 
 const Admin = () => {
 	return (
 		<div className="text-white">
 			<AdminTopNav />
+			<Chat />
 			<Routes>
 				{/* Modifiers */}
 				<Route path={modifierRoutes.COMPONENTS} element={<Components />} />
