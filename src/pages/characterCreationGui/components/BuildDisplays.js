@@ -4,7 +4,7 @@ import TextInputField from '../../../components/TextInputField';
 import { characterCreationContext } from '../../../context/characterCreationContext';
 import BuildClasses from './BuildClasses';
 import BuildRaces from './BuildRaces';
-import BuildSubclasses from './BuildSubclasses';
+import BuildSubclasses from './BuildSubClasses';
 import BuildSubraces from './BuildSubraces';
 
 const BuildDisplays = ({

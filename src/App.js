@@ -23,6 +23,7 @@ import { SubclassListContextStateProvider } from './context/subclassListContext'
 import { MonsterListContextStateProvider } from './context/monsterContext';
 import { BackgroundListContextStateProvider } from './context/backgroundListContext';
 import { NpcListContextStateProvider } from './context/npcContext';
+import { ChatContextStateProvider } from './context/chatContext';
 
 const App = () => {
 	return (
@@ -30,42 +31,44 @@ const App = () => {
 			<AlertContextStateProvider>
 				<Toast />
 				<BrowserRouter>
-					<NpcListContextStateProvider>
-						<BackgroundListContextStateProvider>
-							<CharacterCreationContextStateProvider>
-								<MonsterListContextStateProvider>
-									<RaceListContextStateProvider>
-										<SubraceListContextStateProvider>
-											<ModifierListContextStateProvider>
-												<FeatListContextStateProvider>
-													<ClassListContextStateProvider>
-														<SubclassListContextStateProvider>
-															<ItemsContextStateProvider>
-																<AttributesContextStateProvider>
-																	<SkillListContextStateProvider>
-																		<SpellListContextStateProvider>
-																			<CharacterContextStateProvider>
-																				<LoginContextStateProvider>
-																					<Routes>
-																						<Route path={routes.HOME} element={<Home />} />
-																						<Route path={routes.ADMIN} element={<Admin />} />
-																					</Routes>
-																				</LoginContextStateProvider>
-																			</CharacterContextStateProvider>
-																		</SpellListContextStateProvider>
-																	</SkillListContextStateProvider>
-																</AttributesContextStateProvider>
-															</ItemsContextStateProvider>
-														</SubclassListContextStateProvider>
-													</ClassListContextStateProvider>
-												</FeatListContextStateProvider>
-											</ModifierListContextStateProvider>
-										</SubraceListContextStateProvider>
-									</RaceListContextStateProvider>
-								</MonsterListContextStateProvider>
-							</CharacterCreationContextStateProvider>
-						</BackgroundListContextStateProvider>
-					</NpcListContextStateProvider>
+					<ChatContextStateProvider>
+						<NpcListContextStateProvider>
+							<BackgroundListContextStateProvider>
+								<CharacterCreationContextStateProvider>
+									<MonsterListContextStateProvider>
+										<RaceListContextStateProvider>
+											<SubraceListContextStateProvider>
+												<ModifierListContextStateProvider>
+													<FeatListContextStateProvider>
+														<ClassListContextStateProvider>
+															<SubclassListContextStateProvider>
+																<ItemsContextStateProvider>
+																	<AttributesContextStateProvider>
+																		<SkillListContextStateProvider>
+																			<SpellListContextStateProvider>
+																				<CharacterContextStateProvider>
+																					<LoginContextStateProvider>
+																						<Routes>
+																							<Route path={routes.HOME} element={<Home />} />
+																							<Route path={routes.ADMIN} element={<Admin />} />
+																						</Routes>
+																					</LoginContextStateProvider>
+																				</CharacterContextStateProvider>
+																			</SpellListContextStateProvider>
+																		</SkillListContextStateProvider>
+																	</AttributesContextStateProvider>
+																</ItemsContextStateProvider>
+															</SubclassListContextStateProvider>
+														</ClassListContextStateProvider>
+													</FeatListContextStateProvider>
+												</ModifierListContextStateProvider>
+											</SubraceListContextStateProvider>
+										</RaceListContextStateProvider>
+									</MonsterListContextStateProvider>
+								</CharacterCreationContextStateProvider>
+							</BackgroundListContextStateProvider>
+						</NpcListContextStateProvider>
+					</ChatContextStateProvider>
 				</BrowserRouter>
 			</AlertContextStateProvider>
 		</div>

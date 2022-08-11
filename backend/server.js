@@ -21,6 +21,7 @@ let subracesRoute = require('./routes/subraces.route');
 let monstersRoute = require('./routes/monsters.route');
 let npcsRoute = require('./routes/npcs.route');
 let backgroundsRoute = require('./routes/backgrounds.route');
+let chatRoute = require('./routes/chat.route');
 
 // Connecting mongoDB Database
 mongoose.Promise = global.Promise;
@@ -55,6 +56,7 @@ app.use('/subraces', subracesRoute);
 app.use('/monsters', monstersRoute);
 app.use('/npcs', npcsRoute);
 app.use('/backgrounds', backgroundsRoute);
+app.use('/chat', chatRoute);
 
 app.listen(4000, function () {
 	console.log('listening on 4000');
