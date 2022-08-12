@@ -13,7 +13,7 @@ const SignUp = (props) => {
 
 	const validationSchema = Yup.object().shape({
 		email: Yup.string().email('Invalid email format').required('Required'),
-		displayName: Yup.string().min(6, '6 Characters minimum'),
+		displayName: Yup.string().min(3, '3 Characters minimum'),
 		password: Yup.string().required('Required').min(3, '3 Characters minimum'),
 		confirmPassword: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match'),
 	});
