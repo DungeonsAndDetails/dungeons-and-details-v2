@@ -42,9 +42,6 @@ const BuildDisplays = ({
 			setStep(step + 1);
 		}
 	};
-	// console.log(characterCreation.state);
-	// console.log('errors', errors);
-	console.log('values', values);
 
 	switch (step) {
 		case 0:

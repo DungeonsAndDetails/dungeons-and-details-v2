@@ -30,10 +30,12 @@ router.route('/all').get((req, res) => {
 });
 
 router.post('/login', (req, res) => {
+	console.log('request', req.body);
 	profileCollection
-		.findOne({ username: req.body.username, password: req.body.password })
+		.findOne({ email: req.body.email, password: req.body.password })
 		.then((result) => {
 			if (result) {
+				console.log('result', result);
 				res.send(result);
 			} else {
 				throw new Error('Does not Exist');
