@@ -20,6 +20,9 @@ const reducer = (state, action) => {
 			const newState = action.value;
 			return newState;
 		case userContextActions.SIGN_OUT:
+			localStorage.removeItem('login');
+			const checkLogin = JSON.parse(localStorage.getItem('login'));
+			console.log('checkLogin', checkLogin);
 			return initialState;
 		default:
 			throw new Error();

@@ -4,7 +4,7 @@ import TextInputField from '../../../components/TextInputField';
 import { characterCreationContext } from '../../../context/characterCreationContext';
 import BuildClasses from './BuildClasses';
 import BuildRaces from './BuildRaces';
-import BuildSubclasses from './BuildSubClasses';
+import BuildSubclasses from './BuildSubclasses';
 import BuildSubraces from './BuildSubraces';
 
 const BuildDisplays = ({
@@ -42,9 +42,6 @@ const BuildDisplays = ({
 			setStep(step + 1);
 		}
 	};
-	// console.log(characterCreation.state);
-	// console.log('errors', errors);
-	console.log('values', values);
 
 	switch (step) {
 		case 0:
