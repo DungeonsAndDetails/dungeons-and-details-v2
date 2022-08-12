@@ -1,9 +1,10 @@
 import axios from 'axios';
 import { Form, Formik } from 'formik';
 import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import Button from '../../components/Button';
+import StyledLink from '../../components/StyledLink';
 import TextInputField from '../../components/TextInputField';
 import { userContext, userContextActions } from '../../context/userContext';
 
@@ -65,11 +66,10 @@ const Login = () => {
 						)}
 						<p className="font-bold text-lg mb-1">Login</p>
 						<div className="flex mb-5">
-							<p className=" text-xs">Don't have an account yet?</p>
-							{/* use spaceing instead of pl-2 */}
-							<Link to="/sign-up" className="text-xs pl-2 text-blue-500">
+							<p className="text-xs">Don't have an account yet?</p>
+							<StyledLink to="/sign-up" className="text-xs ml-2 ">
 								Sign Up
-							</Link>
+							</StyledLink>
 						</div>
 						<TextInputField
 							placeholder="Email"
@@ -94,9 +94,9 @@ const Login = () => {
 								</Button>
 							</div>
 							<div className="flex justify-center">
-								<Link to="/forgot-password" className="text-xs text-blue-500">
+								<StyledLink to="/forgot-password" className="text-xs ">
 									Forgot Password?
-								</Link>
+								</StyledLink>
 							</div>
 						</div>
 						<div></div>

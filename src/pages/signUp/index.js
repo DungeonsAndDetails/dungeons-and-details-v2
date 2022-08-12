@@ -4,8 +4,9 @@ import * as Yup from 'yup';
 import Button from '../../components/Button';
 import TextInputField from '../../components/TextInputField';
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
+import StyledLink from '../../components/StyledLink';
 
 const SignUp = (props) => {
 	// reset form maybe
@@ -60,10 +61,9 @@ const SignUp = (props) => {
 						<p className="mb-1 font-bold text-lg">Sign Up</p>
 						<div className="flex mb-5 text-xs">
 							<p className="">Already have an account?</p>
-							{/* use spaceing instead of pl-2 */}
-							<Link to="/login" className="pl-2  text-blue-500">
+							<StyledLink to="/login" className="ml-2  ">
 								Sign In
-							</Link>
+							</StyledLink>
 						</div>
 						{/* BODY */}
 						<TextInputField

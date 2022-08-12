@@ -1,9 +1,10 @@
 import axios from 'axios';
 import { Form, Formik } from 'formik';
 import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import Button from '../../components/Button';
+import StyledLink from '../../components/StyledLink';
 import TextInputField from '../../components/TextInputField';
 import { userContext, userContextActions } from '../../context/userContext';
 
@@ -66,10 +67,9 @@ const ForgotPassword = () => {
 						<p className="font-bold text-lg mb-1">Password Recovery</p>
 						<div className="flex mb-5">
 							<p className=" text-xs">Want to go back to Sign In?</p>
-							{/* use spaceing instead of pl-2 */}
-							<Link to="/login" className="text-xs pl-2 text-blue-500">
+							<StyledLink to="/login" className="text-xs ml-2 ">
 								Sign In
-							</Link>
+							</StyledLink>
 						</div>
 						<TextInputField
 							placeholder="Email"
