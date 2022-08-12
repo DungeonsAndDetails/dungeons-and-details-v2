@@ -3,36 +3,37 @@ import React, { createContext, useEffect, useReducer } from 'react';
 // Inital Values of the Store
 const initialState = {
 	loggedIn: false,
-	username: '',
+	email: '',
+	displayName: '',
 };
-const loginContext = createContext(initialState);
-const { Provider } = loginContext;
+const userContext = createContext(initialState);
+const { Provider } = userContext;
 
-export const loginContextActions = {
+export const userContextActions = {
 	SIGN_IN: 'signIn',
 	SIGN_OUT: 'signOut',
 };
 
 const reducer = (state, action) => {
 	switch (action.type) {
-		case loginContextActions.SIGN_IN:
+		case userContextActions.SIGN_IN:
 			const newState = action.value;
 			return newState;
-		case loginContextActions.SIGN_OUT:
+		case userContextActions.SIGN_OUT:
 			return initialState;
 		default:
 			throw new Error();
 	}
 };
 
-const LoginContextStateProvider = ({ children }) => {
+const UserContextStateProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, initialState);
 
 	useEffect(() => {
 		const checkLogin = JSON.parse(localStorage.getItem('login'));
 		if (checkLogin.loggedIn) {
 			dispatch({
-				type: loginContextActions.SIGN_IN,
+				type: userContextActions.SIGN_IN,
 				value: checkLogin,
 			});
 		}
@@ -45,4 +46,4 @@ const LoginContextStateProvider = ({ children }) => {
 	return <Provider value={{ state, dispatch }}>{children}</Provider>;
 };
 
-export { loginContext, LoginContextStateProvider };
+export { userContext, UserContextStateProvider };

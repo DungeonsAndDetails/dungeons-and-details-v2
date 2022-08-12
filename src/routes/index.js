@@ -16,6 +16,7 @@ export const homeRoutes = {
 	LANDING: '/',
 	LOGIN: 'login',
 	SIGN_UP: 'sign-up',
+	FORGOT_PASSWORD: 'forgot-password',
 	PROFILE: 'profile',
 	MONSTERS: 'monsters',
 	CHARACTER_CREATION_GUI: 'ccg',

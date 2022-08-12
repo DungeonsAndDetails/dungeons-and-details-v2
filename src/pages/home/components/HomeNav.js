@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Dropdown from '../../../components/Dropdown';
-import { loginContext, loginContextActions } from '../../../context/loginContext';
+import { userContext, userContextActions } from '../../../context/userContext';
 import { adminRoutes, homeRoutes, routes } from '../../../routes';
 
 const HomeNav = () => {
-	const login = useContext(loginContext);
+	const user = useContext(userContext);
 	return (
 		<nav className="bg-testPrimary rounded border-gray-200 px-4 py-2 text-xl  ">
 			<div className="text-white font-semibold container flex flex-wrap justify-between items-center mx-auto">
@@ -24,17 +24,17 @@ const HomeNav = () => {
 
 				<div>
 					<Dropdown buttonClassName="font-semibold" buttonName="Profile ▼">
-						{login.state.loggedIn && <Link to={adminRoutes.ADMIN}>Admin View</Link>}
-						{login.state.loggedIn ? (
+						{user.state.loggedIn && <Link to={adminRoutes.ADMIN}>Admin View</Link>}
+						{user.state.loggedIn ? (
 							<Link to={homeRoutes.PROFILE}>Manage Profile</Link>
 						) : (
 							<Link to={homeRoutes.LOGIN}>Login</Link>
 						)}
-						{login.state.loggedIn && (
+						{user.state.loggedIn && (
 							<button
 								className="font-semibold"
 								onClick={() => {
-									login.dispatch({ type: loginContextActions.SIGN_OUT });
+									user.dispatch({ type: userContextActions.SIGN_OUT });
 								}}
 							>
 								Logout
