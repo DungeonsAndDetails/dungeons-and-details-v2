@@ -29,7 +29,6 @@ const Chat = () => {
 		chatCreation.createChat({ text, timeStamp, displayName });
 		resetForm(initialValues);
 	};
-	console.log('hello', login.state);
 
 	const onClick = () => {
 		setChatOpen(!chatOpen);

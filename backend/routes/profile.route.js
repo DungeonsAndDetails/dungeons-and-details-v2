@@ -30,7 +30,6 @@ router.route('/all').get((req, res) => {
 });
 
 router.post('/login', (req, res) => {
-	console.log('request', req.body);
 	profileCollection
 		.findOne({ email: req.body.email, password: req.body.password })
 		.then((result) => {
