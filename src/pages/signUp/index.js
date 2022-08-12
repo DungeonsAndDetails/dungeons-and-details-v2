@@ -9,7 +9,6 @@ import moment from 'moment';
 import StyledLink from '../../components/StyledLink';
 
 const SignUp = (props) => {
-	// reset form maybe
 	const navigate = useNavigate();
 
 	const validationSchema = Yup.object().shape({
@@ -39,8 +38,6 @@ const SignUp = (props) => {
 		if (response.status === 200) {
 			navigate('/login');
 		}
-
-		console.log('sign up', response.status);
 	};
 
 	return (
