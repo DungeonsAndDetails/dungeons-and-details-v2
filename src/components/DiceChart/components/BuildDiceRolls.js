@@ -2,8 +2,6 @@ import '../styles.css';
 const BuildDiceRolls = ({ rolls, mod, modd }) => {
 	let sum = 0 + modd;
 	let items = [];
-	console.log('mod', mod);
-	console.log('modd', modd);
 
 	rolls.forEach((roll, i) => {
 		sum = sum + roll;

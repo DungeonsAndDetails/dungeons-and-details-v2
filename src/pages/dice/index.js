@@ -2,8 +2,6 @@ import { Form, Formik } from 'formik';
 import React, { useState } from 'react';
 import Button from '../../components/Button';
 import TextInputField from '../../components/TextInputField';
-//create an array of numbers that can be rolled
-//set limit to rolls to 100 times
 
 const BuildDiceRolls = ({ rolls }) => {
 	let sum = 0;
@@ -12,7 +10,7 @@ const BuildDiceRolls = ({ rolls }) => {
 		sum = sum + roll;
 		items.push(<div key={`${i} roll`}>{roll}</div>);
 	});
-	items.push(<div key={'sum'}>sum: {sum}</div>);
+	items.push(<div key={'sum'}>sum: {sum + rolls.diceModifier}</div>);
 	items.push(<div key={'modifier'}>modifier: {rolls.diceModifier}</div>);
 
 	return <div className="grid grid-cols-3">{items}</div>;
