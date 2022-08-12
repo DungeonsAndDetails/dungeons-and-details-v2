@@ -1,18 +1,18 @@
 import React, { useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { loginContext, loginContextActions } from '../../context/loginContext';
+import { userContext, userContextActions } from '../../context/userContext';
 import { adminRoutes, compendiumRoutes, homeRoutes, modifierRoutes } from '../../routes';
 import Dropdown from '../Dropdown';
 
 const AdminTopNav = () => {
 	const navigate = useNavigate();
-	const login = useContext(loginContext);
+	const user = useContext(userContext);
 
 	useEffect(() => {
-		if (!login.state.loggedIn) {
+		if (!user.state.loggedIn) {
 			navigate('/');
 		}
-	}, [login.state.loggedIn, navigate]);
+	}, [user.state.loggedIn, navigate]);
 
 	return (
 		<div className=" container flex flex-wrap justify-between items-center  text-lg text-white border border-gray-300 rounded bg-testPrimary px-4 py-2">
@@ -59,17 +59,17 @@ const AdminTopNav = () => {
 				<Link to={adminRoutes.BACKGROUNDS}>Background List</Link>
 			</Dropdown>
 			<Dropdown buttonClassName="font-semibold text-lg" buttonName="Profile ▼">
-				{login.state.loggedIn && <Link to={adminRoutes.ADMIN}>Admin View</Link>}
-				{login.state.loggedIn ? (
+				{user.state.loggedIn && <Link to={adminRoutes.ADMIN}>Admin View</Link>}
+				{user.state.loggedIn ? (
 					<Link to={homeRoutes.PROFILE}>Manage Profile</Link>
 				) : (
 					<Link to={homeRoutes.LOGIN}>Login</Link>
 				)}
-				{login.state.loggedIn && (
+				{user.state.loggedIn && (
 					<button
 						className="font-semibold"
 						onClick={() => {
-							login.dispatch({ type: loginContextActions.SIGN_OUT });
+							user.dispatch({ type: userContextActions.SIGN_OUT });
 						}}
 					>
 						Logout

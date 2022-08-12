@@ -11,6 +11,7 @@ import Test from '../Test';
 import CharacterCreationGui from '../characterCreationGui';
 import Dice from '../dice';
 import Chat from '../../components/Chat';
+import ForgotPassword from '../forgotPassword';
 
 const Home = () => {
 	return (
@@ -26,6 +27,7 @@ const Home = () => {
 				<Route path={homeRoutes.SIGN_UP} element={<SignUp />} />
 				<Route path={homeRoutes.PROFILE} element={<Profile />} />
 				<Route path={routes.CHARACTER_SHEET_PAGE} element={<CharacterSheet />} />
+				<Route path={homeRoutes.FORGOT_PASSWORD} element={<ForgotPassword />} />
 			</Routes>
 		</div>
 	);

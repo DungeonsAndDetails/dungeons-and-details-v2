@@ -6,11 +6,11 @@ import TextInputField from '../../components/TextInputField';
 import moment from 'moment';
 import * as Yup from 'yup';
 import { chatContext } from '../../context/chatContext';
-import { loginContext } from '../../context/loginContext';
+import { userContext } from '../../context/userContext';
 
 const Chat = () => {
 	const chatCreation = useContext(chatContext);
-	const login = useContext(loginContext);
+	const login = useContext(userContext);
 	const [chatOpen, setChatOpen] = useState(false);
 	const chatRef = useRef();
 
@@ -24,9 +24,9 @@ const Chat = () => {
 		const text = values.chatBar;
 		const time = moment();
 		const timeStamp = time.format('LT');
-		const { username } = login.state;
+		const { displayName } = login.state;
 
-		chatCreation.createChat({ text, timeStamp, username });
+		chatCreation.createChat({ text, timeStamp, displayName });
 		resetForm(initialValues);
 	};
 
@@ -72,7 +72,7 @@ const Chat = () => {
 									{chatCreation.state.chat.map((newLine, i) => {
 										return (
 											<div className="" key={i}>
-												<span className="text-gold font-bold">{newLine.username}</span>{' '}
+												<span className="text-gold font-bold">{newLine.displayName}</span>{' '}
 												<span className="text-xs">{newLine.timeStamp}</span>
 												<div>
 													<span className="text-sm">{newLine.text}</span>

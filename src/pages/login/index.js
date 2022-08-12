@@ -1,32 +1,34 @@
 import axios from 'axios';
 import { Form, Formik } from 'formik';
 import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import Button from '../../components/Button';
+import StyledLink from '../../components/StyledLink';
 import TextInputField from '../../components/TextInputField';
-import { loginContext, loginContextActions } from '../../context/loginContext';
+import { userContext, userContextActions } from '../../context/userContext';
 
 const Login = () => {
-	const loginState = useContext(loginContext);
+	const user = useContext(userContext);
 	const navigate = useNavigate();
 	const [showError, setShowError] = useState(null);
 	const validationSchema = Yup.object().shape({
-		username: Yup.string().email('Invalid email format').required('Required'),
-		password: Yup.string().required('Required').min(6, '6 Characters minimum'),
+		email: Yup.string().email('Invalid email format').required('Required'),
+		password: Yup.string().required('Required'),
 	});
 
 	const submit = async (values) => {
 		const request = {
-			username: values.username,
+			email: values.email,
 			password: values.password,
 		};
 		const response = await axios.post('http://localhost:4000/profiles/login', request);
-		if (response.data.username) {
-			loginState.dispatch({
-				type: loginContextActions.SIGN_IN,
+		if (response.data.email) {
+			user.dispatch({
+				type: userContextActions.SIGN_IN,
 				value: {
-					username: response.data.username,
+					email: response.data.email,
+					displayName: response.data.displayName,
 					loggedIn: true,
 				},
 			});
@@ -38,16 +40,16 @@ const Login = () => {
 
 	return (
 		<>
-			<div className="w-full max-w-xs flex justify-center m-auto p-5 rounded-md mt-36 bg-indigo-100">
+			<div className="w-full max-w-xs flex justify-center m-auto p-5 rounded-md mt-36 bg-gradient-to-tl from-testPrimary to-testSecondary ">
 				<Formik
 					validationSchema={validationSchema}
 					initialValues={{
-						username: '',
+						email: '',
 						password: '',
 					}}
 					onSubmit={submit}
 				>
-					<Form className="w-96">
+					<Form className="w-full">
 						{showError && (
 							<div>
 								<span>{showError}</span>
@@ -62,43 +64,42 @@ const Login = () => {
 								</button>
 							</div>
 						)}
+						<p className="font-bold text-lg mb-1">Login</p>
+						<div className="flex mb-5">
+							<p className="text-xs">Don't have an account yet?</p>
+							<StyledLink to="/sign-up" className="text-xs ml-2 ">
+								Sign Up
+							</StyledLink>
+						</div>
 						<TextInputField
 							placeholder="Email"
-							labelClassName="block text-black font-bold not-italic normal-case mb-2"
-							className="focus:outline-none bg-indigo-100 focus:shadow-lg  focus:shadow-red-600 placeholder:font-semibold rounded border-0 shadow-black shadow-sm"
+							labelClassName="text-sm font-bold"
+							className="mb-2"
 							type="email"
-							name="username"
+							name="email"
 							label="Username"
 						/>
 						<TextInputField
 							placeholder="********"
-							labelClassName="block text-black font-bold not-italic normal-case mb-2"
-							className="bg-indigo-100 placeholder:font-semibold rounded border-0 shadow-black shadow-sm"
+							labelClassName="text-sm font-bold"
+							className=""
 							type="password"
 							name="password"
 							label="Password"
 						/>
-						<div className="grid grid-cols-2 gap-2 ">
-							<div>
-								<Button
-									className="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-sm"
-									type="submit"
-								>
+						<div className="">
+							<div className="my-5">
+								<Button className=" bg-gray-900 rounded-md" type="submit">
 									Sign In
 								</Button>
 							</div>
 							<div className="flex justify-center">
-								<Button
-									className=" bg-indigo-100 font-semibold text-blue-400 hover:text-blue-800"
-									type="button"
-								>
-									Forgot Password
-								</Button>
+								<StyledLink to="/forgot-password" className="text-xs ">
+									Forgot Password?
+								</StyledLink>
 							</div>
 						</div>
-						<div>
-							<Link to="/sign-up">Create new account</Link>
-						</div>
+						<div></div>
 					</Form>
 				</Formik>
 			</div>

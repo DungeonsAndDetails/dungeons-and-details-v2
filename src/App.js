@@ -6,7 +6,6 @@ import { routes } from './routes';
 import Home from './pages/home';
 import Admin from './pages/admin';
 import Toast from './components/Toast';
-import { LoginContextStateProvider } from './context/loginContext';
 import { CharacterContextStateProvider } from './context/characterContext';
 import { SkillListContextStateProvider } from './context/skillListContext';
 import { AttributesContextStateProvider } from './context/attributeContext';
@@ -24,6 +23,7 @@ import { MonsterListContextStateProvider } from './context/monsterContext';
 import { BackgroundListContextStateProvider } from './context/backgroundListContext';
 import { NpcListContextStateProvider } from './context/npcContext';
 import { ChatContextStateProvider } from './context/chatContext';
+import { UserContextStateProvider } from './context/userContext';
 
 const App = () => {
 	return (
@@ -47,12 +47,12 @@ const App = () => {
 																		<SkillListContextStateProvider>
 																			<SpellListContextStateProvider>
 																				<CharacterContextStateProvider>
-																					<LoginContextStateProvider>
+																					<UserContextStateProvider>
 																						<Routes>
 																							<Route path={routes.HOME} element={<Home />} />
 																							<Route path={routes.ADMIN} element={<Admin />} />
 																						</Routes>
-																					</LoginContextStateProvider>
+																					</UserContextStateProvider>
 																				</CharacterContextStateProvider>
 																			</SpellListContextStateProvider>
 																		</SkillListContextStateProvider>
