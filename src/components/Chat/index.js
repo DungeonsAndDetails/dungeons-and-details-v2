@@ -10,7 +10,7 @@ import { userContext } from '../../context/userContext';
 
 const Chat = () => {
 	const chatCreation = useContext(chatContext);
-	const login = useContext(userContext);
+	const user = useContext(userContext);
 	const [chatOpen, setChatOpen] = useState(false);
 	const chatRef = useRef();
 
@@ -24,7 +24,7 @@ const Chat = () => {
 		const text = values.chatBar;
 		const time = moment();
 		const timeStamp = time.format('LT');
-		const { displayName } = login.state;
+		const { displayName } = user.state;
 
 		chatCreation.createChat({ text, timeStamp, displayName });
 		resetForm(initialValues);

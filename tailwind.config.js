@@ -294,6 +294,7 @@ module.exports = {
 		divideOpacity: ({ theme }) => theme('borderOpacity'),
 		divideWidth: ({ theme }) => theme('borderWidth'),
 		dropShadow: {
+			all: '25px 25px 25px rgb(0 0 0 / 0.15)',
 			sm: '0 1px 1px rgb(0 0 0 / 0.05)',
 			DEFAULT: ['0 1px 2px rgb(0 0 0 / 0.1)', '0 1px 1px rgb(0 0 0 / 0.06)'],
 			md: ['0 4px 3px rgb(0 0 0 / 0.07)', '0 2px 2px rgb(0 0 0 / 0.06)'],
@@ -852,6 +853,7 @@ module.exports = {
 			'top-left': 'top left',
 		},
 		transitionDelay: {
+			0: '0ms',
 			75: '75ms',
 			100: '100ms',
 			150: '150ms',
