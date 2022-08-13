@@ -5,6 +5,8 @@ const initialState = {
 	loggedIn: false,
 	email: '',
 	displayName: '',
+	password: '',
+	confirmPasswrod: '',
 };
 const userContext = createContext(initialState);
 const { Provider } = userContext;

@@ -23,6 +23,10 @@ open a new terminal
 run `npm run tailwind:watch` inside root dir to start css watcher.
 If Issues running the command above, try `npm install -D tailwindcss`
 
+Frontend `npm start`
+Backend `npm start`
+Tailwind `npm run tailwind:watch`
+
 ### Frontend
 
 React - Framework of our frontend.
