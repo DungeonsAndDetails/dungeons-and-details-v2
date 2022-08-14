@@ -3,7 +3,7 @@ import './styles.css';
 const Test = (props) => {
 	return (
 		<div className="">
-			<div className="">hi</div>
+			<input className="border-black border-8" />
 		</div>
 	);
 };

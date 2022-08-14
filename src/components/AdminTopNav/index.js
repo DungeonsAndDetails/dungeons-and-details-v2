@@ -1,8 +1,9 @@
 import React, { useContext, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { userContext, userContextActions } from '../../context/userContext';
 import { adminRoutes, compendiumRoutes, homeRoutes, modifierRoutes } from '../../routes';
 import Dropdown from '../Dropdown';
+import StyledLink from '../StyledLink';
 
 const AdminTopNav = () => {
 	const navigate = useNavigate();
@@ -17,57 +18,47 @@ const AdminTopNav = () => {
 	return (
 		<div className=" container flex flex-wrap justify-between items-center  text-lg text-white border border-gray-300 rounded bg-testPrimary px-4 py-2">
 			<div className="font-semibold">
-				<Link to={homeRoutes.LANDING}>Home</Link>
+				<StyledLink to={homeRoutes.LANDING} className="text-white">
+					Home
+				</StyledLink>
 			</div>
-			<Dropdown
-				buttonClassName="font-semibold text-lg"
-				menuClassName="font-normal"
-				buttonName="Modifiers ▼"
-			>
-				<Link to={modifierRoutes.COMPONENTS}>Components</Link>
-				<Link to={modifierRoutes.CONCENTRATIONS}>Concentrations</Link>
-				<Link to={modifierRoutes.DURATIONS}>Durations</Link>
-				<Link to={modifierRoutes.RANGES}>Ranges</Link>
-				<Link to={modifierRoutes.SOURCES}>Sources</Link>
-				<Link to={modifierRoutes.SPELL_LEVELS}>Spell Levels</Link>
-				<Link to={modifierRoutes.SPELL_SCHOOLS}>Spell Schools</Link>
-				<Link to={modifierRoutes.TIME_TYPES}>Time Types</Link>
-				<Link to={modifierRoutes.DAMAGE_TYPES}>Damage Types</Link>
+			<Dropdown buttonClassName="" menuClassName="font-normal" buttonName="Modifiers ▼">
+				<StyledLink to={modifierRoutes.COMPONENTS}>Components</StyledLink>
+				<StyledLink to={modifierRoutes.CONCENTRATIONS}>Concentrations</StyledLink>
+				<StyledLink to={modifierRoutes.DURATIONS}>Durations</StyledLink>
+				<StyledLink to={modifierRoutes.RANGES}>Ranges</StyledLink>
+				<StyledLink to={modifierRoutes.SOURCES}>Sources</StyledLink>
+				<StyledLink to={modifierRoutes.SPELL_LEVELS}>Spell Levels</StyledLink>
+				<StyledLink to={modifierRoutes.SPELL_SCHOOLS}>Spell Schools</StyledLink>
+				<StyledLink to={modifierRoutes.TIME_TYPES}>Time Types</StyledLink>
+				<StyledLink to={modifierRoutes.DAMAGE_TYPES}>Damage Types</StyledLink>
 			</Dropdown>
-			<Dropdown
-				buttonClassName="font-semibold text-lg"
-				menuClassName="font-normal"
-				buttonName="Compendium ▼"
-			>
-				<Link to={compendiumRoutes.MONSTERS}>Monsters</Link>
-				<Link to={compendiumRoutes.NPCS}>NPCs</Link>
+			<Dropdown buttonClassName="" menuClassName="font-normal" buttonName="Compendium ▼">
+				<StyledLink to={compendiumRoutes.MONSTERS}>Monsters</StyledLink>
+				<StyledLink to={compendiumRoutes.NPCS}>NPCs</StyledLink>
 			</Dropdown>
-			<Dropdown
-				buttonClassName="font-semibold text-lg"
-				menuClassName="font-normal"
-				buttonName="Lists ▼"
-			>
-				<Link to={adminRoutes.SKILLS}>Skill List</Link>
-				<Link to={adminRoutes.SPELLS}>Spell List</Link>
-				<Link to={adminRoutes.CLASSES}>Class List</Link>
-				<Link to={adminRoutes.SUBCLASSES}>Subclass List</Link>
-				<Link to={adminRoutes.FEATS}>Feat List</Link>
-				<Link to={adminRoutes.ATTRIBUTES}>Attributes List</Link>
-				<Link to={adminRoutes.ITEMS}>Items List</Link>
-				<Link to={adminRoutes.RACES}>Race List</Link>
-				<Link to={adminRoutes.SUBRACES}>Subrace List</Link>
-				<Link to={adminRoutes.BACKGROUNDS}>Background List</Link>
+			<Dropdown buttonClassName="" menuClassName="font-normal" buttonName="Lists ▼">
+				<StyledLink to={adminRoutes.SKILLS}>Skill List</StyledLink>
+				<StyledLink to={adminRoutes.SPELLS}>Spell List</StyledLink>
+				<StyledLink to={adminRoutes.CLASSES}>Class List</StyledLink>
+				<StyledLink to={adminRoutes.SUBCLASSES}>Subclass List</StyledLink>
+				<StyledLink to={adminRoutes.FEATS}>Feat List</StyledLink>
+				<StyledLink to={adminRoutes.ATTRIBUTES}>Attributes List</StyledLink>
+				<StyledLink to={adminRoutes.ITEMS}>Items List</StyledLink>
+				<StyledLink to={adminRoutes.RACES}>Race List</StyledLink>
+				<StyledLink to={adminRoutes.SUBRACES}>Subrace List</StyledLink>
+				<StyledLink to={adminRoutes.BACKGROUNDS}>Background List</StyledLink>
 			</Dropdown>
-			<Dropdown buttonClassName="font-semibold text-lg" buttonName="Profile ▼">
-				{user.state.loggedIn && <Link to={adminRoutes.ADMIN}>Admin View</Link>}
+			<Dropdown buttonClassName="" buttonName="Profile ▼">
+				{user.state.loggedIn && <StyledLink to={adminRoutes.ADMIN}>Admin View</StyledLink>}
 				{user.state.loggedIn ? (
-					<Link to={homeRoutes.PROFILE}>Manage Profile</Link>
+					<StyledLink to={homeRoutes.PROFILE}>Manage Profile</StyledLink>
 				) : (
-					<Link to={homeRoutes.LOGIN}>Login</Link>
+					<StyledLink to={homeRoutes.LOGIN}>Login</StyledLink>
 				)}
 				{user.state.loggedIn && (
 					<button
-						className="font-semibold"
+						className="font-semibold hover:text-blue-300 duration-200 ease-in-out"
 						onClick={() => {
 							user.dispatch({ type: userContextActions.SIGN_OUT });
 						}}

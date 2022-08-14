@@ -7,7 +7,11 @@ const Dropdown = ({ buttonClassName, children, buttonName, menuClassName }) => {
 	return (
 		<div className="static">
 			<div className="dropdown">
-				<button className={`${buttonClassName}    `} type="button" onClick={() => setOpen(!open)}>
+				<button
+					className={`${buttonClassName} font-semibold text-lg hover:text-blue-400 duration-200 ease-in-out`}
+					type="button"
+					onClick={() => setOpen(!open)}
+				>
 					{buttonName}
 				</button>
 				{open && (

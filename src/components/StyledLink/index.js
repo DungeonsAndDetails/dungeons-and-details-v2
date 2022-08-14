@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom';
 const StyledLink = (props) => {
 	return (
 		<Link
-			{...props}
-			className={`text-blue-400 hover:text-blue-200 duration-200 ease-in-out ${props.className} `}
+			caseSensitive={props.caseSensitive}
+			end={props.end}
+			to={props.to}
+			style={props.style}
+			className={`hover:text-blue-300 duration-200 ease-in-out ${props.className} `}
 		>
 			{props.children}
 		</Link>
