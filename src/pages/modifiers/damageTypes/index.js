@@ -33,7 +33,7 @@ const DamageTypes = () => {
 	if (!modifiers.state.modifiers.components) {
 		return null;
 	}
-
+	// damageTypeHeaders?
 	const componentHeaders = [
 		{
 			label: 'Name',
