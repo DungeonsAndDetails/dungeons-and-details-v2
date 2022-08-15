@@ -50,6 +50,12 @@ export const modifierRoutes = {
 	SPELL_SCHOOLS: 'spell-schools',
 	TIME_TYPES: 'time-types',
 	DAMAGE_TYPES: 'damage-types',
+	DICE_TYPES: 'dice-types',
+	WEIGHT_SYSTEMS: 'weight-systems',
+	MATERIAL_TYPES: 'material-types',
+	ENHANCEMENT_LEVELS: 'enhancement-levels',
+	ITEM_MODIFIERS: 'item-modifiers',
+	VOLUME_SYSTEMS: 'volume-systems',
 };
 
 export const compendiumRoutes = {

@@ -201,7 +201,13 @@ const BuildNewEntry = ({ headers, onCreate }) => {
 	};
 
 	return (
-		<Formik initialValues={buildInitialValues()} onSubmit={onCreate}>
+		<Formik
+			initialValues={buildInitialValues()}
+			onSubmit={(values, { resetForm }) => {
+				onCreate(values);
+				resetForm();
+			}}
+		>
 			<Form>
 				<div>
 					<span>Create New</span>
@@ -266,7 +272,7 @@ Table.defaultProps = {
 	data: [
 		{
 			_id: '61ee0b194591d5201e169b6d',
-			name: 'Acid Splash',
+			name: 'Acid Splash TEST',
 			description: 'placeholder',
 			level: 'Cantrip',
 			time: 'Action',

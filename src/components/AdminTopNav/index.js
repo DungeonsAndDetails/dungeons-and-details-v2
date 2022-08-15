@@ -33,6 +33,12 @@ const AdminTopNav = () => {
 				<Link to={modifierRoutes.SPELL_SCHOOLS}>Spell Schools</Link>
 				<Link to={modifierRoutes.TIME_TYPES}>Time Types</Link>
 				<Link to={modifierRoutes.DAMAGE_TYPES}>Damage Types</Link>
+				<Link to={modifierRoutes.DICE_TYPES}>Dice Types</Link>
+				<Link to={modifierRoutes.WEIGHT_SYSTEMS}>Weight Systems</Link>
+				<Link to={modifierRoutes.VOLUME_SYSTEMS}>Volume Systems</Link>
+				<Link to={modifierRoutes.MATERIAL_TYPES}>Material Types</Link>
+				<Link to={modifierRoutes.ENHANCEMENT_LEVELS}>Enhancement Levels</Link>
+				<Link to={modifierRoutes.ITEM_MODIFIERS}>Item Modifiers</Link>
 			</Dropdown>
 			<Dropdown
 				buttonClassName="font-semibold text-lg"
