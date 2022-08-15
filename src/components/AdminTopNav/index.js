@@ -22,7 +22,11 @@ const AdminTopNav = () => {
 					Home
 				</StyledLink>
 			</div>
-			<Dropdown buttonClassName="" menuClassName="font-normal" buttonName="Modifiers ▼">
+			<Dropdown
+				buttonClassName="font-semibold text-lg"
+				menuClassName="font-normal"
+				buttonName="Modifiers ▼"
+			>
 				<StyledLink to={modifierRoutes.COMPONENTS}>Components</StyledLink>
 				<StyledLink to={modifierRoutes.CONCENTRATIONS}>Concentrations</StyledLink>
 				<StyledLink to={modifierRoutes.DURATIONS}>Durations</StyledLink>
@@ -32,6 +36,12 @@ const AdminTopNav = () => {
 				<StyledLink to={modifierRoutes.SPELL_SCHOOLS}>Spell Schools</StyledLink>
 				<StyledLink to={modifierRoutes.TIME_TYPES}>Time Types</StyledLink>
 				<StyledLink to={modifierRoutes.DAMAGE_TYPES}>Damage Types</StyledLink>
+				<StyledLink to={modifierRoutes.DICE_TYPES}>Dice Types</StyledLink>
+				<StyledLink to={modifierRoutes.WEIGHT_SYSTEMS}>Weight Systems</StyledLink>
+				<StyledLink to={modifierRoutes.VOLUME_SYSTEMS}>Volume Systems</StyledLink>
+				<StyledLink to={modifierRoutes.MATERIAL_TYPES}>Material Types</StyledLink>
+				<StyledLink to={modifierRoutes.ENHANCEMENT_LEVELS}>Enhancement Levels</StyledLink>
+				<StyledLink to={modifierRoutes.ITEM_MODIFIERS}>Item Modifiers</StyledLink>
 			</Dropdown>
 			<Dropdown buttonClassName="" menuClassName="font-normal" buttonName="Compendium ▼">
 				<StyledLink to={compendiumRoutes.MONSTERS}>Monsters</StyledLink>

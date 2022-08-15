@@ -11,6 +11,12 @@ let spellSchoolRoute = require('./modifiers/spell.schools.route');
 let timesRoute = require('./modifiers/times.route');
 let timeTypesRoute = require('./modifiers/time.types.route');
 let damageTypesRoute = require('./modifiers/damage.types.route');
+let diceTypesRoute = require('./modifiers/dice.types.route');
+let weightSystemsRoute = require('./modifiers/weight.systems.route');
+let materialTypesRoute = require('./modifiers/material.types.route');
+let enhancementLevelsRoute = require('./modifiers/enhancement.levels.route');
+let itemModifiersRoute = require('./modifiers/item.modifiers.route');
+let volumeSystemsRoute = require('./modifiers/volume.systems.route');
 
 const db = mongoose.connection;
 const componentsCollection = db.collection('Components');
@@ -23,6 +29,12 @@ const spellSchoolCollection = db.collection('Spell Schools');
 const timesCollection = db.collection('Times');
 const timeTypesCollection = db.collection('Time Types');
 const damageTypesCollection = db.collection('Damage Types');
+const diceTypesCollection = db.collection('Dice Types');
+const weightSystemsCollection = db.collection('Weight Systems');
+const materialTypesCollection = db.collection('Material Types');
+const enhancementLevelsCollection = db.collection('Enhancement Levels');
+const itemModifiersCollection = db.collection('Item Modifiers');
+const volumeSystemsCollection = db.collection('Volume Systems');
 
 router.route('/all').get((req, res) => {
 	const components = componentsCollection.find().toArray();
@@ -35,6 +47,12 @@ router.route('/all').get((req, res) => {
 	const times = timesCollection.find().toArray();
 	const timeTypes = timeTypesCollection.find().toArray();
 	const damageTypes = damageTypesCollection.find().toArray();
+	const diceTypes = diceTypesCollection.find().toArray();
+	const weightSystems = weightSystemsCollection.find().toArray();
+	const materialTypes = materialTypesCollection.find().toArray();
+	const enhancementLevels = enhancementLevelsCollection.find().toArray();
+	const itemModifiers = itemModifiersCollection.find().toArray();
+	const volumeSystems = volumeSystemsCollection.find().toArray();
 
 	Promise.all([
 		components,
@@ -47,6 +65,12 @@ router.route('/all').get((req, res) => {
 		times,
 		timeTypes,
 		damageTypes,
+		diceTypes,
+		weightSystems,
+		materialTypes,
+		enhancementLevels,
+		itemModifiers,
+		volumeSystems,
 	])
 		.then(
 			([
@@ -60,6 +84,12 @@ router.route('/all').get((req, res) => {
 				times,
 				timeTypes,
 				damageTypes,
+				diceTypes,
+				weightSystems,
+				materialTypes,
+				enhancementLevels,
+				itemModifiers,
+				volumeSystems,
 			]) => {
 				res.send({
 					components,
@@ -72,6 +102,12 @@ router.route('/all').get((req, res) => {
 					times,
 					timeTypes,
 					damageTypes,
+					diceTypes,
+					weightSystems,
+					materialTypes,
+					enhancementLevels,
+					itemModifiers,
+					volumeSystems,
 				});
 			},
 		)
@@ -90,5 +126,11 @@ router.use('/spell-schools', spellSchoolRoute);
 router.use('/times', timesRoute);
 router.use('/time-types', timeTypesRoute);
 router.use('/damage-types', damageTypesRoute);
+router.use('/dice-types', diceTypesRoute);
+router.use('/weight-systems', weightSystemsRoute);
+router.use('/material-types', materialTypesRoute);
+router.use('/enhancement-levels', enhancementLevelsRoute);
+router.use('/item-modifiers', itemModifiersRoute);
+router.use('/volume-systems', volumeSystemsRoute);
 
 module.exports = router;
