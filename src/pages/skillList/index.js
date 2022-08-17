@@ -26,26 +26,6 @@ const Skills = () => {
 		},
 	];
 
-	const saveSkill = ({ values, id }) => {
-		const newValues = {
-			...values,
-			attributeReliance: attributes.state.attributes.find(
-				(attribute) => attribute._id === values.attributeReliance,
-			),
-		};
-		skills.updateSkill({ values: newValues, id });
-	};
-
-	const createSkill = (values) => {
-		const newValues = {
-			...values,
-			attributeReliance: attributes.state.attributes.find(
-				(attribute) => attribute._id === values.attributeReliance,
-			),
-		};
-		skills.createSkill(newValues);
-	};
-
 	return (
 		<>
 			<div>
@@ -56,8 +36,8 @@ const Skills = () => {
 					data={skills.state.skills}
 					headers={skillListHeaders}
 					onDelete={skills.deleteSkill}
-					onEditSave={saveSkill}
-					onCreate={createSkill}
+					onEditSave={skills.updateSkill}
+					onCreate={skills.createSkill}
 				/>
 			</div>
 		</>

@@ -55,46 +55,6 @@ const Spells = () => {
 		},
 	];
 
-	const saveSpell = ({ values, id }) => {
-		const newValues = {
-			...values,
-			spellLevel: modifiers.state.modifiers.spellLevels.find(
-				(spellLevel) => spellLevel._id === values.spellLevel,
-			),
-			castTime: modifiers.state.modifiers.durations.find(
-				(duration) => duration._id === values.castTime,
-			),
-			spellSchool: modifiers.state.modifiers.spellSchools.find(
-				(spellSchool) => spellSchool._id === values.spellSchool,
-			),
-			concentration: modifiers.state.modifiers.concentrations.find(
-				(concentration) => concentration._id === values.concentration,
-			),
-			range: modifiers.state.modifiers.ranges.find((range) => range._id === values.range),
-		};
-		spells.updateSpell({ values: newValues, id });
-	};
-
-	const createSpell = (values) => {
-		const newValues = {
-			...values,
-			spellLevel: modifiers.state.modifiers.spellLevels.find(
-				(spellLevel) => spellLevel._id === values.spellLevel,
-			),
-			castTime: modifiers.state.modifiers.durations.find(
-				(duration) => duration._id === values.castTime,
-			),
-			spellSchool: modifiers.state.modifiers.spellSchools.find(
-				(spellSchool) => spellSchool._id === values.spellSchool,
-			),
-			concentration: modifiers.state.modifiers.concentrations.find(
-				(concentration) => concentration._id === values.concentration,
-			),
-			range: modifiers.state.modifiers.ranges.find((range) => range._id === values.range),
-		};
-		spells.createSpell(newValues);
-	};
-
 	return (
 		<>
 			<div>
@@ -105,8 +65,8 @@ const Spells = () => {
 					data={spells.state.spells}
 					headers={spellListHeaders}
 					onDelete={spells.deleteSpell}
-					onEditSave={saveSpell}
-					onCreate={createSpell}
+					onEditSave={spells.updateSpell}
+					onCreate={spells.createSpell}
 				/>
 			</div>
 		</>

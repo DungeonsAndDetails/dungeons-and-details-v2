@@ -26,23 +26,6 @@ const Backgrounds = () => {
 		},
 	];
 
-	// TODO: Update Proficiencies to allow multi-select
-	const saveBackground = ({ values, id }) => {
-		const newValues = {
-			...values,
-			proficiencies: skills.state.skills.find((skill) => skill._id === values.proficiencies),
-		};
-		backgrounds.updateBackground({ values: newValues, id });
-	};
-
-	const createBackground = (values) => {
-		const newValues = {
-			...values,
-			proficiencies: skills.state.skills.find((skill) => skill._id === values.proficiencies),
-		};
-		backgrounds.createBackground(newValues);
-	};
-
 	return (
 		<>
 			<div>
@@ -53,8 +36,8 @@ const Backgrounds = () => {
 					data={backgrounds.state.backgrounds}
 					headers={backgroundListHeaders}
 					onDelete={backgrounds.deleteBackground}
-					onEditSave={saveBackground}
-					onCreate={createBackground}
+					onEditSave={backgrounds.updateBackground}
+					onCreate={backgrounds.createBackground}
 				/>
 			</div>
 		</>
