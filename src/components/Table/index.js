@@ -59,11 +59,6 @@ const BuildRow = ({ item, headers, columnCount, enableManageColumn, onEditSave, 
 		setDeleteRow(null);
 	};
 
-	// Look into func
-	const saveOnClick = (values) => {
-		console.log('saveOnClick', values);
-	};
-
 	const buildInitialValues = () => {
 		const initialValues = {};
 		headers.forEach((header) => {
@@ -108,8 +103,6 @@ const BuildRow = ({ item, headers, columnCount, enableManageColumn, onEditSave, 
 							newValues[header.value] = values[header.value];
 						}
 					});
-					console.log('values', values);
-					console.log('newValues', newValues);
 					onEditSave({ values: newValues, id: item._id });
 					setEdit(!edit);
 				}}
@@ -144,9 +137,7 @@ const BuildRow = ({ item, headers, columnCount, enableManageColumn, onEditSave, 
 						)}
 						{enableManageColumn && edit && (
 							<div className="grid grid-cols-2 gap-1">
-								<Button type="submit" onClick={saveOnClick}>
-									Save
-								</Button>
+								<Button type="submit">Save</Button>
 								<Button type="button" onClick={editOnClick}>
 									Cancel
 								</Button>
