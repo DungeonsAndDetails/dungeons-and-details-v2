@@ -12,6 +12,11 @@ const Attributes = () => {
 			type: inputTypes.TEXT,
 		},
 		{
+			label: 'Value',
+			value: 'value',
+			type: inputTypes.TEXT,
+		},
+		{
 			label: 'Description',
 			value: 'description',
 			type: inputTypes.TEXT,

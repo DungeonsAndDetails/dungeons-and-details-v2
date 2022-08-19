@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ClassButton from '../../../components/ClassButton';
+import ClassButton from '../../../../components/ClassButton';
 
 // key needs to be id from backend
 const BuildRaces = ({ races, setFieldValue }) => {
@@ -15,7 +15,7 @@ const BuildRaces = ({ races, setFieldValue }) => {
 			<div>
 				{races.map((raceInfo, i) => {
 					return (
-						<div key={raceInfo.name}>
+						<div key={raceInfo._id}>
 							<ClassButton
 								onClick={() => setRace(raceInfo)}
 								display={raceInfo.name}

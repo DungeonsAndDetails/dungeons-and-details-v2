@@ -1,26 +1,34 @@
 import React, { useState, useContext } from 'react';
-import Button from '../../../components/Button';
-import TextInputField from '../../../components/TextInputField';
-import { characterCreationContext } from '../../../context/characterCreationContext';
+import Button from '../../../../components/Button';
+import TextInputField from '../../../../components/TextInputField';
+import { characterCreationContext } from '../../../../context/characterCreationContext';
+import BuildAbilityScores from './BuildAbilityScores';
+import BuildBackground from './BuildBackground';
 import BuildClasses from './BuildClasses';
+import BuildEquipment from './BuildEquiment';
+import BuildFinal from './BuildFinal';
+import BuildGender from './BuildGender';
 import BuildRaces from './BuildRaces';
+import BuildSaves from './BuildSaves';
+import BuildSkills from './BuildSkills';
 import BuildSubclasses from './BuildSubclasses';
 import BuildSubraces from './BuildSubraces';
 
-const BuildDisplays = ({
-	step,
-	setStep,
-	validateField,
-	errors,
-	touched,
-	values,
-	classes,
-	setFieldValue,
-	selectedClass,
-	races,
-	subraces,
-	subclasses,
-}) => {
+const BuildDisplays = (props) => {
+	const {
+		step,
+		setStep,
+		validateField,
+		errors,
+		touched,
+		values,
+		classes,
+		setFieldValue,
+		selectedClass,
+		races,
+		subraces,
+		subclasses,
+	} = props;
 	const characterCreation = useContext(characterCreationContext);
 	const validateStepOne = async () => {
 		if (!errors.name) {
@@ -49,26 +57,25 @@ const BuildDisplays = ({
 				// Click to import picture
 				// Radio to un hide sub-race based on what race is selected. then un hide the example names
 				<div>
-					<div className="grid pt-2 grid-cols-12 ">
-						<div className=" grid col-span-2 col-start-2  justify-center items-center content-center">
-							<div className="   max-w-sm">
+					<div className="grid justify-between grid-flow-col">
+						<div className="grid justify-center content-center">
+							<div className="max-w-sm">
 								<TextInputField type="text" name="name" placeholder="Name" />
 								<TextInputField type="text" name="family" placeholder="Family Name" />
 								<TextInputField type="text" name="title" placeholder="Title" />
 							</div>
-
-							<TextInputField type="radio" id="male" name="sex" label="Male" value="male" />
-							<TextInputField type="radio" id="female" name="sex" label="Female" value="female" />
+							<BuildGender />
 						</div>
-						<div className="grid border-2 col-start-5 col-span-3">Picture</div>
-						<div className="grid w-fit h-fit col-span-2 col-start-9">
+						<div className="border-2">Picture</div>
+						<div className="w-fit h-fit">
 							<span>Races</span>
-							<BuildRaces setFieldValue={setFieldValue} races={races} />
+							<div className="overflow-y-auto max-h-96">
+								<BuildRaces setFieldValue={setFieldValue} races={races} />
+							</div>
 						</div>
-
-						<div className="grid w-fit h-fit col-start-11 col-span-2">
+						<div className="">
 							<span>Sub-Races</span>
-							<div className=" overflow-auto h-44 border-2">
+							<div className="overflow-y-auto h-96 border-2">
 								<BuildSubraces
 									selectedRace={values.race}
 									setFieldValue={setFieldValue}
@@ -99,12 +106,12 @@ const BuildDisplays = ({
 				// make an array that adds more class buttons
 				<div className="grid pt-2">
 					<div className="grid  grid-cols-12">
-						<div className="border-2 col-span-1 col-start-1">
+						<div className="border-2 col-span-2 col-start-1">
 							<div className="border-b">
 								<span className="">Class Names</span>
 							</div>
 							<div>
-								<div>
+								<div className="overflow-y-auto min-w-fit max-h-96">
 									<BuildClasses setFieldValue={setFieldValue} classes={classes} />
 								</div>
 							</div>
@@ -113,14 +120,14 @@ const BuildDisplays = ({
 							<span className="h-min border-b top-0 ">Description</span>
 							<div className="">{values.class.description}</div>
 						</div>
-						<div className="col-start-7 col-span-1 ">
-							<span className="border-b">
+						<div className="col-start-7 col-span-2 ">
+							<div className="max-h-96 overflow-y-auto">
 								<BuildSubclasses
 									selectedClass={values.class}
 									subclasses={subclasses}
 									setFieldValue={setFieldValue}
 								/>
-							</span>
+							</div>
 						</div>
 						<div className="col-start-9 col-span-3 ">
 							<span className="border-b">{values.subclass.description}</span>
@@ -137,8 +144,12 @@ const BuildDisplays = ({
 			return (
 				<div>
 					<div>
-						<div className="border-2">DM sponsered heritage backgrounds</div>
-						<div className="border-2">Decriptions of heritage/background</div>
+						<div className="border-2">
+							<div>
+								<BuildBackground setFieldValue={setFieldValue} />
+							</div>
+							<div>{values.background.description}</div>
+						</div>
 						<div>
 							<TextInputField
 								className="bg-transparent"
@@ -162,56 +173,53 @@ const BuildDisplays = ({
 			return (
 				//Modifiers need to be implimented
 				<div>
-					<div className="grid grid-cols-12">
-						<div className="col-span-2 mx-auto">
+					<div className="">
+						<div className="">
 							<span>Ability Scores</span>
 						</div>
-						<div className=" container grid grid-rows-2  col-start-1 col-span-2">
-							<div className="">
-								<div className="  border-2 col-start-1 col-span-2">
-									<div className="">
-										<span className="">Strength</span>
-									</div>
-									<TextInputField className="" placeholder="" name="strength" type="text" />
-								</div>
-								<div className="  border-2 col-start-1 col-span-2">
-									<div className="">
-										<span className="">Dexterity</span>
-									</div>
-									<TextInputField className="" placeholder="" name="dexterity" type="text" />
-								</div>
-								<div className="  border-2 col-start-1 col-span-2">
-									<div className="">
-										<span className="">Constitution</span>
-									</div>
-									<TextInputField className="" placeholder="" name="constitution" type="text" />
-								</div>
-							</div>
-							<div className="col-start-2">
-								<div className="  border-2 col-start-1 col-span-2">
-									<div className="">
-										<span className="">Intelligence</span>
-									</div>
-									<TextInputField className="" placeholder="" name="intelligence" type="text" />
-								</div>
-								<div className="  border-2 col-start-1 col-span-2">
-									<div className="">
-										<span className="">Wisdom</span>
-									</div>
-									<TextInputField className="" placeholder="" name="wisdom" type="text" />
-								</div>
-								<div className="  border-2 col-start-1 col-span-2">
-									<div className="">
-										<span className="">Charisma</span>
-									</div>
-									<TextInputField className="" placeholder="" name="charisma" type="text" />
-								</div>
-							</div>
+						<div>
+							<BuildAbilityScores values={values} setFieldValue={setFieldValue} />
 						</div>
 						<div>
 							<span>Description of stat spreads *3 of them</span>
 						</div>
 					</div>
+				</div>
+			);
+		case 4:
+			return (
+				<div className="flex flex-col-2 gap-8">
+					<div>
+						<div>
+							<span className="font-bold underline">Skills</span>
+						</div>
+						<div>
+							<BuildSkills values={values} setFieldValue={setFieldValue} />
+						</div>
+					</div>
+					<div>
+						<div>
+							<span className="font-bold underline">Saves</span>
+						</div>
+						<div>
+							<BuildSaves values={values} setFieldValue={setFieldValue} />
+						</div>
+					</div>
+				</div>
+			);
+		case 5:
+			return (
+				<div>
+					<div>
+						<BuildEquipment setFieldValue={setFieldValue} />
+					</div>
+					<div>{values.kit.description}</div>
+				</div>
+			);
+		case 6:
+			return (
+				<div>
+					<BuildFinal values={values} />
 				</div>
 			);
 

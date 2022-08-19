@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
-import ClassButton from '../../../components/ClassButton';
-import { raceListContext } from '../../../context/raceListContext';
-import { subraceListContext } from '../../../context/subraceListContext';
+import ClassButton from '../../../../components/ClassButton';
+import { raceListContext } from '../../../../context/raceListContext';
+import { subraceListContext } from '../../../../context/subraceListContext';
 
 // key needs to be id from backend
 const BuildSubraces = ({ setFieldValue, selectedRace }) => {
@@ -32,7 +32,7 @@ const BuildSubraces = ({ setFieldValue, selectedRace }) => {
 			<div>
 				{availableSubraces.map((subraceInfo, i) => {
 					return (
-						<div key={subraceInfo.name}>
+						<div key={subraceInfo._id}>
 							<ClassButton
 								onClick={() => setSubrace(subraceInfo)}
 								display={subraceInfo.name}

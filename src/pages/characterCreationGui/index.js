@@ -1,12 +1,14 @@
 import * as Yup from 'yup';
 import { characterCreationContext } from '../../context/characterCreationContext';
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Form, Formik } from 'formik';
-import BuildDisplays from './components/BuildDisplays';
+import BuildDisplays from './components/buildDisplays';
 import BuildHeaders from './components/BuildHeaders';
 import { classListContext } from '../../context/classListContext';
 import { raceListContext } from '../../context/raceListContext';
 import { subraceListContext } from '../../context/subraceListContext';
+
+//All buttons could be turned into dropdown; Cosmetic
 
 const CharacterCreationGui = ({ headers }) => {
 	const validationSchema = Yup.object().shape({
@@ -41,17 +43,33 @@ const CharacterCreationGui = ({ headers }) => {
 					subrace: '',
 					race: '',
 					sex: '',
-					strength: '10',
-					dexterity: '10',
-					constitution: '10',
-					intelligence: '10',
-					wisdom: '10',
-					charisma: '10',
+					background: '',
+					attributes: {
+						strength: { value: 10, mod: 0 },
+						dexterity: { value: 10, mod: 0 },
+						constitution: { value: 10, mod: 0 },
+						intelligence: { value: 10, mod: 0 },
+						wisdom: { value: 10, mod: 0 },
+						charisma: { value: 10, mod: 0 },
+					},
+					AnimalHandling: 0,
+					Insight: 0,
+					Medicine: 0,
+					Perception: 0,
+					Survival: 0,
+					Deception: 0,
+					Investigation: 0,
+					Nature: 0,
+					Religion: 0,
+					Athletics: 0,
+					Acrobatics: 0,
+					stealth: 0,
+					kit: '',
 				}}
 				onSubmit={characterCreation.createCharacterCreation}
 			>
 				{(props) => {
-					console.log('props', props);
+					console.log('initialValues', props.values);
 
 					return (
 						<Form>

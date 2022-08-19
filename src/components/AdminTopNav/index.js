@@ -58,6 +58,7 @@ const AdminTopNav = () => {
 				<StyledLink to={adminRoutes.RACES}>Race List</StyledLink>
 				<StyledLink to={adminRoutes.SUBRACES}>Subrace List</StyledLink>
 				<StyledLink to={adminRoutes.BACKGROUNDS}>Background List</StyledLink>
+				<StyledLink to={adminRoutes.GENDERS}>Genders List</StyledLink>
 			</Dropdown>
 			<Dropdown buttonClassName="" buttonName="Profile ▼">
 				{user.state.loggedIn && <StyledLink to={adminRoutes.ADMIN}>Admin View</StyledLink>}

@@ -37,6 +37,7 @@ export const adminRoutes = {
 	RACES: 'races',
 	SUBRACES: 'subraces',
 	BACKGROUNDS: 'backgrounds',
+	GENDERS: 'genders',
 };
 
 export const modifierRoutes = {
