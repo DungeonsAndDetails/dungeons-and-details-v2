@@ -59,21 +59,15 @@ const BuildRow = ({ item, headers, columnCount, enableManageColumn, onEditSave, 
 		setDeleteRow(null);
 	};
 
-	// Look into func
-	const saveOnClick = (values) => {
-		console.log('saveOnClick', values);
-	};
-
-	const onSubmit = (values) => {
-		onEditSave({ values, id: item._id });
-		setEdit(!edit);
-	};
-
 	const buildInitialValues = () => {
 		const initialValues = {};
 		headers.forEach((header) => {
 			initialValues[header.value] =
-				typeof item[header.value] === 'object' ? item[header.value]._id : item[header.value];
+				typeof item[header.value] === 'object'
+					? header.options.findIndex((option) => {
+							return option._id === item[header.value]._id;
+					  })
+					: item[header.value];
 		});
 		return initialValues;
 	};
@@ -98,7 +92,21 @@ const BuildRow = ({ item, headers, columnCount, enableManageColumn, onEditSave, 
 					saveButtonLabel="Delete"
 				/>
 			)}
-			<Formik initialValues={buildInitialValues()} onSubmit={onSubmit}>
+			<Formik
+				initialValues={buildInitialValues()}
+				onSubmit={(values) => {
+					const newValues = {};
+					headers.forEach((header) => {
+						if (header.options) {
+							newValues[header.value] = header.options[values[header.value]];
+						} else {
+							newValues[header.value] = values[header.value];
+						}
+					});
+					onEditSave({ values: newValues, id: item._id });
+					setEdit(!edit);
+				}}
+			>
 				<Form>
 					<div
 						className={`grid grid-cols-${columnCount} border-b border-slate-300 py-1 hover:bg-slate-700 gap-2`}
@@ -129,9 +137,7 @@ const BuildRow = ({ item, headers, columnCount, enableManageColumn, onEditSave, 
 						)}
 						{enableManageColumn && edit && (
 							<div className="grid grid-cols-2 gap-1">
-								<Button type="submit" onClick={saveOnClick}>
-									Save
-								</Button>
+								<Button type="submit">Save</Button>
 								<Button type="button" onClick={editOnClick}>
 									Cancel
 								</Button>
@@ -204,7 +210,15 @@ const BuildNewEntry = ({ headers, onCreate }) => {
 		<Formik
 			initialValues={buildInitialValues()}
 			onSubmit={(values, { resetForm }) => {
-				onCreate(values);
+				const newValues = {};
+				headers.forEach((header) => {
+					if (header.options) {
+						newValues[header.value] = header.options[values[header.value]];
+					} else {
+						newValues[header.value] = values[header.value];
+					}
+				});
+				onCreate(newValues);
 				resetForm();
 			}}
 		>

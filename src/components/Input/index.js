@@ -49,9 +49,9 @@ const InputSelect = (props) => {
 						className={`${props.className} w-full bg-slate-800 text-slate-200 h-10`}
 					>
 						<option hidden>Choose...</option>
-						{props.options.map((option) => {
+						{props.options.map((option, i) => {
 							return (
-								<option key={option._id} value={option._id}>
+								<option key={option._id} value={i}>
 									{option.name}
 								</option>
 							);
