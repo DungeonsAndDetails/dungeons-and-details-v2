@@ -60,6 +60,7 @@ module.exports = {
 			platinum: '#e5e4e2',
 			testPrimary: '#1f2937',
 			testSecondary: '#2e3d52',
+			testTertiary: '#1a3152',
 		}),
 		columns: {
 			auto: 'auto',

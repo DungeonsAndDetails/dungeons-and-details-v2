@@ -24,6 +24,7 @@ import { BackgroundListContextStateProvider } from './context/backgroundListCont
 import { NpcListContextStateProvider } from './context/npcContext';
 import { ChatContextStateProvider } from './context/chatContext';
 import { UserContextStateProvider } from './context/userContext';
+import { GendersListContextStateProvider } from './context/gendersContext';
 
 const App = () => {
 	return (
@@ -48,10 +49,12 @@ const App = () => {
 																			<SpellListContextStateProvider>
 																				<CharacterContextStateProvider>
 																					<UserContextStateProvider>
-																						<Routes>
-																							<Route path={routes.HOME} element={<Home />} />
-																							<Route path={routes.ADMIN} element={<Admin />} />
-																						</Routes>
+																						<GendersListContextStateProvider>
+																							<Routes>
+																								<Route path={routes.HOME} element={<Home />} />
+																								<Route path={routes.ADMIN} element={<Admin />} />
+																							</Routes>
+																						</GendersListContextStateProvider>
 																					</UserContextStateProvider>
 																				</CharacterContextStateProvider>
 																			</SpellListContextStateProvider>

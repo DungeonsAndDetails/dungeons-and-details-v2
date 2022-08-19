@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 const StyledLink = (props) => {
 	return (
 		<Link
-			caseSensitive={props.caseSensitive}
 			end={props.end}
 			to={props.to}
 			style={props.style}

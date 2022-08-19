@@ -17,7 +17,7 @@ const HomeNav = () => {
 				<StyledLink to={homeRoutes.DICE}>Dice</StyledLink>
 			</div>
 			<div className="font-semibold">
-				<StyledLink to={routes.CHARACTER_SHEET_PAGE}>Character Sheet</StyledLink>
+				<StyledLink to={homeRoutes.CHARACTER_CREATION_GUI}>Character Creation</StyledLink>
 			</div>
 			<div className="font-semibold">
 				<StyledLink to={routes.TEST_PAGE}>Test</StyledLink>

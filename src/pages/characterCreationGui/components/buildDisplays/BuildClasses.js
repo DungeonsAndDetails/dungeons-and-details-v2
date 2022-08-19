@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ClassButton from '../../../components/ClassButton';
+import ClassButton from '../../../../components/ClassButton';
 
 // key needs to be id from backend
 const BuildClasses = ({ classes, setFieldValue }) => {
@@ -15,7 +15,7 @@ const BuildClasses = ({ classes, setFieldValue }) => {
 			<div>
 				{classes.map((classInfo, i) => {
 					return (
-						<div key={classInfo.name}>
+						<div key={classInfo._id}>
 							<ClassButton
 								onClick={() => setClass(classInfo)}
 								display={classInfo.name}

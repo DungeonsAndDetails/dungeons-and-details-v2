@@ -31,6 +31,7 @@ import MaterialTypes from '../modifiers/materialTypes';
 import EnhancementLevels from '../modifiers/enhancementLevels';
 import ItemModifiers from '../modifiers/itemModifiers';
 import VolumeSystems from '../modifiers/volumeSystem';
+import Genders from '../genderList';
 
 const Admin = () => {
 	return (
@@ -69,6 +70,7 @@ const Admin = () => {
 				<Route path={adminRoutes.RACES} element={<Races />} />
 				<Route path={adminRoutes.SUBRACES} element={<Subraces />} />
 				<Route path={adminRoutes.BACKGROUNDS} element={<Backgrounds />} />
+				<Route path={adminRoutes.GENDERS} element={<Genders />} />
 			</Routes>
 		</div>
 	);
