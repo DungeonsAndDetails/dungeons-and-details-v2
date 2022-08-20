@@ -5,6 +5,7 @@ import Table, { inputTypes } from '../../../components/Table';
 
 const Sizes = () => {
 	const modifiers = useContext(modifierListContext);
+	console.log(modifiers);
 
 	const saveSize = async ({ values, id }) => {
 		const response = await axios.put(`http://localhost:4000/modifiers/Sizes/update/${id}`, values);
@@ -27,7 +28,7 @@ const Sizes = () => {
 		}
 	};
 
-	if (!modifiers.state.modifiers.Sizes) {
+	if (!modifiers.state.modifiers.sizes) {
 		return null;
 	}
 
@@ -52,11 +53,11 @@ const Sizes = () => {
 	return (
 		<>
 			<div>
-				<span className="">Sources List</span>
+				<span className="">Sizes List</span>
 			</div>
 			<div className="py-3">
 				<Table
-					data={modifiers.state.modifiers.sources}
+					data={modifiers.state.modifiers.sizes}
 					headers={SizeHeaders}
 					onDelete={deleteSize}
 					onEditSave={saveSize}

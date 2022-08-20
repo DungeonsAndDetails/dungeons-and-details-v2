@@ -17,6 +17,7 @@ let materialTypesRoute = require('./modifiers/material.types.route');
 let enhancementLevelsRoute = require('./modifiers/enhancement.levels.route');
 let itemModifiersRoute = require('./modifiers/item.modifiers.route');
 let volumeSystemsRoute = require('./modifiers/volume.systems.route');
+let sizesRoute = require('./modifiers/sizes.route');
 
 const db = mongoose.connection;
 const componentsCollection = db.collection('Components');
@@ -35,6 +36,7 @@ const materialTypesCollection = db.collection('Material Types');
 const enhancementLevelsCollection = db.collection('Enhancement Levels');
 const itemModifiersCollection = db.collection('Item Modifiers');
 const volumeSystemsCollection = db.collection('Volume Systems');
+const sizesCollection = db.collection('Sizes');
 
 router.route('/all').get((req, res) => {
 	const components = componentsCollection.find().toArray();
@@ -53,6 +55,7 @@ router.route('/all').get((req, res) => {
 	const enhancementLevels = enhancementLevelsCollection.find().toArray();
 	const itemModifiers = itemModifiersCollection.find().toArray();
 	const volumeSystems = volumeSystemsCollection.find().toArray();
+	const sizes = sizesCollection.find().toArray();
 
 	Promise.all([
 		components,
@@ -71,6 +74,7 @@ router.route('/all').get((req, res) => {
 		enhancementLevels,
 		itemModifiers,
 		volumeSystems,
+		sizes,
 	])
 		.then(
 			([
@@ -90,6 +94,7 @@ router.route('/all').get((req, res) => {
 				enhancementLevels,
 				itemModifiers,
 				volumeSystems,
+				sizes,
 			]) => {
 				res.send({
 					components,
@@ -108,6 +113,7 @@ router.route('/all').get((req, res) => {
 					enhancementLevels,
 					itemModifiers,
 					volumeSystems,
+					sizes,
 				});
 			},
 		)
@@ -132,5 +138,6 @@ router.use('/material-types', materialTypesRoute);
 router.use('/enhancement-levels', enhancementLevelsRoute);
 router.use('/item-modifiers', itemModifiersRoute);
 router.use('/volume-systems', volumeSystemsRoute);
+router.use('/sizes', sizesRoute);
 
 module.exports = router;

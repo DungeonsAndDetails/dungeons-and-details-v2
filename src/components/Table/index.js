@@ -246,6 +246,7 @@ const BuildNewEntry = ({ headers, onCreate }) => {
 const Table = ({ headers, data, onEditSave, onDelete, enableEdit, enableDelete, onCreate }) => {
 	const enableManageColumn = enableEdit || enableDelete;
 	const columnCount = enableManageColumn ? headers.length + 1 : headers.length;
+	const sortedData = [...data].sort((a, b) => (a.name > b.name ? 1 : -1));
 
 	return (
 		<>
@@ -254,7 +255,7 @@ const Table = ({ headers, data, onEditSave, onDelete, enableEdit, enableDelete, 
 					<BuildHeaders columnCount={columnCount} headers={headers} />
 					<BuildData
 						columnCount={columnCount}
-						data={data}
+						data={sortedData}
 						headers={headers}
 						enableManageColumn={enableManageColumn}
 						onEditSave={onEditSave}
