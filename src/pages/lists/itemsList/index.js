@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { itemsContext } from '../../context/itemsContext';
-import Table, { inputTypes } from '../../components/Table';
+import { itemsContext } from '../../../context/itemsContext';
+import Table, { inputTypes } from '../../../components/Table';
 
 const Items = () => {
 	const items = useContext(itemsContext);
