@@ -57,6 +57,7 @@ export const modifierRoutes = {
 	ENHANCEMENT_LEVELS: 'enhancement-levels',
 	ITEM_MODIFIERS: 'item-modifiers',
 	VOLUME_SYSTEMS: 'volume-systems',
+	SIZES: 'sizes',
 };
 
 export const compendiumRoutes = {
