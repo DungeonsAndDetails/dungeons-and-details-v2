@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import { skillListContext } from '../../context/skillListContext';
-import { attributesContext } from '../../context/attributeContext';
-import Table, { inputTypes } from '../../components/Table';
+import { skillListContext } from '../../../context/skillListContext';
+import { attributesContext } from '../../../context/attributeContext';
+import Table, { inputTypes } from '../../../components/Table';
 
 const Skills = () => {
 	const skills = useContext(skillListContext);

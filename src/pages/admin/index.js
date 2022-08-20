@@ -1,14 +1,14 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Skills from '../skillList';
+import Skills from '../lists/skillList';
 import { adminRoutes, compendiumRoutes, modifierRoutes } from '../../routes';
 import Attributes from '../attributes';
 import AdminTopNav from '../../components/AdminTopNav';
-import Items from '../items';
+import Items from '../lists/itemsList';
 import Profile from '../profile';
-import Spells from '../spellList';
-import Classes from '../classList';
-import Feats from '../featList';
+import Spells from '../lists/spellList';
+import Classes from '../lists/classList';
+import Feats from '../lists/featList';
 import SpellSchools from '../modifiers/spellSchools';
 import Components from '../modifiers/components';
 import Concentrations from '../modifiers/concentrations';
@@ -17,12 +17,12 @@ import Ranges from '../modifiers/ranges';
 import Sources from '../modifiers/sources';
 import SpellLevels from '../modifiers/spellLevels';
 import TimeTypes from '../modifiers/timeTypes';
-import Races from '../raceList';
-import Subraces from '../subraceList';
-import Subclasses from '../subclassList';
+import Races from '../lists/raceList';
+import Subraces from '../lists/subraceList';
+import Subclasses from '../lists/subclassList';
 import Monsters from '../compendium/monsterList';
 import DamageTypes from '../modifiers/damageTypes';
-import Backgrounds from '../backgroundList';
+import Backgrounds from '../lists/backgroundList';
 import Npcs from '../compendium/npcList';
 import Chat from '../../components/Chat';
 import DiceType from '../modifiers/diceType';
@@ -31,7 +31,7 @@ import MaterialTypes from '../modifiers/materialTypes';
 import EnhancementLevels from '../modifiers/enhancementLevels';
 import ItemModifiers from '../modifiers/itemModifiers';
 import VolumeSystems from '../modifiers/volumeSystem';
-import Genders from '../genderList';
+import Genders from '../lists/genderList';
 
 const Admin = () => {
 	return (

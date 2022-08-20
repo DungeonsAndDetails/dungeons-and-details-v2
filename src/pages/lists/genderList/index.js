@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import Table, { inputTypes } from '../../components/Table';
-import { gendersListContext } from '../../context/gendersContext';
+import Table, { inputTypes } from '../../../components/Table';
+import { gendersListContext } from '../../../context/gendersContext';
 
 const Genders = () => {
 	const genders = useContext(gendersListContext);

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import { classListContext } from '../../context/classListContext';
-import Table, { inputTypes } from '../../components/Table';
-import { subclassListContext } from '../../context/subclassListContext';
+import { classListContext } from '../../../context/classListContext';
+import Table, { inputTypes } from '../../../components/Table';
+import { subclassListContext } from '../../../context/subclassListContext';
 
 const Subclasses = () => {
 	const classes = useContext(classListContext);

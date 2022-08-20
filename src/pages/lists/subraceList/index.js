@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import Table, { inputTypes } from '../../components/Table';
-import { raceListContext } from '../../context/raceListContext';
-import { subraceListContext } from '../../context/subraceListContext';
+import Table, { inputTypes } from '../../../components/Table';
+import { raceListContext } from '../../../context/raceListContext';
+import { subraceListContext } from '../../../context/subraceListContext';
 
 const Subraces = () => {
 	const subraces = useContext(subraceListContext);

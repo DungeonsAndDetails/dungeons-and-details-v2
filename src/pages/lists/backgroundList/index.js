@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import Table, { inputTypes } from '../../components/Table';
-import { backgroundListContext } from '../../context/backgroundListContext';
-import { skillListContext } from '../../context/skillListContext';
+import Table, { inputTypes } from '../../../components/Table';
+import { backgroundListContext } from '../../../context/backgroundListContext';
+import { skillListContext } from '../../../context/skillListContext';
 
 const Backgrounds = () => {
 	const backgrounds = useContext(backgroundListContext);

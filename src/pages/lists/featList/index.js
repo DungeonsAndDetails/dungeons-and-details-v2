@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { featListContext } from '../../context/featListContext';
-import Table, { inputTypes } from '../../components/Table';
+import { featListContext } from '../../../context/featListContext';
+import Table, { inputTypes } from '../../../components/Table';
 
 const Feats = () => {
 	const feats = useContext(featListContext);

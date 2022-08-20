@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import { spellListContext } from '../../context/spellListContext';
-import Table, { inputTypes } from '../../components/Table';
-import { modifierListContext } from '../../context/modifiersContext';
+import { spellListContext } from '../../../context/spellListContext';
+import Table, { inputTypes } from '../../../components/Table';
+import { modifierListContext } from '../../../context/modifiersContext';
 
 const Spells = () => {
 	const spells = useContext(spellListContext);
