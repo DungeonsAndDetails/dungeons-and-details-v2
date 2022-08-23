@@ -18,6 +18,8 @@ let enhancementLevelsRoute = require('./modifiers/enhancement.levels.route');
 let itemModifiersRoute = require('./modifiers/item.modifiers.route');
 let volumeSystemsRoute = require('./modifiers/volume.systems.route');
 let sizesRoute = require('./modifiers/sizes.route');
+let itemTypesRoute = require('./modifiers/item.types.route');
+let proficienciesRoute = require('./modifiers/proficiencies.route');
 
 const db = mongoose.connection;
 const componentsCollection = db.collection('Components');
@@ -37,6 +39,8 @@ const enhancementLevelsCollection = db.collection('Enhancement Levels');
 const itemModifiersCollection = db.collection('Item Modifiers');
 const volumeSystemsCollection = db.collection('Volume Systems');
 const sizesCollection = db.collection('Sizes');
+const itemTypesCollection = db.collection('Item Types');
+const proficienciesCollection = db.collection('Proficiencies');
 
 router.route('/all').get((req, res) => {
 	const components = componentsCollection.find().toArray();
@@ -56,6 +60,8 @@ router.route('/all').get((req, res) => {
 	const itemModifiers = itemModifiersCollection.find().toArray();
 	const volumeSystems = volumeSystemsCollection.find().toArray();
 	const sizes = sizesCollection.find().toArray();
+	const itemTypes = itemTypesCollection.find().toArray();
+	const proficiencies = proficienciesCollection.find().toArray();
 
 	Promise.all([
 		components,
@@ -75,6 +81,8 @@ router.route('/all').get((req, res) => {
 		itemModifiers,
 		volumeSystems,
 		sizes,
+		proficiencies,
+		itemTypes,
 	])
 		.then(
 			([
@@ -95,6 +103,8 @@ router.route('/all').get((req, res) => {
 				itemModifiers,
 				volumeSystems,
 				sizes,
+				proficiencies,
+				itemTypes,
 			]) => {
 				res.send({
 					components,
@@ -114,6 +124,8 @@ router.route('/all').get((req, res) => {
 					itemModifiers,
 					volumeSystems,
 					sizes,
+					proficiencies,
+					itemTypes,
 				});
 			},
 		)
@@ -139,5 +151,7 @@ router.use('/enhancement-levels', enhancementLevelsRoute);
 router.use('/item-modifiers', itemModifiersRoute);
 router.use('/volume-systems', volumeSystemsRoute);
 router.use('/sizes', sizesRoute);
+router.use('/item-types', itemTypesRoute);
+router.use('/proficiencies', proficienciesRoute);
 
 module.exports = router;

@@ -79,6 +79,11 @@ This App will use useContext & useReducer to handle global state.
 https://reactjs.org/docs/hooks-reference.html#usecontext
 https://reactjs.org/docs/hooks-reference.html#usereducer
 
+### Usefull Code
+
+This sorts data in alphabetical order.
+.sort((a, b) => (a.name > b.name ? 1 : -1))
+
 ### Fundamentals
 
 Eerything is Javascript. We utilize React as a framework on top of JS.

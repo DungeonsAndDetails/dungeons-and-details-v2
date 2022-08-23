@@ -58,6 +58,8 @@ export const modifierRoutes = {
 	ITEM_MODIFIERS: 'item-modifiers',
 	VOLUME_SYSTEMS: 'volume-systems',
 	SIZES: 'sizes',
+	ITEM_TYPES: 'item-types',
+	PROFICIENCIES: 'proficiencies',
 };
 
 export const compendiumRoutes = {
