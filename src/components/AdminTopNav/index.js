@@ -43,6 +43,8 @@ const AdminTopNav = () => {
 				<StyledLink to={modifierRoutes.ENHANCEMENT_LEVELS}>Enhancement Levels</StyledLink>
 				<StyledLink to={modifierRoutes.ITEM_MODIFIERS}>Item Modifiers</StyledLink>
 				<StyledLink to={modifierRoutes.SIZES}>Size Modifiers</StyledLink>
+				<StyledLink to={modifierRoutes.ITEM_TYPES}>Item Types</StyledLink>
+				<StyledLink to={modifierRoutes.PROFICIENCIES}>Proficiencies Modifiers</StyledLink>
 			</Dropdown>
 			<Dropdown buttonClassName="" menuClassName="font-normal" buttonName="Compendium ▼">
 				<StyledLink to={compendiumRoutes.MONSTERS}>Monsters</StyledLink>

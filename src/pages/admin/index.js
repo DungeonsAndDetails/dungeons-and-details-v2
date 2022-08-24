@@ -33,6 +33,8 @@ import ItemModifiers from '../modifiers/itemModifiers';
 import VolumeSystems from '../modifiers/volumeSystem';
 import Genders from '../lists/genderList';
 import Sizes from '../modifiers/sizes';
+import ItemTypes from '../modifiers/itemTypes';
+import Proficiencies from '../modifiers/proficiencys';
 
 const Admin = () => {
 	return (
@@ -57,6 +59,8 @@ const Admin = () => {
 				<Route path={modifierRoutes.ITEM_MODIFIERS} element={<ItemModifiers />} />
 				<Route path={modifierRoutes.VOLUME_SYSTEMS} element={<VolumeSystems />} />
 				<Route path={modifierRoutes.SIZES} element={<Sizes />} />
+				<Route path={modifierRoutes.ITEM_TYPES} element={<ItemTypes />} />
+				<Route path={modifierRoutes.PROFICIENCIES} element={<Proficiencies />} />
 				{/* Compendium */}
 				<Route path={compendiumRoutes.MONSTERS} element={<Monsters />} />
 				<Route path={compendiumRoutes.NPCS} element={<Npcs />} />
