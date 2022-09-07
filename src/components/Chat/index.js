@@ -38,6 +38,8 @@ const Chat = () => {
 		chatRef.current.scrollIntoView();
 	}, [chatCreation.state.chat]);
 
+	console.log('chat', chatCreation.state.chat);
+
 	return (
 		<div className="chat-component bottom-0 right-0 absolute">
 			<div className="border border-l">
@@ -76,6 +78,29 @@ const Chat = () => {
 												<span className="text-xs">{newLine.timeStamp}</span>
 												<div>
 													<span className="text-sm">{newLine.text}</span>
+												</div>
+												<div className="text-sm">
+													{newLine.commandData && (
+														<>
+															<div className=" underline">
+																(
+																{newLine.commandData.diceRolls.map((diceRoll, i) => {
+																	const showPlus = i < newLine.commandData.diceRolls.length - 1;
+
+																	return (
+																		<span key={`${i} diceRoll`}>{`${diceRoll}${
+																			showPlus ? ' + ' : ''
+																		}`}</span>
+																	);
+																})}
+																) <span> + {newLine.commandData.diceMod}</span>
+															</div>
+
+															<span className=" text-base font-bold border">
+																{newLine.commandData.sum}
+															</span>
+														</>
+													)}
 												</div>
 											</div>
 										);
