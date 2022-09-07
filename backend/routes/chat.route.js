@@ -8,16 +8,12 @@ const chatCollection = db.collection('Chat');
 const commandKeys = { command: '/', roll: '/roll' };
 
 const chatActions = (text) => {
-	console.log(text);
-
 	if (text.charAt(0) === commandKeys.command) {
 		const words = text.split(' ');
-		console.log('YEP');
+
 		switch (words[0]) {
 			case '/roll':
-				console.log('Roll');
 				if (words[1].match(/^([\d]{1,2}[d](4|6|8|10|12|20|100)([+]{1}[\d]{1,2})?)/)) {
-					console.log('Match');
 					return dice.dice(words[1]);
 				} else {
 					console.log('error');
@@ -26,16 +22,14 @@ const chatActions = (text) => {
 				break;
 			default:
 		}
-	} else {
-		console.log('NOPE');
 	}
 };
 
 router.route('/create').put((req, res) => {
 	const response = chatActions(req.body.text);
-	let temp = { ...req.body, commandData: response };
+	const newData = { ...req.body, commandData: response };
 	chatCollection
-		.insertOne(temp)
+		.insertOne(newData)
 		.then((result) => {
 			res.send(result.ops);
 		})
