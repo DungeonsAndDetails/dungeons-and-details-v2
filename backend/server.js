@@ -23,6 +23,7 @@ let npcsRoute = require('./routes/npcs.route');
 let backgroundsRoute = require('./routes/backgrounds.route');
 let chatRoute = require('./routes/chat.route');
 let gendersRoute = require('./routes/genders.route');
+let abilitiesRoute = require('./routes/abilities.route');
 
 // Connecting mongoDB Database
 mongoose.Promise = global.Promise;
@@ -59,6 +60,7 @@ app.use('/npcs', npcsRoute);
 app.use('/backgrounds', backgroundsRoute);
 app.use('/chat', chatRoute);
 app.use('/genders', gendersRoute);
+app.use('/abilities', abilitiesRoute);
 
 app.listen(4000, function () {
 	console.log('listening on 4000');
