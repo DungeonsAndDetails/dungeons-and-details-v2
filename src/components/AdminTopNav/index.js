@@ -56,12 +56,13 @@ const AdminTopNav = () => {
 				<StyledLink to={adminRoutes.CLASSES}>Class List</StyledLink>
 				<StyledLink to={adminRoutes.SUBCLASSES}>Subclass List</StyledLink>
 				<StyledLink to={adminRoutes.FEATS}>Feat List</StyledLink>
-				<StyledLink to={adminRoutes.ATTRIBUTES}>Attributes List</StyledLink>
-				<StyledLink to={adminRoutes.ITEMS}>Items List</StyledLink>
+				<StyledLink to={adminRoutes.ATTRIBUTES}>Attribute List</StyledLink>
+				<StyledLink to={adminRoutes.ITEMS}>Item List</StyledLink>
 				<StyledLink to={adminRoutes.RACES}>Race List</StyledLink>
 				<StyledLink to={adminRoutes.SUBRACES}>Subrace List</StyledLink>
 				<StyledLink to={adminRoutes.BACKGROUNDS}>Background List</StyledLink>
-				<StyledLink to={adminRoutes.GENDERS}>Genders List</StyledLink>
+				<StyledLink to={adminRoutes.GENDERS}>Gender List</StyledLink>
+				<StyledLink to={adminRoutes.ABILITIES}>Ability List</StyledLink>
 			</Dropdown>
 			<Dropdown buttonClassName="" buttonName="Profile ▼">
 				{user.state.loggedIn && <StyledLink to={adminRoutes.ADMIN}>Admin View</StyledLink>}

@@ -35,6 +35,7 @@ import Genders from '../lists/genderList';
 import Sizes from '../modifiers/sizes';
 import ItemTypes from '../modifiers/itemTypes';
 import Proficiencies from '../modifiers/proficiencys';
+import Abilities from '../lists/abilityList';
 
 const Admin = () => {
 	return (
@@ -77,6 +78,7 @@ const Admin = () => {
 				<Route path={adminRoutes.SUBRACES} element={<Subraces />} />
 				<Route path={adminRoutes.BACKGROUNDS} element={<Backgrounds />} />
 				<Route path={adminRoutes.GENDERS} element={<Genders />} />
+				<Route path={adminRoutes.ABILITIES} element={<Abilities />} />
 			</Routes>
 		</div>
 	);
