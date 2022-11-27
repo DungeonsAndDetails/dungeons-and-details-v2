@@ -4,13 +4,12 @@ import { backgroundListContext } from '../../../../context/backgroundListContext
 
 const BuildBackground = ({ setFieldValue }) => {
 	const backgrounds = useContext(backgroundListContext);
-	const [selectedBackground, setSelectedBackground] = useState();
+	const [, setSelectedBackground] = useState();
 	const setBackground = (values) => {
 		setSelectedBackground(values);
 		setFieldValue('background', values);
 	};
 
-	// console.log('SBG', selectedBackground);
 	return (
 		<div>
 			<div>

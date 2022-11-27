@@ -3,7 +3,7 @@ import ClassButton from '../../../../components/ClassButton';
 
 // key needs to be id from backend
 const BuildRaces = ({ races, setFieldValue }) => {
-	const [selectedRace, setSelectedRace] = useState(null);
+	const [, setSelectedRace] = useState(null);
 	const setRace = (values) => {
 		setSelectedRace(values);
 		setFieldValue('race', values);

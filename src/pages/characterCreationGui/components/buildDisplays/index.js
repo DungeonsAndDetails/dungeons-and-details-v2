@@ -1,7 +1,7 @@
-import React, { useState, useContext } from 'react';
+// import React, { useState, useContext } from 'react';
 import Button from '../../../../components/Button';
 import TextInputField from '../../../../components/TextInputField';
-import { characterCreationContext } from '../../../../context/characterCreationContext';
+// import { characterCreationContext } from '../../../../context/characterCreationContext';
 import BuildAbilityScores from './BuildAbilityScores';
 import BuildBackground from './BuildBackground';
 import BuildClasses from './BuildClasses';
@@ -18,18 +18,18 @@ const BuildDisplays = (props) => {
 	const {
 		step,
 		setStep,
-		validateField,
+		// validateField,
 		errors,
-		touched,
+		// touched,
 		values,
 		classes,
 		setFieldValue,
-		selectedClass,
+		// selectedClass,
 		races,
 		subraces,
 		subclasses,
 	} = props;
-	const characterCreation = useContext(characterCreationContext);
+	// const characterCreation = useContext(characterCreationContext);
 	const validateStepOne = async () => {
 		if (!errors.name) {
 			setStep(step + 1);
@@ -45,11 +45,11 @@ const BuildDisplays = (props) => {
 			setStep(step + 1);
 		}
 	};
-	const validateStepFour = async () => {
-		if (!errors.name) {
-			setStep(step + 1);
-		}
-	};
+	// const validateStepFour = async () => {
+	// 	if (!errors.name) {
+	// 		setStep(step + 1);
+	// 	}
+	// };
 
 	switch (step) {
 		case 0:

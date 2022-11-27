@@ -1,13 +1,13 @@
 import React, { useState, useContext, useEffect } from 'react';
 import ClassButton from '../../../../components/ClassButton';
-import { raceListContext } from '../../../../context/raceListContext';
+// import { raceListContext } from '../../../../context/raceListContext';
 import { subraceListContext } from '../../../../context/subraceListContext';
 
 // key needs to be id from backend
 const BuildSubraces = ({ setFieldValue, selectedRace }) => {
-	const races = useContext(raceListContext);
+	// const races = useContext(raceListContext);
 	const subraces = useContext(subraceListContext);
-	const [selectedSubrace, setSelectedSubrace] = useState(null);
+	const [, setSelectedSubrace] = useState(null);
 	const [availableSubraces, setAvailableSubraces] = useState([]);
 	useEffect(() => {
 		if (selectedRace && subraces.state.subraces) {

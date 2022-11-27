@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
 import Dropdown from '../../../components/Dropdown';
 import StyledLink from '../../../components/StyledLink';
 import { userContext, userContextActions } from '../../../context/userContext';

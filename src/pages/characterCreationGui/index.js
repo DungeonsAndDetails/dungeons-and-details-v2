@@ -1,14 +1,13 @@
 import * as Yup from 'yup';
 import { characterCreationContext } from '../../context/characterCreationContext';
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { Form, Formik } from 'formik';
 import BuildDisplays from './components/buildDisplays';
 import BuildHeaders from './components/BuildHeaders';
 import { classListContext } from '../../context/classListContext';
 import { raceListContext } from '../../context/raceListContext';
-import { subraceListContext } from '../../context/subraceListContext';
 
-//All buttons could be turned into dropdown; Cosmetic
+// All buttons could be turned into dropdown; Cosmetic
 
 const CharacterCreationGui = ({ headers }) => {
 	const validationSchema = Yup.object().shape({
@@ -20,12 +19,6 @@ const CharacterCreationGui = ({ headers }) => {
 	const characterCreation = useContext(characterCreationContext);
 	const classes = useContext(classListContext);
 	const races = useContext(raceListContext);
-	const subraces = useContext(subraceListContext);
-
-	// console.log('characterCreation.state', characterCreation.state);
-	// console.log('Classes', classes);
-	// console.log('Races', races);
-	// console.log('Subraces', subraces);
 
 	const [step, setStep] = useState(0);
 
@@ -52,7 +45,7 @@ const CharacterCreationGui = ({ headers }) => {
 						wisdom: { value: 10, mod: 0 },
 						charisma: { value: 10, mod: 0 },
 					},
-					// skills might be broke*
+					// skills might be broken*
 					skills: {
 						AnimalHandling: 0,
 						Insight: 0,

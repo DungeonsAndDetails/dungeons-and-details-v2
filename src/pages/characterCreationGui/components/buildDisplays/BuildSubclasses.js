@@ -1,13 +1,13 @@
 import React, { useState, useContext, useEffect } from 'react';
 import ClassButton from '../../../../components/ClassButton';
-import { classListContext } from '../../../../context/classListContext';
+// import { classListContext } from '../../../../context/classListContext';
 import { subclassListContext } from '../../../../context/subclassListContext';
 
 // key needs to be id from backend
 const BuildSubclasses = ({ setFieldValue, selectedClass }) => {
-	const classes = useContext(classListContext);
+	// const classes = useContext(classListContext);
 	const subclasses = useContext(subclassListContext);
-	const [selectedSubclass, setSelectedSubclass] = useState(null);
+	const [, setSelectedSubclass] = useState(null);
 	const [availableSubclasses, setAvailableSubclasses] = useState([]);
 	useEffect(() => {
 		if (selectedClass && subclasses.state.subclasses) {

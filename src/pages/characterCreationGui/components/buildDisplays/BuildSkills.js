@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { skillListContext } from '../../../../context/skillListContext';
 import BuildCheckBox from './BuildCheckBox';
 

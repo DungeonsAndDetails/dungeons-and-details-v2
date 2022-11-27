@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { createContext, useEffect, useReducer } from 'react';
+import React, { createContext, useReducer } from 'react';
 
 // Inital Values of the Store
 

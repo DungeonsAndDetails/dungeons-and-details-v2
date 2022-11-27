@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Button from '../../../../components/Button';
 
 const BuildEquipment = (props) => {
 	const { setFieldValue } = props;
-	const [selectedKit, setSelectedKit] = useState();
+	const [, setSelectedKit] = useState();
 	const setKit = (value) => {
 		setSelectedKit(value);
 		setFieldValue('kit', value);

@@ -14,13 +14,12 @@ import img1 from '../../img/profile/1.png';
 const Profile = () => {
 	const user = useContext(userContext);
 	const [view, setView] = useState('Profile');
-	const { displayName, password, confirmPassword } = user.state;
+	const { displayName, password } = user.state; // TODO Setup Confirm Password?
 
-	const submit = () => {};
+	// const submit = () => {};
 	const onClick = (e) => {
 		setView(e.target.value);
 	};
-	console.log(user);
 	return (
 		<div className="profile flex">
 			{/* Side Bar */}
