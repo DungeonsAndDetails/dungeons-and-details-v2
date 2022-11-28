@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import Table, { inputTypes } from '../../components/Table';
+import { modifierListContext } from '../../context/modifiersContext';
 import { raceListContext } from '../../context/raceListContext';
 
 const Races = () => {
@@ -12,13 +13,33 @@ const Races = () => {
 			type: inputTypes.TEXT,
 		},
 		{
-			label: 'Description',
-			value: 'description',
+			label: 'Size',
+			value: 'size',
 			type: inputTypes.TEXT,
 		},
 		{
+			label: 'Speed',
+			value: 'speed',
+			type: inputTypes.TEXT,
+		},
+		{
+			label: 'Ability Scores',
+			value: 'abilityScores',
+			type: inputTypes.TEXT,
+		},		
+		{
 			label: 'Racial Traits',
 			value: 'racialTraits',
+			type: inputTypes.TEXT,
+		},
+		{
+			label: 'Languages',
+			value: 'languages',
+			type: inputTypes.TEXT,
+		},
+		{
+			label: 'Source',
+			value: 'source',
 			type: inputTypes.TEXT,
 		},
 	];
