@@ -9,6 +9,7 @@ let sourcesRoute = require('./modifiers/sources.route');
 let spellLevelsRoute = require('./modifiers/spell.levels.route');
 let spellSchoolRoute = require('./modifiers/spell.schools.route');
 let timesRoute = require('./modifiers/times.route');
+let sizesRoute = require('./modifiers/sizes.route');
 let timeTypesRoute = require('./modifiers/time.types.route');
 let damageTypesRoute = require('./modifiers/damage.types.route');
 let diceTypesRoute = require('./modifiers/dice.types.route');
@@ -26,6 +27,7 @@ const rangesCollection = db.collection('Ranges');
 const sourcesCollection = db.collection('Sources');
 const spellLevelsCollection = db.collection('Spell Levels');
 const spellSchoolCollection = db.collection('Spell Schools');
+const sizesCollection = db.collection('Sizes');
 const timesCollection = db.collection('Times');
 const timeTypesCollection = db.collection('Time Types');
 const damageTypesCollection = db.collection('Damage Types');
@@ -45,6 +47,7 @@ router.route('/all').get((req, res) => {
 	const spellLevels = spellLevelsCollection.find().toArray();
 	const spellSchools = spellSchoolCollection.find().toArray();
 	const times = timesCollection.find().toArray();
+	const sizes = sizesCollection.find().toArray();
 	const timeTypes = timeTypesCollection.find().toArray();
 	const damageTypes = damageTypesCollection.find().toArray();
 	const diceTypes = diceTypesCollection.find().toArray();
@@ -63,6 +66,7 @@ router.route('/all').get((req, res) => {
 		spellLevels,
 		spellSchools,
 		times,
+		sizes,
 		timeTypes,
 		damageTypes,
 		diceTypes,
@@ -82,6 +86,7 @@ router.route('/all').get((req, res) => {
 				spellLevels,
 				spellSchools,
 				times,
+				sizes,
 				timeTypes,
 				damageTypes,
 				diceTypes,
@@ -100,6 +105,7 @@ router.route('/all').get((req, res) => {
 					spellLevels,
 					spellSchools,
 					times,
+					sizes,
 					timeTypes,
 					damageTypes,
 					diceTypes,
@@ -124,6 +130,7 @@ router.use('/sources', sourcesRoute);
 router.use('/spell-levels', spellLevelsRoute);
 router.use('/spell-schools', spellSchoolRoute);
 router.use('/times', timesRoute);
+router.use('/sizes', sizesRoute);
 router.use('/time-types', timeTypesRoute);
 router.use('/damage-types', damageTypesRoute);
 router.use('/dice-types', diceTypesRoute);

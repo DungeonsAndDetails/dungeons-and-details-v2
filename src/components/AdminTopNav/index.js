@@ -35,6 +35,7 @@ const AdminTopNav = () => {
 				<StyledLink to={modifierRoutes.SPELL_LEVELS}>Spell Levels</StyledLink>
 				<StyledLink to={modifierRoutes.SPELL_SCHOOLS}>Spell Schools</StyledLink>
 				<StyledLink to={modifierRoutes.TIME_TYPES}>Time Types</StyledLink>
+				<StyledLink to={modifierRoutes.SIZES}>Size Types</StyledLink>
 				<StyledLink to={modifierRoutes.DAMAGE_TYPES}>Damage Types</StyledLink>
 				<StyledLink to={modifierRoutes.DICE_TYPES}>Dice Types</StyledLink>
 				<StyledLink to={modifierRoutes.WEIGHT_SYSTEMS}>Weight Systems</StyledLink>
