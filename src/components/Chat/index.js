@@ -82,7 +82,7 @@ const Chat = () => {
 												<div className="text-sm">
 													{newLine.commandData && (
 														<>
-															<div className=" underline">
+															<div className="underline">
 																(
 																{newLine.commandData.diceRolls.map((diceRoll, i) => {
 																	const showPlus = i < newLine.commandData.diceRolls.length - 1;
@@ -96,7 +96,7 @@ const Chat = () => {
 																) <span> + {newLine.commandData.diceMod}</span>
 															</div>
 
-															<span className=" text-base font-bold border">
+															<span className="text-base font-bold border">
 																{newLine.commandData.sum}
 															</span>
 														</>

@@ -86,7 +86,7 @@ This sorts data in alphabetical order.
 
 ### Fundamentals
 
-Eerything is Javascript. We utilize React as a framework on top of JS.
+Everything is Javascript. We utilize React as a framework on top of JS.
 
     Variables: Variable means anything that can vary. In JavaScript, a variable stores the data value that can be changed later on.
         There are two different types of ways to initalize a variable
@@ -214,7 +214,7 @@ Eerything is Javascript. We utilize React as a framework on top of JS.
                     const foo2 = {...foo} // DO THIS INSTEAD
 
     React Specifics
-        Component Life Cycle Method - Mounts / Updates / Dismounts
+        Component Life Cycle Method - Mounts / Updates / Dismounts / Error Handling
         Props - Properties you pass to a component. Component will Rerender anytime the props are updated. You can desconstruct Props or use the key word props
             Example: const Component = (props) => {
                 props.value
